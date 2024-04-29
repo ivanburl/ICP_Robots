@@ -10,7 +10,6 @@ class Room;
 class Robot : public QGraphicsItemGroup, UpdatableEntity
 {
 private:
-    double x, y;
     double radius;
     double arcRadius;
     double arcDegree;
@@ -30,9 +29,21 @@ public:
             double arcRadius, double arcDegree,
             double angleInDeegrees, double movementSpeed,
             double rotationSmaple, double rotationSpeedPerSecond) {
+        this->currentAngleInDegrees = angleInDeegrees;
+        this->rotationDegreeSample = rotationSmaple;
+        this->movementSpeed = movementSpeed;
+        this->rotationSpeedInDegree = rotationSpeedPerSecond;
+        this->radius = radius;
+        this->arcRadius = arcRadius;
+
         this->room = room;
         robotShape = new QGraphicsEllipseItem(x,y, radius, radius);
+        arcShape = new QGraphicsEllipseItem(x,y, arcRadius, arcRadius);
+        arcShape->setStartAngle(currentAngleInDegrees/2);
+        arcShape->setSpanAngle(arcDegree);
 
+        this->addToGroup(robotShape);
+        this->addToGroup(arcShape);
     }
 
     ~Robot() {
@@ -43,6 +54,8 @@ public:
     bool move(long deltaNanos);
 
     void turn(long deltaNanos);
+
+    bool hasDetected();
 
     void update(long deltaNanos) override;
 };

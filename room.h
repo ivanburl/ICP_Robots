@@ -13,26 +13,57 @@ private:
     QVector<Robot*> robots;
     QVector<Block*> blocks;
 public:
-    Room();
+    Room() : QGraphicsScene(0, 0, w, h) {
 
-    QVector<Robot*> getRobots() {
+    };
+
+    QVector<Robot*>& getRobots() {
         return robots;
     }
 
-    QVector<Block*> getBlock() {
+    QVector<Block*>& getBlock() {
         return blocks;
     }
 
     bool addRobot(Robot* robot) {
-        robots.append(robot);
+        bool toAdd = validateState(nullptr); //TODO
+        if (toAdd) {
+            robots.append(robot);
+        }
+        return toAdd;
     }
 
     bool addBlock(Block* block) {
-        blocks.append(block);
+        bool toAdd = validateState(nullptr); //TODO
+        if (toAdd) {
+            blocks.append(block);
+        }
+        return toAdd;
+    }
+
+    void removeRobot(Robot* robot) {
+        for (int i=0;i<robots.size();i++) {
+            if (robots[i] == robot) {
+                robots.removeAt(i);
+                i--;
+            }
+        }
+        return;
+    }
+
+
+    void removeBlock(Block* block) {
+        for (int i = 0;i < blocks.size(); i++) {
+            if (blocks[i] == block) {
+                blocks.remove(i);
+                i--;
+            }
+        }
+        return;
     }
 
 private:
-    bool validateState();
+    bool validateState(QPolygon* qpolygon);
 };
 
 #endif // ROOM_H

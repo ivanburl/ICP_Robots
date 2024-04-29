@@ -1,6 +1,9 @@
 #include "room.h"
 #include <QDebug>
 
-Room::Room() {
-    qDebug() << "Room created";
-};
+
+
+bool Room::validateState(QPolygon *qpolygon)
+{
+    return false;
+}
