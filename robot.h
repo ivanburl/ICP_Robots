@@ -3,12 +3,16 @@
 
 #include "updatable_entity.h"
 
+#include <QBrush>
 #include <QGraphicsItem>
 
 class Room;
 
 class Robot : public QGraphicsItemGroup, UpdatableEntity
 {
+public:
+    static QBrush DEFAULT_ROBOT_BRUSH;
+    static QBrush DEFAULT_ROBOT_ARC_BRUSH;
 private:
     double radius;
     double arcRadius;
@@ -23,6 +27,8 @@ private:
     Room* room;
 private:
     double leftToTurn;
+    Q_PROPERTY(int DEFAULT_ROBOT_COLOR READ getDEFAULT_ROBOT_COLOR CONSTANT FINAL)
+
 public:
     Robot(Room* room,
             double x, double y, double radius,
@@ -37,10 +43,14 @@ public:
         this->arcRadius = arcRadius;
 
         this->room = room;
-        robotShape = new QGraphicsEllipseItem(x,y, radius, radius);
-        arcShape = new QGraphicsEllipseItem(x,y, arcRadius, arcRadius);
-        arcShape->setStartAngle(currentAngleInDegrees/2);
-        arcShape->setSpanAngle(arcDegree);
+        robotShape = new QGraphicsEllipseItem(x - radius ,y - radius, radius * 2, radius * 2);
+        arcShape = new QGraphicsEllipseItem(x - arcRadius,y - arcRadius, arcRadius * 2, arcRadius * 2);
+        arcShape->setStartAngle(currentAngleInDegrees * 16 - arcDegree * 8);
+        arcShape->setSpanAngle(arcDegree * 16);
+
+        robotShape->setBrush(DEFAULT_ROBOT_BRUSH);
+        arcShape->setBrush(DEFAULT_ROBOT_ARC_BRUSH);
+        arcShape->setOpacity(0.8);
 
         this->addToGroup(robotShape);
         this->addToGroup(arcShape);
@@ -53,11 +63,12 @@ public:
 
     bool move(long deltaNanos);
 
-    void turn(long deltaNanos);
+    void rotate(long deltaNanos);
 
     bool hasDetected();
 
     void update(long deltaNanos) override;
+    static int getDEFAULT_ROBOT_COLOR();
 };
 
 #endif // ROBOT_H

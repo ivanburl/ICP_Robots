@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include "robot.h"
 
 #include <QApplication>
 #include <QGraphicsItem>
@@ -13,20 +14,13 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     // auto* scene = new QGraphicsScene();
-    // scene->setSceneRect(0, 0, 8000, 6000);
+    // scene->setSceneRect(0, 0, 800, 600);
 
-    // auto* item = new QGraphicsRectItem();
-    // item->setRect(20, 20, 7960, 5960);
-    // QPen pen(Qt::black, 20);
-
-    // item->setPen(pen);
-    // scene->addItem(item);
 
     // auto* view = new QGraphicsView(scene);
     // view->setMinimumSize(800, 600);
     // view->setFixedSize(800, 600);
     // view->setSceneRect(0, 0, 800, 600);
-    // view->scale(0.1, 0.1);
 
     // view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     // view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -34,6 +28,34 @@ int main(int argc, char *argv[])
     // view->setAlignment(Qt::AlignTop | Qt::AlignLeft);
 
     // view->show();
+
+    // auto* robot = new Robot(
+    //     nullptr,
+    //     300, 300, 100, 200, 60, 30,
+    //     100, 90, 180
+    // );
+
+    // robot->move(1e9);
+
+    // scene->addItem(robot);
+
+    // auto* robot2 = new Robot(
+    //     nullptr,
+    //     300, 300, 100, 200, 60, 30,
+    //     100, 90, 180
+    //     );
+
+
+    // scene->addItem(robot2);
+
+    // auto* rect = new QGraphicsRectItem(100, 100, 100, 100);
+    // rect->setTransform(QTransform().rotate(30), true);
+
+    // scene -> addItem(rect);
+
+    // auto* rect2 = new QGraphicsRectItem(100, 100, 100, 100);
+    // scene -> addItem(rect2);
+
     // QWidget mainWidget;
 
     // // Outer layout to hold everything
