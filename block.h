@@ -3,14 +3,18 @@
 
 #include <QGraphicsRectItem>
 
+class Room;
 
 class Block: public QGraphicsRectItem
 {
 private:
     int x, y;
     int h, w;
+private:
+    Room* room;
 public:
-    Block(int x, int y, int w, int h) : QGraphicsRectItem(x, y, w, h) {
+    Block(Room* room, int x, int y, int w, int h) : QGraphicsRectItem(x, y, w, h) {
+        this->room = room;
     }
 };
 
