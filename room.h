@@ -6,7 +6,7 @@
 
 #include <QGraphicsView>
 
-class Room
+class Room: public QGraphicsScene
 {
 private:
     int h, w;
@@ -14,6 +14,25 @@ private:
     QVector<Block*> blocks;
 public:
     Room();
+
+    QVector<Robot*> getRobots() {
+        return robots;
+    }
+
+    QVector<Block*> getBlock() {
+        return blocks;
+    }
+
+    bool addRobot(Robot* robot) {
+        robots.append(robot);
+    }
+
+    bool addBlock(Block* block) {
+        blocks.append(block);
+    }
+
+private:
+    bool validateState();
 };
 
 #endif // ROOM_H

@@ -15,6 +15,9 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
 set(PROJECT_SOURCES
         main.cpp
+        room.h room.cpp
+        robot.h robot.cpp
+        block.h block.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -40,6 +43,7 @@ else()
             room.h room.cpp
             robot.h robot.cpp
             block.h block.cpp
+            updatable_entity.h
 
         )
     endif()

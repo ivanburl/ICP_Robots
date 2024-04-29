@@ -4,13 +4,14 @@
 #include <QGraphicsRectItem>
 
 
-class Block
+class Block: public QGraphicsRectItem
 {
 private:
     int x, y;
     int h, w;
 public:
-    Block();
+    Block(int x, int y, int w, int h) : QGraphicsRectItem(x, y, w, h) {
+    }
 };
 
 #endif // BLOCK_H
