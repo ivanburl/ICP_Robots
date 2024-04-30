@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "robot.h"
+#include "room.h"
 
 #include <QApplication>
 #include <QGraphicsItem>
@@ -13,41 +14,38 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    // auto* scene = new QGraphicsScene();
-    // scene->setSceneRect(0, 0, 800, 600);
+    auto* scene = new Room(800, 600);
+
+    auto* view = new QGraphicsView(scene);
+    view->setMinimumSize(800, 600);
+    view->setFixedSize(800, 600);
+    view->setSceneRect(0, 0, 800, 600);
+
+    view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+    view->setAlignment(Qt::AlignTop | Qt::AlignLeft);
+
+    view->show();
 
 
-    // auto* view = new QGraphicsView(scene);
-    // view->setMinimumSize(800, 600);
-    // view->setFixedSize(800, 600);
-    // view->setSceneRect(0, 0, 800, 600);
 
-    // view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    // view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    auto* robot = new Robot(
+        scene,
+        150, 150, 100, 200, 60, 30,
+        100, 90, 180
+    );
 
-    // view->setAlignment(Qt::AlignTop | Qt::AlignLeft);
+    auto* robot2 = new Robot(
+        scene,
+        150, 400, 100, 200, 60, 30,
+        100, 90, 180
+    );
 
-    // view->show();
+    scene->addRobot(robot);
+    scene->addRobot(robot2);
 
-    // auto* robot = new Robot(
-    //     nullptr,
-    //     300, 300, 100, 200, 60, 30,
-    //     100, 90, 180
-    // );
-
-    // robot->move(1e9);
-
-    // scene->addItem(robot);
-
-    // auto* robot2 = new Robot(
-    //     nullptr,
-    //     300, 300, 100, 200, 60, 30,
-    //     100, 90, 180
-    //     );
-
-
-    // scene->addItem(robot2);
-
+    qDebug() << robot2->hasDetected();
     // auto* rect = new QGraphicsRectItem(100, 100, 100, 100);
     // rect->setTransform(QTransform().rotate(30), true);
 
@@ -97,8 +95,8 @@ int main(int argc, char *argv[])
     // mainWidget.setMinimumSize(800, 600);
 
 
-    MainWindow window;
-    window.show();
+    // MainWindow window;
+    // window.show();
 
     return a.exec();
 }

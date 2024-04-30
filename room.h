@@ -13,8 +13,9 @@ private:
     QVector<Robot*> robots;
     QVector<Block*> blocks;
 public:
-    Room() : QGraphicsScene(0, 0, w, h) {
-
+    Room(int w, int h) : QGraphicsScene(0, 0, w, h) {
+        this->w = w;
+        this->h = h;
     };
 
     QVector<Robot*>& getRobots() {
@@ -29,6 +30,7 @@ public:
         bool toAdd = validateState(nullptr); //TODO
         if (toAdd) {
             robots.append(robot);
+            this->addItem(robot);
         }
         return toAdd;
     }
@@ -37,6 +39,7 @@ public:
         bool toAdd = validateState(nullptr); //TODO
         if (toAdd) {
             blocks.append(block);
+            this->addItem(block);
         }
         return toAdd;
     }

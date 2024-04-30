@@ -5,5 +5,5 @@
 
 bool Room::validateState(QPolygon *qpolygon)
 {
-    return false;
+    return true;
 }

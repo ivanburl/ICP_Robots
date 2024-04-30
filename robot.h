@@ -13,6 +13,7 @@ class Robot : public QGraphicsItemGroup, UpdatableEntity
 public:
     static QBrush DEFAULT_ROBOT_BRUSH;
     static QBrush DEFAULT_ROBOT_ARC_BRUSH;
+    static QBrush DEFAULT_ROBOT_INTERSECTION_BRUSH;
 private:
     double radius;
     double arcRadius;
@@ -66,9 +67,18 @@ public:
     void rotate(long deltaNanos);
 
     bool hasDetected();
+    bool isOutOfRoom();
+    bool isColliding();
 
     void update(long deltaNanos) override;
     static int getDEFAULT_ROBOT_COLOR();
+public:
+    QGraphicsEllipseItem* getRobotFrameItem() {
+        return this->robotShape;
+    }
+    QGraphicsEllipseItem* getRobotArcItem() {
+        return this->arcShape;
+    }
 };
 
 #endif // ROBOT_H
