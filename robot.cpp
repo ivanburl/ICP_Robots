@@ -11,32 +11,32 @@ QBrush Robot::DEFAULT_ROBOT_ARC_BRUSH = QBrush(Qt::yellow);
 QBrush Robot::DEFAULT_ROBOT_INTERSECTION_BRUSH = QBrush(Qt::red);
 
 
-void Robot::update(long deltaNanos) {
-    if (leftToTurn >= 0) {
-        long requiredNanos = std::min(deltaNanos, (long) (leftToTurn * 1e9 / movementSpeed + 1));
-        rotate(requiredNanos);
-        leftToTurn = leftToTurn - requiredNanos * rotationSpeedInDegree;
-        return;
-    }
-
-    if (hasDetected()) {
-        arcItem->setBrush(DEFAULT_ROBOT_INTERSECTION_BRUSH);
-        leftToTurn = rotationDegreeSample;
-        update(deltaNanos);
-        return;
-    }
-
-
-    if (!move(deltaNanos)) {
-        robotFrameItem->setBrush(DEFAULT_ROBOT_INTERSECTION_BRUSH);
-        leftToTurn = rotationDegreeSample;
-        update(deltaNanos);
-        return;
-    }
-
-    arcItem->setBrush(DEFAULT_ROBOT_ARC_BRUSH);
-    robotFrameItem->setBrush(DEFAULT_ROBOT_BRUSH);
-}
+// void Robot::update(long deltaNanos) {
+//     if (leftToTurn >= 0) {
+//         long requiredNanos = std::min(deltaNanos, (long) (leftToTurn * 1e9 / movementSpeed + 1));
+//         rotate(requiredNanos);
+//         leftToTurn = leftToTurn - requiredNanos * rotationSpeedInDegree;
+//         return;
+//     }
+//
+//     if (hasDetected()) {
+//         arcItem->setBrush(DEFAULT_ROBOT_INTERSECTION_BRUSH);
+//         leftToTurn = rotationDegreeSample;
+//         update(deltaNanos);
+//         return;
+//     }
+//
+//
+//     if (!move(deltaNanos)) {
+//         robotFrameItem->setBrush(DEFAULT_ROBOT_INTERSECTION_BRUSH);
+//         leftToTurn = rotationDegreeSample;
+//         update(deltaNanos);
+//         return;
+//     }
+//
+//     arcItem->setBrush(DEFAULT_ROBOT_ARC_BRUSH);
+//     robotFrameItem->setBrush(DEFAULT_ROBOT_BRUSH);
+// }
 
 QVariant Robot::itemChange(GraphicsItemChange change, const QVariant &value) {
     if (scene() && (change == ItemPositionChange || change == ItemTransformChange)) {
@@ -182,4 +182,10 @@ bool Robot::isColliding() const {
         }
     }
     return false;
+}
+
+void Robot::update(long long deltaMilliseconds) {
+}
+
+void Robot::fixedUpdate(long long deltaMilliseonds) {
 }

@@ -18,6 +18,10 @@ set(PROJECT_SOURCES
         room.h room.cpp
         robot.h robot.cpp
         block.h block.cpp
+        gameentity.cpp gameentity.h
+        updateentity.cpp updateentity.h
+        pausableentity.cpp pausableentity.h
+        mainwindow.cpp mainwindow.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

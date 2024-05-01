@@ -6,7 +6,7 @@
 
 #include <QGraphicsView>
 
-class Room : public QGraphicsScene {
+class Room : public QGraphicsScene, GameEntity {
 private:
     int h, w;
     QVector<Robot *> robots;
@@ -28,6 +28,9 @@ public:
     void removeBlock(Block *block);
 
     bool isPointInRoom(double x, double y);
+
+    void fixedUpdate(long long deltaMilliseonds) override;
+    void update(long long deltaMilliseconds) override;
 
 private:
     bool validateState(QPolygon *qpolygon);

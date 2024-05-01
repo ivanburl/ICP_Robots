@@ -1,12 +1,14 @@
 #ifndef ROBOT_H
 #define ROBOT_H
 
+#include "gameentity.h"
+
 #include <QBrush>
 #include <QGraphicsItem>
 
 class Room;
 
-class Robot : public QGraphicsItemGroup{
+class Robot : public QGraphicsItemGroup, GameEntity {
 public:
     static QBrush DEFAULT_ROBOT_BRUSH;
     static QBrush DEFAULT_ROBOT_ARC_BRUSH;
@@ -49,7 +51,8 @@ public:
 
     bool isColliding() const;
 
-    void update(long deltaMilliseconds);
+    void update(long long deltaMilliseconds) override;
+    void fixedUpdate(long long deltaMilliseonds) override;
 
     QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
 

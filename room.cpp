@@ -17,7 +17,13 @@ bool Room::isPointInRoom(double x, double y) {
     return true;
 }
 
-Room::Room(int w, int h) : QGraphicsScene(0, 0, w, h) {
+void Room::fixedUpdate(long long deltaMilliseonds) {
+}
+
+void Room::update(long long deltaMilliseconds) {
+}
+
+Room::Room(int w, int h) : QGraphicsScene(0, 0, w, h), GameEntity() {
     this->w = w;
     this->h = h;
 };
