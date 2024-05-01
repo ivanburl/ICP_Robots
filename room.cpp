@@ -18,9 +18,18 @@ bool Room::isPointInRoom(double x, double y) {
 }
 
 void Room::fixedUpdate(long long deltaMilliseonds) {
+    for (auto &r : this->robots) {
+        r->fixedUpdate(deltaMilliseonds);
+    }
 }
 
 void Room::update(long long deltaMilliseconds) {
+    for (auto &r : this->robots) {
+        r->update(deltaMilliseconds);
+    }
+    for (auto &b : this->blocks) {
+        b->update(deltaMilliseconds);
+    }
 }
 
 Room::Room(int w, int h) : QGraphicsScene(0, 0, w, h), GameEntity() {

@@ -7,7 +7,7 @@
 
 class Room;
 
-class Block : public QGraphicsRectItem, GameEntity {
+class Block : public QGraphicsRectItem, public GameEntity {
 public:
     static QBrush DEFAULT_BLOCK_BRUSH;
 

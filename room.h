@@ -6,7 +6,7 @@
 
 #include <QGraphicsView>
 
-class Room : public QGraphicsScene, GameEntity {
+class Room : public QGraphicsScene, public GameEntity {
 private:
     int h, w;
     QVector<Robot *> robots;

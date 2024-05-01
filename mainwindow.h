@@ -33,6 +33,7 @@ private slots:
     void on_actionAdd_robot_triggered();
 
     void on_actionAdd_block_triggered();
+    void on_actionTogglePause_triggered();
 };
 
 #endif // MAINWINDOW_H

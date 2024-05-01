@@ -38,20 +38,8 @@ QBrush Robot::DEFAULT_ROBOT_INTERSECTION_BRUSH = QBrush(Qt::red);
 //     robotFrameItem->setBrush(DEFAULT_ROBOT_BRUSH);
 // }
 
-QVariant Robot::itemChange(GraphicsItemChange change, const QVariant &value) {
-    if (scene() && (change == ItemPositionChange || change == ItemTransformChange)) {
-        qDebug() << isColliding() << " " << isOutOfRoom();
-        if (isColliding() || isOutOfRoom())
-            robotFrameItem->setBrush(DEFAULT_ROBOT_INTERSECTION_BRUSH);
-        else
-            robotFrameItem->setBrush(DEFAULT_ROBOT_BRUSH);
-    }
-
-    return QGraphicsItemGroup::itemChange(change, value);
-}
-
 void Robot::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
-    auto savePoint = this->pos(); //TODO dull way of recovery
+    auto savePoint = this->pos();
     QGraphicsItemGroup::mouseMoveEvent(event);
     if (isOutOfRoom()) {
         this->setPos(savePoint);
@@ -66,8 +54,8 @@ QGraphicsEllipseItem *Robot::getRobotArcItem() const {
     return this->arcItem;
 }
 
-void Robot::rotate(long deltaNanos) {
-    qreal angle = this->rotationSpeedInDegree * deltaNanos / 1e9;
+void Robot::rotate(long long deltaMilliseconds) {
+    qreal angle = this->rotationSpeedInDegree * deltaMilliseconds / 1e3;
     auto center = robotFrameItem->boundingRect().center();
     QTransform transform = QTransform()
             .translate(center.x(), center.y())
@@ -114,9 +102,9 @@ Robot::~Robot() {
     delete robotFrameItem;
 }
 
-bool Robot::move(long deltaNanos) {
+bool Robot::move(long long deltaMilliseconds) {
     double radians = currentAngleInDegrees / 180 * M_PI;
-    double delta = movementSpeed * deltaNanos / 1e9;
+    double delta = movementSpeed * ((double)deltaMilliseconds) / 1e3;
     QTransform transform = QTransform()
             .translate(-delta * cos(radians),
                        delta * sin(radians));
@@ -185,7 +173,32 @@ bool Robot::isColliding() const {
 }
 
 void Robot::update(long long deltaMilliseconds) {
+    qDebug() << "updating robot ussually" << deltaMilliseconds;
 }
 
 void Robot::fixedUpdate(long long deltaMilliseonds) {
+    if (leftToTurn >= 0) {
+        auto requiredMilliseconds = std::min(deltaMilliseonds, (long long) (leftToTurn * 1e9 / movementSpeed + 1));
+        rotate(requiredMilliseconds);
+        leftToTurn = leftToTurn - ((double)requiredMilliseconds) * rotationSpeedInDegree;
+        return;
+    }
+
+    if (hasDetected()) {
+        arcItem->setBrush(DEFAULT_ROBOT_INTERSECTION_BRUSH);
+        leftToTurn = rotationDegreeSample;
+        update(deltaMilliseonds);
+        return;
+    }
+
+
+    if (!move(deltaMilliseonds)) {
+        robotFrameItem->setBrush(DEFAULT_ROBOT_INTERSECTION_BRUSH);
+        leftToTurn = rotationDegreeSample;
+        update(deltaMilliseonds);
+        return;
+    }
+
+    arcItem->setBrush(DEFAULT_ROBOT_ARC_BRUSH);
+    robotFrameItem->setBrush(DEFAULT_ROBOT_BRUSH);
 }
