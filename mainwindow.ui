@@ -98,7 +98,7 @@
   </action>
   <action name="actionTogglePause">
    <property name="text">
-    <string>Heh</string>
+    <string>Play</string>
    </property>
   </action>
  </widget>
