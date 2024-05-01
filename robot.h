@@ -5,10 +5,12 @@
 
 #include <QBrush>
 #include <QGraphicsItem>
+#include "robotdto.h"
+#include "DtoMap.h"
 
 class Room;
 
-class Robot : public QGraphicsItemGroup,public GameEntity {
+class Robot : public QGraphicsItemGroup, public GameEntity, DtoMap<RobotDto> {
 public:
     static QBrush DEFAULT_ROBOT_BRUSH;
     static QBrush DEFAULT_ROBOT_ARC_BRUSH;
@@ -27,6 +29,7 @@ private:
 
 private:
     Room *room;
+    double getRotationAngle();
 
 private:
     double leftToTurn;
@@ -37,7 +40,6 @@ public:
           double arcRadius, double arcDegree,
           double angleInDeegrees, double movementSpeed,
           double rotationSmaple, double rotationSpeedPerSecond);
-
     ~Robot() override;
 
     bool move(long long deltaMilliseconds);
@@ -57,10 +59,20 @@ public:
 
     void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
 
+    RobotDto* GetDtoObject() override;
+    static Robot* fromDtoObject(RobotDto dtoObject, Room* room);
 public:
     QGraphicsEllipseItem *getRobotFrameItem() const;
 
     QGraphicsEllipseItem *getRobotArcItem() const;
+
+    double getBaseX(){
+        return this->scenePos().x() + radius;
+    }
+
+    double getBaseY(){
+        return this->scenePos().y() + radius;
+    }
 };
 
 #endif // ROBOT_H

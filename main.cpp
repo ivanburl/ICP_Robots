@@ -7,7 +7,6 @@
 #include <QGraphicsScene>
 #include <QGraphicsView>
 #include <QDebug>
-#include <QtGui>
 #include <QVBoxLayout>
 #include <QLabel>
 

@@ -12,6 +12,7 @@ namespace Ui {
 class MainWindow : public QMainWindow {
     Q_OBJECT
 private:
+    Ui::MainWindow *ui;
     Room *currentRoom;
 
 public:
@@ -19,12 +20,10 @@ public:
 
     ~MainWindow();
 
-    Room *getRoom() {
-        return currentRoom;
-    }
-
-private:
-    Ui::MainWindow *ui;
+public slots:
+    void handleSaveRoom();
+    void handleLoadRoom();
+    void handleResetRoom();
 
 protected:
     void resizeEvent(QResizeEvent *event) override;

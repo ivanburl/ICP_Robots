@@ -1,8 +1,11 @@
 #include "mainwindow.h"
 #include "qdebug.h"
 #include "ui_mainwindow.h"
+#include "jsonfileaccessor.h"
 #include <QToolBar>
 #include <QVBoxLayout>
+#include <QDebug>
+#include <QFileDialog>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -18,12 +21,57 @@ MainWindow::MainWindow(QWidget *parent)
     view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
     qDebug() << "main windows constructed";
+
+    connect(ui->actionSave, &QAction::triggered, this, &MainWindow::handleSaveRoom);
+    connect(ui->actionLoad, &QAction::triggered, this, &MainWindow::handleLoadRoom);
+    connect(ui->actionReset, &QAction::triggered, this, &MainWindow::handleResetRoom);
     currentRoom->start(60);
 }
 
 MainWindow::~MainWindow() {
     delete currentRoom;
     delete ui;
+}
+
+void MainWindow::handleSaveRoom(){
+    QString filePath = QFileDialog::getSaveFileName(nullptr, "Save JSON File", "", "JSON Files (*.json)");
+
+    if (filePath.isEmpty())
+        return;
+
+    auto dtoObject = currentRoom->GetDtoObject();
+
+    auto jsonObject = dtoObject->toJsonObject();
+
+    JsonFileAccessor jsonAccessor;
+
+    jsonAccessor.WriteToFile(filePath, jsonObject);
+}
+
+void MainWindow::handleLoadRoom(){
+    QString filePath = QFileDialog::getOpenFileName(nullptr, "Open JSON File", "", "JSON Files (*.json)");
+
+    if (filePath.isEmpty())
+        return;
+
+    JsonFileAccessor jsonAccessor;
+
+    auto* jsonObject = jsonAccessor.ReadFromFile(filePath);
+
+    if(!jsonObject)
+        return;
+
+    auto* roomDto = RoomDto::fromJsonObject(*jsonObject);
+
+    currentRoom = Room::fromDtoObject(*roomDto);
+
+    ui->graphicsView->setScene(currentRoom);
+    resizeEvent(nullptr);
+}
+
+void MainWindow::handleResetRoom(){
+    currentRoom->reset();
+    resizeEvent(nullptr);
 }
 
 void MainWindow::resizeEvent(QResizeEvent *event) {
@@ -48,7 +96,7 @@ void MainWindow::on_actionAdd_robot_triggered() {
 void MainWindow::on_actionAdd_block_triggered() {
     auto *block = new Block(
         currentRoom,
-        300, 300, 100, 100);
+        300, 300, 30, 30);
     currentRoom->addBlock(block);
     resizeEvent(nullptr);
 }

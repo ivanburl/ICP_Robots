@@ -79,6 +79,7 @@ Robot::Robot(Room *room,
     this->rotationSpeedInDegree = rotationSpeedPerSecond;
     this->radius = radius;
     this->arcRadius = arcRadius;
+    this->arcDegree = arcDegree;
     this->leftToTurn = 0;
 
     this->room = room;
@@ -179,6 +180,27 @@ bool Robot::isColliding() const {
     return false;
 }
 
+RobotDto* Robot::GetDtoObject(){
+    return new RobotDto(this->getBaseX(), this->getBaseY(), radius,
+                    arcRadius, arcDegree,
+                    -getRotationAngle(),
+                    movementSpeed, rotationDegreeSample,
+                    rotationSpeedInDegree);
+}
+
+double Robot::getRotationAngle() {
+    double angleRadians = std::atan2(this->transform().m12(), this->transform().m11());
+    double angleDegrees = angleRadians * (180 / M_PI);
+    return angleDegrees;
+}
+
+Robot* Robot::fromDtoObject(RobotDto dtoObject, Room* room){
+    return new Robot(room, dtoObject.getX(), dtoObject.getY(),
+                     dtoObject.getRadius(), dtoObject.getArcRadius(),
+                     dtoObject.getArcDegree(), dtoObject.getCurrentAngleInDegrees(),
+                     dtoObject.getMovementSpeed(), dtoObject.getRotationSample(),
+                     dtoObject.getRotationSpeedInDegree());
+}
 void Robot::update(long long deltaMilliseconds) {
 
     if (isOutOfRoom() || isColliding()) {

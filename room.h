@@ -3,10 +3,11 @@
 
 #include "block.h"
 #include "robot.h"
-
+#include "roomdto.h"
+#include "DtoMap.h"
 #include <QGraphicsView>
 
-class Room : public QGraphicsScene, public GameEntity {
+class Room : public QGraphicsScene, public GameEntity, DtoMap<RoomDto> {
 private:
     int h, w;
     QVector<Robot *> robots;
@@ -14,6 +15,9 @@ private:
 
 public:
     Room(int w, int h);
+
+    RoomDto* GetDtoObject() override;
+    static Room* fromDtoObject(RoomDto dtoObject);
 
     QVector<Robot *> &getRobots();
 
@@ -26,6 +30,8 @@ public:
     void removeRobot(Robot *robot);
 
     void removeBlock(Block *block);
+
+    void reset();
 
     bool isPointInRoom(double x, double y);
 
