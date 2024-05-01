@@ -2,11 +2,6 @@
 #include <QJsonDocument>
 #include <QDebug>
 #include <QJsonArray>
-#include <QFile>
-
-Room::Room() {
-    qDebug() << "Room created";
-};
 
 RoomDto* Room::GetDtoObject() const{
     QVector<BlockDto*> blockDtos;
@@ -40,4 +35,9 @@ Room* Room::fromDtoObject(RoomDto dtoObject){
     }
 
     return new Room(robots, blocks);
+}
+
+bool Room::validateState(QPolygon *qpolygon)
+{
+    return true;
 }

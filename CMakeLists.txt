@@ -14,6 +14,9 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
 set(PROJECT_SOURCES
         main.cpp
+        room.h room.cpp
+        robot.h robot.cpp
+        block.h block.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -45,6 +48,7 @@ else()
             Serializable.h
             roomdto.h roomdto.cpp
             jsonfileaccessor.h jsonfileaccessor.cpp
+            updatable_entity.h
 
         )
     endif()
