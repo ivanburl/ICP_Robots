@@ -17,6 +17,10 @@ set(PROJECT_SOURCES
         room.h room.cpp
         robot.h robot.cpp
         block.h block.cpp
+        gameentity.cpp gameentity.h
+        updateentity.cpp updateentity.h
+        pausableentity.cpp pausableentity.h
+        mainwindow.cpp mainwindow.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -49,7 +53,9 @@ else()
             roomdto.h roomdto.cpp
             jsonfileaccessor.h jsonfileaccessor.cpp
             updatable_entity.h
-
+            gameentity.h gameentity.cpp
+            pausableentity.h pausableentity.cpp
+            updateentity.h
         )
     endif()
 endif()

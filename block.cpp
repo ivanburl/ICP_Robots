@@ -9,4 +9,8 @@ BlockDto* Block::GetDtoObject(){
 
 Block* Block::fromDtoObject(BlockDto dtoObject, Room* room){
     return new Block(room, dtoObject.getX(), dtoObject.getY(), dtoObject.getWidth(), dtoObject.getHeight());
+void Block::update(long long deltaMilliseconds) {
+}
+
+void Block::fixedUpdate(long long deltaMilliseonds) {
 }
