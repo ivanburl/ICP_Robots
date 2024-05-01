@@ -37,14 +37,19 @@ void MainWindow::handleSaveRoom(){
     if (filePath.isEmpty())
         return;
 
-    auto jsonObject = room->GetDtoObject()->toJsonObject();
+    auto dtoObject = currentRoom->GetDtoObject();
+
+    qDebug() << "Complted constructing dto object";
+
+    auto jsonObject = dtoObject->toJsonObject();
+
     JsonFileAccessor jsonAccessor;
 
     jsonAccessor.WriteToFile(filePath, jsonObject);
 }
 
 void MainWindow::handleLoadRoom(){
-    QString filePath = QFileDialog::getSaveFileName(nullptr, "Open JSON File", "", "JSON Files (*.json)");
+    QString filePath = QFileDialog::getOpenFileName(nullptr, "Open JSON File", "", "JSON Files (*.json)");
 
     if (filePath.isEmpty())
         return;
@@ -57,7 +62,18 @@ void MainWindow::handleLoadRoom(){
         return;
 
     auto* roomDto = RoomDto::fromJsonObject(*jsonObject);
-    room = Room::fromDtoObject(*roomDto);
+
+    qDebug() << "Success on dto parse";
+
+    currentRoom = Room::fromDtoObject(*roomDto);
+
+    qDebug() << "Success on dto to object conversion";
+
+    ui->graphicsView->setScene(currentRoom);
+
+    //ui->graphicsView->setSceneRect(0, 0, currentRoom->width(), currentRoom->height());
+
+    resizeEvent(nullptr);
 }
 void MainWindow::resizeEvent(QResizeEvent *event) {
     QWidget::resizeEvent(event);

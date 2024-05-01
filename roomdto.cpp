@@ -35,7 +35,7 @@ QJsonObject RoomDto::toJsonObject() const{
         robotJsonArray.append(jsonObject);
     }
 
-    roomObject.insert("robots", robotJsonArray);
+    roomObject.insert(robotsName, robotJsonArray);
 
     QJsonArray blockJsonArray;
     for(auto* block : this->blocks){
@@ -43,7 +43,9 @@ QJsonObject RoomDto::toJsonObject() const{
         blockJsonArray.append(jsonObject);
     }
 
-    roomObject.insert("blocks", blockJsonArray);
+    roomObject.insert(blocksName, blockJsonArray);
+    roomObject.insert(wName, w);
+    roomObject.insert(hName, h);
     return roomObject;
 }
 
@@ -52,7 +54,7 @@ RoomDto* RoomDto::fromJsonObject(QJsonObject jsonObject){
     if(!jsonObject.value(blocksName).isArray()
         || !jsonObject.value(robotsName).isArray()
         || !jsonObject.value(wName).isDouble()
-        || jsonObject.value(hName).isDouble()){
+        || !jsonObject.value(hName).isDouble()){
         return nullptr;
     }
 
@@ -68,7 +70,7 @@ RoomDto* RoomDto::fromJsonObject(QJsonObject jsonObject){
 
     QVector<BlockDto*> blockDtos;
 
-    auto blocksArray = jsonObject.value(robotsName).toArray();
+    auto blocksArray = jsonObject.value(blocksName).toArray();
 
     for(auto object : blocksArray){
         if(object.isObject()){

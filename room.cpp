@@ -5,6 +5,7 @@
 
 RoomDto* Room::GetDtoObject(){
     QVector<BlockDto*> blockDtos;
+
     for(auto* block : blocks){
         blockDtos.append(block->GetDtoObject());
     }

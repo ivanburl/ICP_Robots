@@ -52,7 +52,6 @@ else()
             Serializable.h
             roomdto.h roomdto.cpp
             jsonfileaccessor.h jsonfileaccessor.cpp
-            updatable_entity.h
             gameentity.h gameentity.cpp
             pausableentity.h pausableentity.cpp
             updateentity.h

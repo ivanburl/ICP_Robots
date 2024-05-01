@@ -59,17 +59,19 @@ public:
 
     void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
 
+    RobotDto* GetDtoObject() override;
+    static Robot* fromDtoObject(RobotDto dtoObject, Room* room);
 public:
     QGraphicsEllipseItem *getRobotFrameItem() const;
 
     QGraphicsEllipseItem *getRobotArcItem() const;
 
     double getBaseX(){
-        return getRobotArcItem()->x() + radius;
+        return this->x() + radius;
     }
 
     double getBaseY(){
-        return getRobotArcItem()->y() + radius;
+        return this->y() + radius;
     }
 };
 

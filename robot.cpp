@@ -88,6 +88,7 @@ Robot::Robot(Room *room,
     this->rotationSpeedInDegree = rotationSpeedPerSecond;
     this->radius = radius;
     this->arcRadius = arcRadius;
+    this->arcDegree = arcDegree;
 
     this->room = room;
     robotFrameItem = new QGraphicsEllipseItem(-radius, -radius, radius * 2, radius * 2);
