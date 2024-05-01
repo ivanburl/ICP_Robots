@@ -53,6 +53,7 @@ bool Room::isPointInRoom(double x, double y) {
 }
 
 void Room::fixedUpdate(long long deltaMilliseonds) {
+    if (isPaused()) return;
     for (auto &r : this->robots) {
         r->fixedUpdate(deltaMilliseonds);
     }

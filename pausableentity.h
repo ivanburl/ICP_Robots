@@ -6,7 +6,7 @@ class PausableEntity
 private:
     bool isPause;
 public:
-    PausableEntity() : isPause(false) {
+    PausableEntity() : isPause(true) {
 
     };
     void togglePause();

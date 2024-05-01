@@ -20,7 +20,6 @@ private:
     double radius;
     double arcRadius;
     double arcDegree;
-    double currentAngleInDegrees;
     double movementSpeed;
     double rotationDegreeSample, rotationSpeedInDegree;
 
@@ -43,8 +42,10 @@ public:
     ~Robot() override;
 
     bool move(long long deltaMilliseconds);
+    bool moveOnDistance(double distance);
 
     void rotate(long long deltaMilliseconds);
+    void rotateOnAngle(double degree);
 
     bool hasDetected() const;
 

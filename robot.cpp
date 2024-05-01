@@ -56,13 +56,17 @@ QGraphicsEllipseItem *Robot::getRobotArcItem() const {
 
 void Robot::rotate(long long deltaMilliseconds) {
     qreal angle = this->rotationSpeedInDegree * deltaMilliseconds / 1e3;
+    rotateOnAngle(angle);
+}
+
+void Robot::rotateOnAngle(double angleInDegree)
+{
     auto center = robotFrameItem->boundingRect().center();
     QTransform transform = QTransform()
-            .translate(center.x(), center.y())
-            .rotate(angle)
-            .translate(-center.x(), -center.y());
+                               .translate(center.x(), center.y())
+                               .rotate(angleInDegree)
+                               .translate(-center.x(), -center.y());
     this->setTransform(transform, true);
-    this->currentAngleInDegrees -= angle;
 }
 
 Robot::Robot(Room *room,
@@ -70,7 +74,6 @@ Robot::Robot(Room *room,
              double arcRadius, double arcDegree,
              double angleInDeegrees, double movementSpeed,
              double rotationSmaple, double rotationSpeedPerSecond) {
-    this->currentAngleInDegrees = angleInDeegrees;
     this->rotationDegreeSample = rotationSmaple;
     this->movementSpeed = movementSpeed;
     this->rotationSpeedInDegree = rotationSpeedPerSecond;
@@ -81,8 +84,9 @@ Robot::Robot(Room *room,
     this->room = room;
     robotFrameItem = new QGraphicsEllipseItem(-radius, -radius, radius * 2, radius * 2);
     arcItem = new QGraphicsEllipseItem(-arcRadius, -arcRadius, arcRadius * 2, arcRadius * 2);
-    arcItem->setStartAngle(currentAngleInDegrees * 16 - arcDegree * 8);
+    arcItem->setStartAngle(-arcDegree * 8);
     arcItem->setSpanAngle(arcDegree * 16);
+
 
     robotFrameItem->setBrush(DEFAULT_ROBOT_BRUSH);
     arcItem->setBrush(DEFAULT_ROBOT_ARC_BRUSH);
@@ -91,11 +95,12 @@ Robot::Robot(Room *room,
     this->addToGroup(robotFrameItem);
     this->addToGroup(arcItem);
 
+    this->rotateOnAngle(-angleInDeegrees);
+    this->setPos(x - radius, y - radius);
+
     this->setFlag(QGraphicsItem::ItemIsMovable, true);
     this->setFlag(QGraphicsItem::ItemIsSelectable, true);
     this->setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
-
-    this->setPos(x - radius, y - radius);
 }
 
 Robot::~Robot() {
@@ -104,11 +109,12 @@ Robot::~Robot() {
 }
 
 bool Robot::move(long long deltaMilliseconds) {
-    double radians = currentAngleInDegrees / 180 * M_PI;
     double delta = movementSpeed * ((double)deltaMilliseconds) / 1e3;
-    QTransform transform = QTransform()
-            .translate(-delta * cos(radians),
-                       delta * sin(radians));
+    return moveOnDistance(delta);
+}
+
+bool Robot::moveOnDistance(double distance) {
+    QTransform transform = QTransform().translate(distance,0);
     this->setTransform(transform, true);
 
     if (isColliding() || isOutOfRoom()) {
@@ -189,10 +195,11 @@ Robot* Robot::fromDtoObject(RobotDto dtoObject, Room* room){
                      dtoObject.getRotationSpeedInDegree());
 }
 void Robot::update(long long deltaMilliseconds) {
-    qDebug() << "updating robot ussually" << deltaMilliseconds;
+
 }
 
 void Robot::fixedUpdate(long long deltaMilliseonds) {
+    
     if (leftToTurn >= 0) {
         auto requiredMilliseconds = std::min(deltaMilliseonds, (long long) (leftToTurn * 1e9 / movementSpeed + 1));
         rotate(requiredMilliseconds);
