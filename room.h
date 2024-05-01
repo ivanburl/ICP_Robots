@@ -31,6 +31,8 @@ public:
 
     void removeBlock(Block *block);
 
+    void reset();
+
     bool isPointInRoom(double x, double y);
 
     void fixedUpdate(long long deltaMilliseonds) override;

@@ -7,7 +7,9 @@ QBrush Block::DEFAULT_BLOCK_BRUSH = QBrush(Qt::lightGray);
 BlockDto* Block::GetDtoObject(){
     qDebug() << "Im here";
 
-    return new BlockDto(this->rect().x(), this->rect().y(), this->rect().width(), this->rect().height());
+    auto position = this->scenePos();
+
+    return new BlockDto(position.x(), position.y(), this->rect().width(), this->rect().height());
 }
 
 Block* Block::fromDtoObject(BlockDto dtoObject, Room* room){

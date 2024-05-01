@@ -24,6 +24,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(ui->actionSave, &QAction::triggered, this, &MainWindow::handleSaveRoom);
     connect(ui->actionLoad, &QAction::triggered, this, &MainWindow::handleLoadRoom);
+    connect(ui->actionReset, &QAction::triggered, this, &MainWindow::handleResetRoom);
     currentRoom->start(60);
 }
 
@@ -39,8 +40,6 @@ void MainWindow::handleSaveRoom(){
         return;
 
     auto dtoObject = currentRoom->GetDtoObject();
-
-    qDebug() << "Complted constructing dto object";
 
     auto jsonObject = dtoObject->toJsonObject();
 
@@ -64,18 +63,17 @@ void MainWindow::handleLoadRoom(){
 
     auto* roomDto = RoomDto::fromJsonObject(*jsonObject);
 
-    qDebug() << "Success on dto parse";
-
     currentRoom = Room::fromDtoObject(*roomDto);
 
-    qDebug() << "Success on dto to object conversion";
-
     ui->graphicsView->setScene(currentRoom);
-
-    //ui->graphicsView->setSceneRect(0, 0, currentRoom->width(), currentRoom->height());
-
     resizeEvent(nullptr);
 }
+
+void MainWindow::handleResetRoom(){
+    currentRoom->reset();
+    resizeEvent(nullptr);
+}
+
 void MainWindow::resizeEvent(QResizeEvent *event) {
     QWidget::resizeEvent(event);
 
@@ -98,7 +96,7 @@ void MainWindow::on_actionAdd_robot_triggered() {
 void MainWindow::on_actionAdd_block_triggered() {
     auto *block = new Block(
         currentRoom,
-        300, 300, 100, 100);
+        300, 300, 30, 30);
     currentRoom->addBlock(block);
     resizeEvent(nullptr);
 }

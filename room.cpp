@@ -99,6 +99,17 @@ bool Room::addBlock(Block *block) {
     return toAdd;
 }
 
+void Room::reset(){
+    for(auto block : blocks){
+        this->removeItem(block);
+    }
+    for(auto robot : robots){
+        this->removeItem(robot);
+    }
+    blocks.clear();
+    robots.clear();
+}
+
 void Room::removeRobot(Robot *robot) {
     for (int i = 0; i < robots.size(); i++) {
         if (robots[i] == robot) {

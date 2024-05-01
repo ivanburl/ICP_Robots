@@ -18,10 +18,11 @@ private:
     Room *room;
 
 public:
-    Block(Room *room, int x, int y, int w, int h) : QGraphicsRectItem(x, y, w, h), GameEntity() {
+    Block(Room *room, int x, int y, int w, int h) : QGraphicsRectItem(0, 0, w, h), GameEntity() {
         this->room = room;
         this->setBrush(DEFAULT_BLOCK_BRUSH);
 
+        this->setPos(x, y);
         this->setFlag(QGraphicsItem::ItemIsSelectable, true);
         this->setFlag(QGraphicsItem::ItemIsMovable, true);
     }

@@ -23,6 +23,7 @@ public:
 public slots:
     void handleSaveRoom();
     void handleLoadRoom();
+    void handleResetRoom();
 
 protected:
     void resizeEvent(QResizeEvent *event) override;

@@ -29,6 +29,7 @@ private:
 
 private:
     Room *room;
+    double getRotationAngle();
 
 private:
     double leftToTurn;
@@ -66,11 +67,11 @@ public:
     QGraphicsEllipseItem *getRobotArcItem() const;
 
     double getBaseX(){
-        return this->x() + radius;
+        return this->scenePos().x() + radius;
     }
 
     double getBaseY(){
-        return this->y() + radius;
+        return this->scenePos().y() + radius;
     }
 };
 

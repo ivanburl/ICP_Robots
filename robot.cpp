@@ -180,11 +180,17 @@ bool Robot::isColliding() const {
 }
 
 RobotDto* Robot::GetDtoObject(){
-    return new RobotDto(this->getBaseX(), this->getBaseX(), radius,
+    return new RobotDto(this->getBaseX(), this->getBaseY(), radius,
                     arcRadius, arcDegree,
-                    currentAngleInDegrees,
+                    -getRotationAngle(),
                     movementSpeed, rotationDegreeSample,
                     rotationSpeedInDegree);
+}
+
+double Robot::getRotationAngle() {
+    double angleRadians = std::atan2(this->transform().m12(), this->transform().m11());
+    double angleDegrees = angleRadians * (180 / M_PI);
+    return angleDegrees;
 }
 
 Robot* Robot::fromDtoObject(RobotDto dtoObject, Room* room){
