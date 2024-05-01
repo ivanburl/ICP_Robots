@@ -57,10 +57,10 @@ public:
 
         this->addToGroup(robotShape);
         this->addToGroup(arcShape);
-    }
+    };
 
-    RobotDto* GetDtoObject() const override;
-    static Robot* fromDtoObject(RobotDto dtoObject);
+    RobotDto* GetDtoObject() override;
+    static Robot* fromDtoObject(RobotDto dtoObject, Room* room);
 
     ~Robot() {
         delete robotShape;
@@ -83,6 +83,14 @@ public:
     }
     QGraphicsEllipseItem* getRobotArcItem() {
         return this->arcShape;
+    }
+
+    double getBaseX(){
+        return getRobotArcItem()->x() + radius;
+    }
+
+    double getBaseY(){
+        return getRobotArcItem()->y() + radius;
     }
 };
 

@@ -3,7 +3,7 @@
 #include <QDebug>
 #include <QJsonArray>
 
-RoomDto* Room::GetDtoObject() const{
+RoomDto* Room::GetDtoObject(){
     QVector<BlockDto*> blockDtos;
     for(auto* block : blocks){
         blockDtos.append(block->GetDtoObject());
@@ -14,27 +14,25 @@ RoomDto* Room::GetDtoObject() const{
         robotDtos.append(robot->GetDtoObject());
     }
 
-    return new RoomDto(robotDtos, blockDtos);
+    return new RoomDto(w, h, robotDtos, blockDtos);
 }
 
 Room* Room::fromDtoObject(RoomDto dtoObject){
+    auto* room = new Room(dtoObject.getWidth(), dtoObject.getHeight());
+
     auto blockDtos = dtoObject.getBlocks();
 
-    QVector<Block*> blocks;
-
     for(auto* blockDto : blockDtos){
-        blocks.append(Block::fromDtoObject(*blockDto));
+        room->addBlock(Block::fromDtoObject(*blockDto, room));
     }
 
     auto robotDtos = dtoObject.getRobots();
 
-    QVector<Robot*> robots;
-
     for(auto* robotDto : robotDtos){
-        robots.append(Robot::fromDtoObject(*robotDto));
+        room->addRobot(Robot::fromDtoObject(*robotDto, room));
     }
 
-    return new Room(robots, blocks);
+    return room;
 }
 
 bool Room::validateState(QPolygon *qpolygon)

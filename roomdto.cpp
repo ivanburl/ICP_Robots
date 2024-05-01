@@ -3,10 +3,14 @@
 
 const QString RoomDto::blocksName = "blocks";
 const QString RoomDto::robotsName = "robots";
+const QString RoomDto::wName = "w";
+const QString RoomDto::hName = "h";
 
-RoomDto::RoomDto(QVector<RobotDto*> robots, QVector<BlockDto*> blocks){
+RoomDto::RoomDto(int w, int h, QVector<RobotDto*> robots, QVector<BlockDto*> blocks){
     this->blocks = blocks;
     this->robots = robots;
+    this->w = w;
+    this->h = h;
 }
 
 QVector<RobotDto*> RoomDto::getRobots(){
@@ -14,6 +18,12 @@ QVector<RobotDto*> RoomDto::getRobots(){
 };
 QVector<BlockDto*> RoomDto::getBlocks(){
     return blocks;
+}
+int RoomDto::getWidth(){
+    return w;
+}
+int RoomDto::getHeight(){
+    return h;
 }
 
 QJsonObject RoomDto::toJsonObject() const{
@@ -40,7 +50,9 @@ QJsonObject RoomDto::toJsonObject() const{
 
 RoomDto* RoomDto::fromJsonObject(QJsonObject jsonObject){
     if(!jsonObject.value(blocksName).isArray()
-        || !jsonObject.value(robotsName).isArray()){
+        || !jsonObject.value(robotsName).isArray()
+        || !jsonObject.value(wName).isDouble()
+        || jsonObject.value(hName).isDouble()){
         return nullptr;
     }
 
@@ -64,5 +76,7 @@ RoomDto* RoomDto::fromJsonObject(QJsonObject jsonObject){
         }
     }
 
-    return new RoomDto(robotDtos, blockDtos);
+    return new RoomDto(jsonObject.value(wName).toInt(),
+                       jsonObject.value(hName).toInt(),
+                       robotDtos, blockDtos);
 }

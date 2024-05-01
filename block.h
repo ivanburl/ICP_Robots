@@ -21,8 +21,8 @@ public:
         this->room = room;
         this->setBrush(DEFAULT_BLOCK_BRUSH);
     }
-    BlockDto* GetDtoObject() const override;
-    static Block* fromDtoObject(BlockDto dtoObject);
+    BlockDto* GetDtoObject() override;
+    static Block* fromDtoObject(BlockDto dtoObject, Room* room);
 };
 
 #endif // BLOCK_H

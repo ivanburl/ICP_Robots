@@ -8,12 +8,12 @@ const QString RobotDto::arcDegreeName = "arcDegree";
 const QString RobotDto::currentAngleInDegreesName = "currentAngleInDegrees";
 const QString RobotDto::movementSpeedName = "movementSpeed";
 const QString RobotDto::rotationSampleName = "rotationSample";
-const QString RobotDto::rotationDirectionName = "rotationDirection";
+const QString RobotDto::rotationSpeedInDegreeName = "rotationSpeedInDegree";
 
 RobotDto::RobotDto(double x, double y,
                    double radius, double arcRadius,
                    double arcDegree, double currentAngleInDegrees,
-                   double movementSpeed, double rotationSample, int rotationDirection) {
+                   double movementSpeed, double rotationSample, double rotationSpeedInDegree) {
     this->x = x;
     this->y = y;
     this->radius = radius;
@@ -21,8 +21,8 @@ RobotDto::RobotDto(double x, double y,
     this->arcDegree = arcDegree;
     this->currentAngleInDegrees = currentAngleInDegrees;
     this->movementSpeed = movementSpeed;
-    this->rotationSample = rotationSample;
-    this->rotationDirection = rotationDirection;
+    this->rotationDegreeSample = rotationSample;
+    this->rotationSpeedInDegree = rotationSpeedInDegree;
 }
 
 double RobotDto::getX(){
@@ -47,10 +47,10 @@ double RobotDto::getMovementSpeed(){
     return movementSpeed;
 }
 double RobotDto::getRotationSample(){
-    return rotationSample;
+    return rotationSpeedInDegree;
 }
-int RobotDto::getRotationDirection(){
-    return rotationDirection;
+double RobotDto::getRotationSpeedInDegree(){
+    return rotationSpeedInDegree;
 }
 
 QJsonObject RobotDto::toJsonObject() const{
@@ -62,8 +62,8 @@ QJsonObject RobotDto::toJsonObject() const{
     jsonObject.insert(arcDegreeName, arcDegree);
     jsonObject.insert(currentAngleInDegreesName, currentAngleInDegrees);
     jsonObject.insert(movementSpeedName, movementSpeed);
-    jsonObject.insert(rotationSampleName, rotationSample);
-    jsonObject.insert(rotationDirectionName, rotationDirection);
+    jsonObject.insert(rotationSampleName, rotationDegreeSample);
+    jsonObject.insert(rotationSpeedInDegreeName, rotationSpeedInDegree);
     return jsonObject;
 }
 
@@ -76,7 +76,7 @@ RobotDto* RobotDto::fromJsonObject(QJsonObject jsonObject){
     auto currentAngleInDegreesValue = jsonObject.value(currentAngleInDegreesName);
     auto movementSpeedValue = jsonObject.value(movementSpeedName);
     auto rotationSampleValue = jsonObject.value(rotationSampleName);
-    auto rotationDirectionValue = jsonObject.value(rotationDirectionName);
+    auto rotationSpeedValue = jsonObject.value(rotationSpeedInDegreeName);
 
     if(!xValue.isDouble() || !yValue.isDouble()
         || !radiusValue.isDouble()
@@ -85,7 +85,7 @@ RobotDto* RobotDto::fromJsonObject(QJsonObject jsonObject){
         || !currentAngleInDegreesValue.isDouble()
         || !movementSpeedValue.isDouble()
         || !rotationSampleValue.isDouble()
-        || !rotationDirectionValue.isDouble()){
+        || !rotationSpeedValue.isDouble()){
         return nullptr;
     }
 
@@ -93,7 +93,7 @@ RobotDto* RobotDto::fromJsonObject(QJsonObject jsonObject){
                         radiusValue.toDouble(), arcRadiusValue.toDouble(),
                         arcDegreeValue.toDouble(), currentAngleInDegreesValue.toDouble(),
                         movementSpeedValue.toDouble(), rotationSampleValue.toDouble(),
-                        rotationDirectionValue.toInt());
+                        rotationSpeedValue.toDouble());
 }
 
 

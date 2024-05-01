@@ -4,7 +4,7 @@
 template <typename T>
 class DtoMap{
 public:
-    virtual T* GetDtoObject() const = 0;
+    virtual T* GetDtoObject() = 0;
 };
 
 #endif // DTOMAP_H

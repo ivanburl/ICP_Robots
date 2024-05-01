@@ -12,7 +12,7 @@ public:
              double radius, double arcRadius,
              double arcDegree, double currentAngleInDegrees,
              double movementSpeed, double rotationSample,
-             int rotationDirection);
+             double rotationSpeedInDegree);
 
     double getX();
     double getY();
@@ -22,7 +22,7 @@ public:
     double getCurrentAngleInDegrees();
     double getMovementSpeed();
     double getRotationSample();
-    int getRotationDirection();
+    double getRotationSpeedInDegree();
 
     QJsonObject toJsonObject() const override;
     static RobotDto* fromJsonObject(QJsonObject jsonObject);
@@ -35,7 +35,7 @@ public:
     static const QString currentAngleInDegreesName;
     static const QString movementSpeedName;
     static const QString rotationSampleName;
-    static const QString rotationDirectionName;
+    static const QString rotationSpeedInDegreeName;
 private:
     double x, y;
     double radius;
@@ -43,8 +43,7 @@ private:
     double arcDegree;
     double currentAngleInDegrees;
     double movementSpeed;
-    double rotationSample;
-    int rotationDirection;
+    double rotationDegreeSample, rotationSpeedInDegree;
 };
 
 #endif // ROBOTDTO_H

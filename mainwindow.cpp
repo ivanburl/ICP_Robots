@@ -12,7 +12,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    room = new Room();
+    //room = new Room();
 
     connect(ui->actionSave, &QAction::triggered, this, &MainWindow::handleSaveRoom);
     connect(ui->actionLoad, &QAction::triggered, this, &MainWindow::handleLoadRoom);

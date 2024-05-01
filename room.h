@@ -19,7 +19,7 @@ public:
         this->h = h;
     };
 
-        RoomDto* GetDtoObject() const override;
+    RoomDto* GetDtoObject() override;
     static Room* fromDtoObject(RoomDto dtoObject);
 
     QVector<Robot*>& getRobots() {

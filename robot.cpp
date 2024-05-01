@@ -121,33 +121,18 @@ bool Robot::isColliding()
     return false;
 }
 
-RobotDto::RobotDto(double x, double y,
-                   double radius, double arcRadius,
-                   double arcDegree, double currentAngleInDegrees,
-                   double movementSpeed, double rotationSample, int rotationDirection) {
-    this->x = x;
-    this->y = y;
-    this->radius = radius;
-    this->arcRadius = arcRadius;
-    this->arcDegree = arcDegree;
-    this->currentAngleInDegrees = currentAngleInDegrees;
-    this->movementSpeed = movementSpeed;
-    this->rotationSample = rotationSample;
-    this->rotationDirection = rotationDirection;
-}
-
-RobotDto* Robot::GetDtoObject() const{
-    return new RobotDto(x, y, radius,
+RobotDto* Robot::GetDtoObject(){
+    return new RobotDto(this->getBaseX(), this->getBaseX(), radius,
                     arcRadius, arcDegree,
                     currentAngleInDegrees,
-                    movementSpeed, rotationSample,
-                    rotationDirection);
+                    movementSpeed, rotationDegreeSample,
+                    rotationSpeedInDegree);
 }
 
-Robot* Robot::fromDtoObject(RobotDto dtoObject){
-    return new Robot(dtoObject.getX(), dtoObject.getY(),
+Robot* Robot::fromDtoObject(RobotDto dtoObject, Room* room){
+    return new Robot(room, dtoObject.getX(), dtoObject.getY(),
                      dtoObject.getRadius(), dtoObject.getArcRadius(),
                      dtoObject.getArcDegree(), dtoObject.getCurrentAngleInDegrees(),
                      dtoObject.getMovementSpeed(), dtoObject.getRotationSample(),
-                     dtoObject.getRotationDirection());
+                     dtoObject.getRotationSpeedInDegree());
 }

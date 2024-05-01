@@ -37,7 +37,7 @@ QJsonObject BlockDto::toJsonObject() const{
     return jsonObject;
 }
 
-BlockDto* BlockDto::fromJsonObjet(QJsonObject jsonObject){
+BlockDto* BlockDto::fromJsonObject(QJsonObject jsonObject){
     auto xValue = jsonObject.value(xName);
     auto yValue = jsonObject.value(yName);
     auto wValue = jsonObject.value(wName);
