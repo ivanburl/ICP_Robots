@@ -80,6 +80,7 @@ Robot::Robot(Room *room,
     this->radius = radius;
     this->arcRadius = arcRadius;
     this->arcDegree = arcDegree;
+    this->leftToTurn = 0;
 
     this->room = room;
     robotFrameItem = new QGraphicsEllipseItem(-radius, -radius, radius * 2, radius * 2);
@@ -202,32 +203,38 @@ Robot* Robot::fromDtoObject(RobotDto dtoObject, Room* room){
 }
 void Robot::update(long long deltaMilliseconds) {
 
+    if (isOutOfRoom() || isColliding()) {
+        this->robotFrameItem->setBrush(DEFAULT_ROBOT_INTERSECTION_BRUSH);
+    } else {
+        if (leftToTurn>0) {
+            qDebug() << "changed color?? " << leftToTurn;
+            this->robotFrameItem->setBrush(Qt::magenta);
+        } else {
+            this->robotFrameItem->setBrush(DEFAULT_ROBOT_BRUSH);
+        }
+    }
+
+    if (hasDetected()) {
+        this->arcItem->setBrush(DEFAULT_ROBOT_INTERSECTION_BRUSH);
+    } else {
+        this->arcItem->setBrush(DEFAULT_ROBOT_ARC_BRUSH);
+    }
+
+
 }
 
 void Robot::fixedUpdate(long long deltaMilliseonds) {
     
     if (leftToTurn >= 0) {
-        auto requiredMilliseconds = std::min(deltaMilliseonds, (long long) (leftToTurn * 1e9 / movementSpeed + 1));
+        auto requiredMilliseconds = std::min(deltaMilliseonds, (long long) (leftToTurn * 1e3 / rotationSpeedInDegree + 1));
         rotate(requiredMilliseconds);
-        leftToTurn = leftToTurn - ((double)requiredMilliseconds) * rotationSpeedInDegree;
+        leftToTurn = leftToTurn - ((double)requiredMilliseconds) / 1e3 * rotationSpeedInDegree;
         return;
     }
 
-    if (hasDetected()) {
-        arcItem->setBrush(DEFAULT_ROBOT_INTERSECTION_BRUSH);
+    if (hasDetected() || !move(deltaMilliseonds)) {
         leftToTurn = rotationDegreeSample;
         update(deltaMilliseonds);
         return;
     }
-
-
-    if (!move(deltaMilliseonds)) {
-        robotFrameItem->setBrush(DEFAULT_ROBOT_INTERSECTION_BRUSH);
-        leftToTurn = rotationDegreeSample;
-        update(deltaMilliseonds);
-        return;
-    }
-
-    arcItem->setBrush(DEFAULT_ROBOT_ARC_BRUSH);
-    robotFrameItem->setBrush(DEFAULT_ROBOT_BRUSH);
 }
