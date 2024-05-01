@@ -21,7 +21,7 @@ public:
 
     void stop();
 
-private:
+private slots:
     void updateWrapper();
 };
 

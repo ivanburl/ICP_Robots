@@ -24,6 +24,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(ui->actionSave, &QAction::triggered, this, &MainWindow::handleSaveRoom);
     connect(ui->actionLoad, &QAction::triggered, this, &MainWindow::handleLoadRoom);
+    currentRoom->start(60);
 }
 
 MainWindow::~MainWindow() {
@@ -101,3 +102,19 @@ void MainWindow::on_actionAdd_block_triggered() {
     currentRoom->addBlock(block);
     resizeEvent(nullptr);
 }
+
+void MainWindow::on_actionTogglePause_triggered()
+{
+    if (currentRoom == nullptr)
+        return;
+    currentRoom->togglePause();
+
+    if (currentRoom->isPaused()) {
+        ui->actionTogglePause->setText("Play");
+        qDebug() << "game is paused";
+    } else {
+        ui->actionTogglePause->setText("Pause");
+        qDebug() << "playing";
+    }
+}
+

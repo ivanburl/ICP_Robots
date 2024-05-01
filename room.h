@@ -7,7 +7,7 @@
 #include "DtoMap.h"
 #include <QGraphicsView>
 
-class Room : public QGraphicsScene, GameEntity, DtoMap<RoomDto> {
+class Room : public QGraphicsScene, public GameEntity, DtoMap<RoomDto> {
 private:
     int h, w;
     QVector<Robot *> robots;

@@ -10,7 +10,7 @@
 
 class Room;
 
-class Robot : public QGraphicsItemGroup, GameEntity, DtoMap<RobotDto> {
+class Robot : public QGraphicsItemGroup, public GameEntity, DtoMap<RobotDto> {
 public:
     static QBrush DEFAULT_ROBOT_BRUSH;
     static QBrush DEFAULT_ROBOT_ARC_BRUSH;
@@ -42,9 +42,9 @@ public:
           double rotationSmaple, double rotationSpeedPerSecond);
     ~Robot() override;
 
-    bool move(long deltaNanos);
+    bool move(long long deltaMilliseconds);
 
-    void rotate(long deltaNanos);
+    void rotate(long long deltaMilliseconds);
 
     bool hasDetected() const;
 
@@ -54,8 +54,6 @@ public:
 
     void update(long long deltaMilliseconds) override;
     void fixedUpdate(long long deltaMilliseonds) override;
-
-    QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
 
     void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
 

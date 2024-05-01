@@ -51,21 +51,16 @@
      <string>Help</string>
     </property>
    </widget>
-   <widget class="QMenu" name="menuPlay">
-    <property name="title">
-     <string>Pause</string>
-    </property>
-   </widget>
    <widget class="QMenu" name="menuControl">
     <property name="title">
-     <string>Tools</string>
+     <string>Actions</string>
     </property>
     <addaction name="actionAdd_robot"/>
     <addaction name="actionAdd_block"/>
+    <addaction name="actionTogglePause"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuHelp"/>
-   <addaction name="menuPlay"/>
    <addaction name="menuControl"/>
   </widget>
   <action name="actionLoad">
@@ -99,6 +94,11 @@
   <action name="actionAdd_block">
    <property name="text">
     <string>Add block</string>
+   </property>
+  </action>
+  <action name="actionTogglePause">
+   <property name="text">
+    <string>Heh</string>
    </property>
   </action>
  </widget>

@@ -9,7 +9,7 @@
 #include <qtimer.h>
 
 
-class GameEntity: public QObject, PausableEntity {
+class GameEntity: public QObject, public PausableEntity {
     Q_OBJECT
 
 private:
