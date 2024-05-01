@@ -89,6 +89,9 @@
    </property>
   </action>
   <action name="actionAdd_robot">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Add robot</string>
    </property>

@@ -11,41 +11,39 @@
 #include <QVBoxLayout>
 #include <QLabel>
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
     QApplication a(argc, argv);
-    auto* scene = new Room(800, 600);
+    // auto* scene = new Room(800, 600);
 
-    auto* view = new QGraphicsView(scene);
-    view->setMinimumSize(800, 600);
-    view->setFixedSize(800, 600);
-    view->setSceneRect(0, 0, 800, 600);
+    // auto* view = new QGraphicsView(scene);
+    // view->setMinimumSize(800, 600);
+    // view->setFixedSize(800, 600);
+    // view->setSceneRect(0, 0, 800, 600);
 
-    view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    // view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    // view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
-    view->setAlignment(Qt::AlignTop | Qt::AlignLeft);
+    // view->setAlignment(Qt::AlignTop | Qt::AlignLeft);
 
-    view->show();
+    // view->show();
 
 
+    // auto* robot = new Robot(
+    //     scene,
+    //     150, 150, 100, 200, 60, 30,
+    //     100, 90, 180
+    // );
 
-    auto* robot = new Robot(
-        scene,
-        150, 150, 100, 200, 60, 30,
-        100, 90, 180
-    );
+    // auto* robot2 = new Robot(
+    //     scene,
+    //     150, 400, 100, 200, 60, 30,
+    //     100, 90, 180
+    // );
 
-    auto* robot2 = new Robot(
-        scene,
-        150, 400, 100, 200, 60, 30,
-        100, 90, 180
-    );
+    // scene->addRobot(robot);
+    // scene->addRobot(robot2);
 
-    scene->addRobot(robot);
-    scene->addRobot(robot2);
-
-    qDebug() << robot2->hasDetected();
+    // qDebug() << robot2->hasDetected();
     // auto* rect = new QGraphicsRectItem(100, 100, 100, 100);
     // rect->setTransform(QTransform().rotate(30), true);
 
@@ -95,8 +93,8 @@ int main(int argc, char *argv[])
     // mainWidget.setMinimumSize(800, 600);
 
 
-    // MainWindow window;
-    // window.show();
+    MainWindow window;
+    window.show();
 
     return a.exec();
 }

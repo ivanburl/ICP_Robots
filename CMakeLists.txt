@@ -43,8 +43,9 @@ else()
             room.h room.cpp
             robot.h robot.cpp
             block.h block.cpp
-            updatable_entity.h
-
+            gameentity.h gameentity.cpp
+            pausableentity.h pausableentity.cpp
+            updateentity.h
         )
     endif()
 endif()

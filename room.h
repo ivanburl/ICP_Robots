@@ -6,67 +6,31 @@
 
 #include <QGraphicsView>
 
-class Room: public QGraphicsScene
-{
+class Room : public QGraphicsScene {
 private:
     int h, w;
-    QVector<Robot*> robots;
-    QVector<Block*> blocks;
+    QVector<Robot *> robots;
+    QVector<Block *> blocks;
+
 public:
-    Room(int w, int h) : QGraphicsScene(0, 0, w, h) {
-        this->w = w;
-        this->h = h;
-    };
+    Room(int w, int h);
 
-    QVector<Robot*>& getRobots() {
-        return robots;
-    }
+    QVector<Robot *> &getRobots();
 
-    QVector<Block*>& getBlock() {
-        return blocks;
-    }
+    QVector<Block *> &getBlock();
 
-    bool addRobot(Robot* robot) {
-        bool toAdd = validateState(nullptr); //TODO
-        if (toAdd) {
-            robots.append(robot);
-            this->addItem(robot);
-        }
-        return toAdd;
-    }
+    bool addRobot(Robot *robot);
 
-    bool addBlock(Block* block) {
-        bool toAdd = validateState(nullptr); //TODO
-        if (toAdd) {
-            blocks.append(block);
-            this->addItem(block);
-        }
-        return toAdd;
-    }
+    bool addBlock(Block *block);
 
-    void removeRobot(Robot* robot) {
-        for (int i=0;i<robots.size();i++) {
-            if (robots[i] == robot) {
-                robots.removeAt(i);
-                i--;
-            }
-        }
-        return;
-    }
+    void removeRobot(Robot *robot);
 
+    void removeBlock(Block *block);
 
-    void removeBlock(Block* block) {
-        for (int i = 0;i < blocks.size(); i++) {
-            if (blocks[i] == block) {
-                blocks.remove(i);
-                i--;
-            }
-        }
-        return;
-    }
+    bool isPointInRoom(double x, double y);
 
 private:
-    bool validateState(QPolygon* qpolygon);
+    bool validateState(QPolygon *qpolygon);
 };
 
 #endif // ROOM_H
