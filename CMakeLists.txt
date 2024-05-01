@@ -8,7 +8,6 @@ set(CMAKE_AUTORCC ON)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_PREFIX_PATH "C:/Qt/5.15.16/mingw81_64")
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
@@ -40,6 +39,12 @@ else()
             room.h room.cpp
             robot.h robot.cpp
             block.h block.cpp
+            DtoMap.h
+            robotdto.h robotdto.cpp
+            blockdto.h blockdto.cpp
+            Serializable.h
+            roomdto.h roomdto.cpp
+            jsonfileaccessor.h jsonfileaccessor.cpp
 
         )
     endif()
