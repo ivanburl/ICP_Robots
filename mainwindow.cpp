@@ -6,6 +6,7 @@
 #include <QVBoxLayout>
 #include <QDebug>
 #include <QFileDialog>
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -82,11 +83,19 @@ void MainWindow::resizeEvent(QResizeEvent *event) {
 }
 
 void MainWindow::on_actionAdd_robot_triggered() {
-    qDebug() << "oh fuck I am triggered";
+    if (currentRoom == nullptr) return;
+    if (!currentRoom->isPaused()) {
+        QMessageBox msgbox;
+        msgbox.setText("Adding of robot is possible only during pause");
+        msgbox.exec();
+        return;
+    }
+
+    double size = (currentRoom->width() + currentRoom->height()) / 2;
     auto *robot = new Robot(
         currentRoom,
-        300, 300, 100, 200, 60, 30,
-        100, 90, 180
+        currentRoom->width()/2, currentRoom->height()/2,  size*0.07, size*0.1, 90, 0,
+        size/10, 12, 180
     );
     currentRoom->addRobot(robot);
     resizeEvent(nullptr);
@@ -94,9 +103,17 @@ void MainWindow::on_actionAdd_robot_triggered() {
 
 
 void MainWindow::on_actionAdd_block_triggered() {
+    if (currentRoom == nullptr) return;
+    if (!currentRoom->isPaused()) {
+        QMessageBox msgbox;
+        msgbox.setText("Adding of block is possible only during pause");
+        msgbox.exec();
+        return;
+    }
+    double size = (currentRoom->width() + currentRoom->height()) / 2;
     auto *block = new Block(
         currentRoom,
-        300, 300, 30, 30);
+        currentRoom->width()/2, currentRoom->height()/2, size*0.05, size*0.05);
     currentRoom->addBlock(block);
     resizeEvent(nullptr);
 }
@@ -105,6 +122,17 @@ void MainWindow::on_actionTogglePause_triggered()
 {
     if (currentRoom == nullptr)
         return;
+
+    if (currentRoom->isPaused() && !currentRoom->isValidState()) {
+        QMessageBox msgbox;
+        msgbox.setText("Please fix errors to continue simulation:\n"
+                       "Possible fixes are:\n"
+                       "1) Robot is colliding with some collider (colliding robot is red)\n"
+                       "2) Robot is out of room bounds (robot also red)\n");
+        msgbox.exec();
+        return;
+    }
+
     currentRoom->togglePause();
 
     if (currentRoom->isPaused()) {

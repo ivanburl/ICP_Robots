@@ -15,6 +15,7 @@ private:
 
 public:
     Room(int w, int h);
+    ~Room() override;
 public:
     RoomDto* GetDtoObject() override;
     static Room* fromDtoObject(RoomDto dtoObject);
@@ -23,8 +24,8 @@ public:
 
     QVector<Block *> &getBlock();
 public:
-    bool addRobot(Robot *robot);
-    bool addBlock(Block *block);
+    void addRobot(Robot *robot);
+    void addBlock(Block *block);
 
     void removeRobot(Robot *robot);
     void removeBlock(Block *block);
@@ -39,8 +40,8 @@ public:
 public:
     void pause() override;
     void play() override;
-private:
-    bool validateState(QPolygon *qpolygon);
+public:
+    bool isValidState();
 };
 
 #endif // ROOM_H
