@@ -87,6 +87,7 @@ public:
     double getBaseY(){
         return this->scenePos().y() + radius;
     }
+
 };
 
 #endif // ROBOT_H

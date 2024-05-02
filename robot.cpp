@@ -22,6 +22,7 @@ void Robot::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
 }
 
 void Robot::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
+    if (isPaused()) return;
     toggleControl();
     QGraphicsItemGroup::mouseDoubleClickEvent(event);
 }
@@ -106,9 +107,12 @@ Robot::Robot(Room *room,
     this->rotateOnAngle(-angleInDeegrees);
     this->setPos(x - radius, y - radius);
 
-    this->setFlag(QGraphicsItem::ItemIsMovable, true);
-    this->setFlag(QGraphicsItem::ItemIsSelectable, true);
     this->setFlag(QGraphicsItem::ItemIsFocusable, true);
+    this->setFlag(QGraphicsItem::ItemIsSelectable, true);
+    this->setFlag(QGraphicsItem::ItemIsMovable, true);
+
+    this->robotFrameItem->setFlag(QGraphicsItem::ItemIsSelectable, true);
+    this->arcItem->setFlag(QGraphicsItem::ItemIsSelectable, true);
 }
 
 Robot::~Robot() {
@@ -232,7 +236,6 @@ void Robot::update(long long deltaMilliseconds) {
     }
 
     if (isControlled && !isPaused()) {
-        qDebug() << isRotating() << " " << currentPressedKey;
         if (isRotating()) return;
         switch(currentPressedKey) {
         case Qt::Key_Right:
@@ -248,6 +251,47 @@ void Robot::update(long long deltaMilliseconds) {
             moveOnDistance(deltaMilliseconds * -movementSpeed / 1e3);
             break;
         }
+    }
+
+
+    if (isSelected() && isPaused()) {
+        switch(currentPressedKey) {
+        case Qt::Key_Right:
+            rotateOnAngle(5);
+            break;
+        case Qt::Key_Left:
+            rotateOnAngle(-5);
+            break;
+        case Qt::Key_Up:
+            this->radius+=this->radius*0.05;
+            break;
+        case Qt::Key_Down:
+            this->radius-=this->radius*0.05;
+            break;
+        }
+
+        switch(currentPressedKey) {
+        case Qt::Key_W:
+            this->arcRadius+=this->arcRadius*0.05;
+            break;
+        case Qt::Key_S:
+            this->arcRadius-=this->arcRadius*0.05;
+            break;
+        case Qt::Key_D:
+            this->arcDegree+=5;
+            break;
+        case Qt::Key_A:
+            this->arcDegree-=5;
+            break;
+        }
+
+        this->arcItem->setRect(-this->arcRadius,-this->arcRadius, this->arcRadius*2, this->arcRadius*2);
+        this->robotFrameItem->setRect(-this->radius, -this->radius, this->radius*2, this->radius*2);
+
+        arcItem->setStartAngle(-arcDegree * 8);
+        arcItem->setSpanAngle(arcDegree * 16);
+
+        this->currentPressedKey = -1;
     }
 }
 
