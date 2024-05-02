@@ -6,12 +6,14 @@
 #include <QGraphicsSceneMouseEvent>
 #include <QKeyEvent>
 #include <cmath>
+#include <bits/random.h>
 
 const QBrush Robot::DEFAULT_ROBOT_BRUSH = QBrush(Qt::blue);
 const QBrush Robot::DEFAULT_ROBOT_ARC_BRUSH = QBrush(Qt::yellow);
 const QBrush Robot::DEFAULT_ROBOT_INTERSECTION_BRUSH = QBrush(Qt::red);
 const QBrush Robot::DEFAULT_ROBOT_CONTROLLED_BRUSH = QBrush(Qt::green);
 const QBrush Robot::DEFAULT_ROBOT_ROTATING_BRUSH = QBrush(Qt::magenta);
+
 
 void Robot::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
     auto savePoint = this->pos();
@@ -55,6 +57,11 @@ void Robot::releaseControl() {
     this->isControlled = false;
     this->clearFocus();
     this->currentPressedKey = -1;
+}
+
+void Robot::play() {
+    this->setFlag(QGraphicsItem::ItemIsMovable, false);
+    GameEntity::play();
 }
 
 QGraphicsEllipseItem *Robot::getRobotFrameItem() const {
@@ -110,9 +117,6 @@ Robot::Robot(Room *room,
     this->setFlag(QGraphicsItem::ItemIsFocusable, true);
     this->setFlag(QGraphicsItem::ItemIsSelectable, true);
     this->setFlag(QGraphicsItem::ItemIsMovable, true);
-
-    this->robotFrameItem->setFlag(QGraphicsItem::ItemIsSelectable, true);
-    this->arcItem->setFlag(QGraphicsItem::ItemIsSelectable, true);
 }
 
 Robot::~Robot() {
@@ -216,14 +220,20 @@ Robot* Robot::fromDtoObject(RobotDto dtoObject, Room* room){
                      dtoObject.getMovementSpeed(), dtoObject.getRotationSample(),
                      dtoObject.getRotationSpeedInDegree());
 }
+
+void Robot::pause() {
+    this->setFlag(QGraphicsItem::ItemIsMovable, true);
+    GameEntity::pause();
+}
+
 void Robot::update(long long deltaMilliseconds) {
     auto defaultBrush = isControlled ? DEFAULT_ROBOT_CONTROLLED_BRUSH : DEFAULT_ROBOT_BRUSH;
 
     if (isOutOfRoom() || isColliding()) {
         this->robotFrameItem->setBrush(DEFAULT_ROBOT_INTERSECTION_BRUSH);
     } else {
-        if (leftToTurn>0) {
-            this->robotFrameItem->setBrush(Qt::magenta);
+        if (isRotating()) {
+            this->robotFrameItem->setBrush(DEFAULT_ROBOT_ROTATING_BRUSH);
         } else {
             this->robotFrameItem->setBrush(defaultBrush);
         }
@@ -308,7 +318,12 @@ void Robot::fixedUpdate(long long deltaMilliseonds) {
 
     if (isControlled) return;
     if (hasDetected() || !moveOnDistance(deltaMilliseonds * movementSpeed / 1e3)) {
-        leftToTurn = rotationDegreeSample;
+        //HHAHA Big brain time =) TODO !!!!!!!!!!!!!!!!!
+        leftToTurn = roflDirection/360%2 == 0 ? rotationDegreeSample : -rotationDegreeSample;
+        roflDirection+= rotationDegreeSample; //it is just for mem
+
+        // leftToTurn = rotationDegreeSample;
+
         update(deltaMilliseonds);
         return;
     }

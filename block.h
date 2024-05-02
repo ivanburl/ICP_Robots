@@ -15,16 +15,10 @@ public:
 
 private:
     Room *room;
+    int currentPressedKey;
 
 public:
-    Block(Room *room, int x, int y, int w, int h) : QGraphicsRectItem(0, 0, w, h), GameEntity() {
-        this->room = room;
-        this->setBrush(DEFAULT_BLOCK_BRUSH);
-
-        this->setPos(x, y);
-        this->setFlag(QGraphicsItem::ItemIsSelectable, true);
-        this->setFlag(QGraphicsItem::ItemIsMovable, true);
-    }
+    Block(Room *room, double x, double y, double w, double h);
 
 public:
     BlockDto *GetDtoObject() override;
@@ -35,6 +29,12 @@ public:
     void update(long long deltaMilliseconds) override;
 
     void fixedUpdate(long long deltaMilliseonds) override;
+public:
+    void pause() override;
+    void play() override;
+public:
+    void keyPressEvent(QKeyEvent *event) override;
+    void keyReleaseEvent(QKeyEvent *event) override;
 };
 
 #endif // BLOCK_H

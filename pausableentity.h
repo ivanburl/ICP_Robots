@@ -7,7 +7,6 @@ private:
     bool isPause;
 public:
     PausableEntity() : isPause(true) {
-
     };
     void togglePause();
     virtual void play();

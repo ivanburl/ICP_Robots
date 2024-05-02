@@ -26,6 +26,8 @@ private:
     double rotationDegreeSample, rotationSpeedInDegree;
     bool isControlled;
     int currentPressedKey;
+private:
+    int roflDirection = 0;
 
 private:
     QGraphicsEllipseItem *robotFrameItem;
@@ -75,6 +77,9 @@ public:
     double getRotationAngle();
     RobotDto* GetDtoObject() override;
     static Robot* fromDtoObject(RobotDto dtoObject, Room* room);
+public:
+    void pause() override;
+    void play() override;
 public:
     QGraphicsEllipseItem *getRobotFrameItem() const;
 
