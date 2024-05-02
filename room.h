@@ -15,32 +15,32 @@ private:
 
 public:
     Room(int w, int h);
-
+public:
     RoomDto* GetDtoObject() override;
     static Room* fromDtoObject(RoomDto dtoObject);
-
+public:
     QVector<Robot *> &getRobots();
 
     QVector<Block *> &getBlock();
-
+public:
     bool addRobot(Robot *robot);
-
     bool addBlock(Block *block);
 
     void removeRobot(Robot *robot);
-
     void removeBlock(Block *block);
 
     void reset();
 
     bool isPointInRoom(double x, double y);
 
+public:
     void fixedUpdate(long long deltaMilliseonds) override;
     void update(long long deltaMilliseconds) override;
-
 signals:
     void focusItemChanged(QGraphicsItem* newFocus, QGraphicsItem* oldFocus, Qt::FocusReason focusReason);
-
+public:
+    void pause() override;
+    void play() override;
 private:
     bool validateState(QPolygon *qpolygon);
 };

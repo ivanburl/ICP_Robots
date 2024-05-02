@@ -19,5 +19,5 @@ void Block::update(long long deltaMilliseconds) {
 }
 
 void Block::fixedUpdate(long long deltaMilliseonds) {
-
+    if (isPaused()) return;
 }

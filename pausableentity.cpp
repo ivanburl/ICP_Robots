@@ -1,7 +1,11 @@
 #include "pausableentity.h"
 
 void PausableEntity::togglePause() {
-    isPause = !isPause;
+    if (isPaused()) {
+        play();
+    } else {
+        pause();
+    }
 }
 
 void PausableEntity::play() {

@@ -10,8 +10,8 @@ public:
 
     };
     void togglePause();
-    void play();
-    void pause();
+    virtual void play();
+    virtual void pause();
     bool isPaused() const;
 };
 

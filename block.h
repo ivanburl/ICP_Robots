@@ -9,8 +9,7 @@
 
 class Room;
 
-class Block: public QGraphicsRectItem, GameEntity, DtoMap<BlockDto>
-{
+class Block : public QGraphicsRectItem, public GameEntity, DtoMap<BlockDto> {
 public:
     static QBrush DEFAULT_BLOCK_BRUSH;
 
@@ -26,9 +25,13 @@ public:
         this->setFlag(QGraphicsItem::ItemIsSelectable, true);
         this->setFlag(QGraphicsItem::ItemIsMovable, true);
     }
-    BlockDto* GetDtoObject() override;
-    static Block* fromDtoObject(BlockDto dtoObject, Room* room);
 
+public:
+    BlockDto *GetDtoObject() override;
+
+    static Block *fromDtoObject(BlockDto dtoObject, Room *room);
+
+public:
     void update(long long deltaMilliseconds) override;
 
     void fixedUpdate(long long deltaMilliseonds) override;
