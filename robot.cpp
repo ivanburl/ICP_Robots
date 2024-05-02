@@ -4,39 +4,14 @@
 
 #define USE_MATH_DEFINES
 #include <QGraphicsSceneMouseEvent>
+#include <QKeyEvent>
 #include <cmath>
 
-QBrush Robot::DEFAULT_ROBOT_BRUSH = QBrush(Qt::blue);
-QBrush Robot::DEFAULT_ROBOT_ARC_BRUSH = QBrush(Qt::yellow);
-QBrush Robot::DEFAULT_ROBOT_INTERSECTION_BRUSH = QBrush(Qt::red);
-
-
-// void Robot::update(long deltaNanos) {
-//     if (leftToTurn >= 0) {
-//         long requiredNanos = std::min(deltaNanos, (long) (leftToTurn * 1e9 / movementSpeed + 1));
-//         rotate(requiredNanos);
-//         leftToTurn = leftToTurn - requiredNanos * rotationSpeedInDegree;
-//         return;
-//     }
-//
-//     if (hasDetected()) {
-//         arcItem->setBrush(DEFAULT_ROBOT_INTERSECTION_BRUSH);
-//         leftToTurn = rotationDegreeSample;
-//         update(deltaNanos);
-//         return;
-//     }
-//
-//
-//     if (!move(deltaNanos)) {
-//         robotFrameItem->setBrush(DEFAULT_ROBOT_INTERSECTION_BRUSH);
-//         leftToTurn = rotationDegreeSample;
-//         update(deltaNanos);
-//         return;
-//     }
-//
-//     arcItem->setBrush(DEFAULT_ROBOT_ARC_BRUSH);
-//     robotFrameItem->setBrush(DEFAULT_ROBOT_BRUSH);
-// }
+const QBrush Robot::DEFAULT_ROBOT_BRUSH = QBrush(Qt::blue);
+const QBrush Robot::DEFAULT_ROBOT_ARC_BRUSH = QBrush(Qt::yellow);
+const QBrush Robot::DEFAULT_ROBOT_INTERSECTION_BRUSH = QBrush(Qt::red);
+const QBrush Robot::DEFAULT_ROBOT_CONTROLLED_BRUSH = QBrush(Qt::green);
+const QBrush Robot::DEFAULT_ROBOT_ROTATING_BRUSH = QBrush(Qt::magenta);
 
 void Robot::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
     auto savePoint = this->pos();
@@ -44,6 +19,41 @@ void Robot::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
     if (isOutOfRoom()) {
         this->setPos(savePoint);
     }
+}
+
+void Robot::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
+    toggleControl();
+    QGraphicsItemGroup::mouseDoubleClickEvent(event);
+}
+
+void Robot::keyPressEvent(QKeyEvent *event) {
+    currentPressedKey = event->key();
+    QGraphicsItemGroup::keyPressEvent(event);
+}
+
+void Robot::keyReleaseEvent(QKeyEvent *event) {
+    currentPressedKey = -1;
+    QGraphicsItemGroup::keyReleaseEvent(event);
+}
+
+void Robot::takeControl() {
+    this->setFocus();
+    this->isControlled = true;
+    this->currentPressedKey = -1;
+}
+
+void Robot::toggleControl() {
+    if (this->isControlled) {
+        releaseControl();
+    } else {
+        takeControl();
+    }
+}
+
+void Robot::releaseControl() {
+    this->isControlled = false;
+    this->clearFocus();
+    this->currentPressedKey = -1;
 }
 
 QGraphicsEllipseItem *Robot::getRobotFrameItem() const {
@@ -54,10 +64,6 @@ QGraphicsEllipseItem *Robot::getRobotArcItem() const {
     return this->arcItem;
 }
 
-void Robot::rotate(long long deltaMilliseconds) {
-    qreal angle = this->rotationSpeedInDegree * deltaMilliseconds / 1e3;
-    rotateOnAngle(angle);
-}
 
 void Robot::rotateOnAngle(double angleInDegree)
 {
@@ -81,6 +87,7 @@ Robot::Robot(Room *room,
     this->arcRadius = arcRadius;
     this->arcDegree = arcDegree;
     this->leftToTurn = 0;
+    this->releaseControl();
 
     this->room = room;
     robotFrameItem = new QGraphicsEllipseItem(-radius, -radius, radius * 2, radius * 2);
@@ -101,17 +108,12 @@ Robot::Robot(Room *room,
 
     this->setFlag(QGraphicsItem::ItemIsMovable, true);
     this->setFlag(QGraphicsItem::ItemIsSelectable, true);
-    this->setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
+    this->setFlag(QGraphicsItem::ItemIsFocusable, true);
 }
 
 Robot::~Robot() {
     delete arcItem;
     delete robotFrameItem;
-}
-
-bool Robot::move(long long deltaMilliseconds) {
-    double delta = movementSpeed * ((double)deltaMilliseconds) / 1e3;
-    return moveOnDistance(delta);
 }
 
 bool Robot::moveOnDistance(double distance) {
@@ -180,6 +182,15 @@ bool Robot::isColliding() const {
     return false;
 }
 
+bool Robot::isRotating() const
+{
+    if (abs(leftToTurn)<=0.1) {
+        return false;
+    }
+
+    return true;
+}
+
 RobotDto* Robot::GetDtoObject(){
     return new RobotDto(this->getBaseX(), this->getBaseY(), radius,
                     arcRadius, arcDegree,
@@ -202,15 +213,15 @@ Robot* Robot::fromDtoObject(RobotDto dtoObject, Room* room){
                      dtoObject.getRotationSpeedInDegree());
 }
 void Robot::update(long long deltaMilliseconds) {
+    auto defaultBrush = isControlled ? DEFAULT_ROBOT_CONTROLLED_BRUSH : DEFAULT_ROBOT_BRUSH;
 
     if (isOutOfRoom() || isColliding()) {
         this->robotFrameItem->setBrush(DEFAULT_ROBOT_INTERSECTION_BRUSH);
     } else {
         if (leftToTurn>0) {
-            qDebug() << "changed color?? " << leftToTurn;
             this->robotFrameItem->setBrush(Qt::magenta);
         } else {
-            this->robotFrameItem->setBrush(DEFAULT_ROBOT_BRUSH);
+            this->robotFrameItem->setBrush(defaultBrush);
         }
     }
 
@@ -220,19 +231,39 @@ void Robot::update(long long deltaMilliseconds) {
         this->arcItem->setBrush(DEFAULT_ROBOT_ARC_BRUSH);
     }
 
-
+    if (isControlled && !isPaused()) {
+        qDebug() << isRotating() << " " << currentPressedKey;
+        if (isRotating()) return;
+        switch(currentPressedKey) {
+        case Qt::Key_Right:
+            leftToTurn = abs(rotationDegreeSample);
+            break;
+        case Qt::Key_Left:
+            leftToTurn = -abs(rotationDegreeSample);
+            break;
+        case Qt::Key_Up:
+            moveOnDistance(deltaMilliseconds * movementSpeed / 1e3);
+            break;
+        case Qt::Key_Down:
+            moveOnDistance(deltaMilliseconds * -movementSpeed / 1e3);
+            break;
+        }
+    }
 }
 
 void Robot::fixedUpdate(long long deltaMilliseonds) {
-    
-    if (leftToTurn >= 0) {
-        auto requiredMilliseconds = std::min(deltaMilliseonds, (long long) (leftToTurn * 1e3 / rotationSpeedInDegree + 1));
-        rotate(requiredMilliseconds);
-        leftToTurn = leftToTurn - ((double)requiredMilliseconds) / 1e3 * rotationSpeedInDegree;
+    if (isPaused()) return;
+
+    if (isRotating()) {
+        double rotationAngle = std::min(deltaMilliseonds * rotationSpeedInDegree / 1e3, abs(leftToTurn));
+        rotationAngle = leftToTurn<0 ? -rotationAngle : rotationAngle;
+        rotateOnAngle(rotationAngle);
+        leftToTurn = leftToTurn - rotationAngle;
         return;
     }
 
-    if (hasDetected() || !move(deltaMilliseonds)) {
+    if (isControlled) return;
+    if (hasDetected() || !moveOnDistance(deltaMilliseonds * movementSpeed / 1e3)) {
         leftToTurn = rotationDegreeSample;
         update(deltaMilliseonds);
         return;

@@ -17,6 +17,7 @@ void UpdateEntity::stop() {
 
 void UpdateEntity::updateWrapper() {
     long long elapsedTimeMillis = this->elapsedTimer.elapsed();
+    if (elapsedTimeMillis == 0) return;
     this->elapsedTimer.restart();
     this->update(elapsedTimeMillis);
 }

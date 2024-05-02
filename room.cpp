@@ -68,6 +68,26 @@ void Room::update(long long deltaMilliseconds) {
     }
 }
 
+void Room::pause() {
+    for (auto r : robots) {
+        r->pause();
+    }
+    for (auto b : blocks) {
+        b->pause();
+    }
+    GameEntity::pause();
+}
+
+void Room::play() {
+    for (auto r: robots) {
+        r->play();
+    }
+    for (auto b: blocks) {
+        b->play();
+    }
+    GameEntity::play();
+}
+
 Room::Room(int w, int h) : QGraphicsScene(0, 0, w, h), GameEntity() {
     this->w = w;
     this->h = h;
