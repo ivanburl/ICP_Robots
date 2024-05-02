@@ -55,6 +55,8 @@ else()
             gameentity.h gameentity.cpp
             pausableentity.h pausableentity.cpp
             updateentity.h
+            propertyview.h propertyview.cpp
+
         )
     endif()
 endif()

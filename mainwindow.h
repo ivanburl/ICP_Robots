@@ -13,6 +13,7 @@ class MainWindow : public QMainWindow {
     Q_OBJECT
 private:
     Ui::MainWindow *ui;
+    QWidget* propertiesWidget;
     Room *currentRoom;
 
 public:

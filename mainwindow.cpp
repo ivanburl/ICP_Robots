@@ -11,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
       , ui(new Ui::MainWindow) {
     ui->setupUi(this);
+
     currentRoom = new Room(800, 600);
 
     auto *view = ui->graphicsView;

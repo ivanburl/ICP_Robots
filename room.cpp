@@ -36,6 +36,23 @@ Room* Room::fromDtoObject(RoomDto dtoObject){
     return room;
 }
 
+void Room::focusItemChanged(QGraphicsItem* newFocus, QGraphicsItem* oldFocus, Qt::FocusReason focusReason){
+    QGraphicsScene::focusItemChanged(newFocus, oldFocus, focusReason);
+    if(!newFocus){
+        // Focus is lost
+        // Hide properties window
+        return;
+    }
+
+    if(auto* block = dynamic_cast<Block*>(newFocus); block){
+
+    }
+    else if(auto* robot = dynamic_cast<Robot*>(newFocus); robot){
+
+    }
+
+
+}
 
 bool Room::validateState(QPolygon *qpolygon) {
     return true;
@@ -71,6 +88,7 @@ void Room::update(long long deltaMilliseconds) {
 Room::Room(int w, int h) : QGraphicsScene(0, 0, w, h), GameEntity() {
     this->w = w;
     this->h = h;
+    // QGraphicsScene::connect(dynamic_cast<QGraphicsScene*>(this), &QGraphicsScene::focusItemChanged, this, &Room::processClickedItem);
 };
 
 QVector<Robot *> &Room::getRobots() {

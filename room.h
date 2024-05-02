@@ -38,6 +38,9 @@ public:
     void fixedUpdate(long long deltaMilliseonds) override;
     void update(long long deltaMilliseconds) override;
 
+signals:
+    void focusItemChanged(QGraphicsItem* newFocus, QGraphicsItem* oldFocus, Qt::FocusReason focusReason);
+
 private:
     bool validateState(QPolygon *qpolygon);
 };
