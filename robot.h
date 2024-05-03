@@ -72,6 +72,33 @@ public:
     void releaseControl();
 
 public:
+    double getRobotRadius() const;
+    double getRobotMovementSpeed() const;
+    double getRobotRotationSpeed() const;
+    double getRobotRotationSample() const;
+    double getArcRadius() const;
+    double getArcExtent() const;
+    double getRobotCenterX() const;
+    double getRobotCenterY() const;
+
+public:
+    void setRobotCenterX(double x);
+
+    void setRobotCenterY(double y);
+
+    void setArcRadius(double radius);
+
+    void setRobotRadius(double robotRadius);
+
+    void setArcExtent(double arcExtent);
+
+    void setRobotMovementSpeed(double speedPerSec);
+
+    void setRobotRotationSpeed(double degreePerSec);
+
+    void setRobotRotationSample(double degree);
+
+public:
     double getRotationAngle();
     RobotDto* GetDtoObject() override;
     static Robot* fromDtoObject(RobotDto dtoObject, Room* room);
