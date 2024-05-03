@@ -118,6 +118,7 @@ void MainWindow::on_actionTogglePause_triggered()
     if (currentRoom == nullptr)
         return;
     currentRoom->togglePause();
+    propertiesWidget->setPaused(currentRoom->isPaused());
 
     if (currentRoom->isPaused()) {
         ui->actionTogglePause->setText("Play");

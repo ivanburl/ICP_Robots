@@ -108,8 +108,8 @@ void Room::play() {
 Room::Room(int w, int h) : GameEntity() {
     this->w = w;
     this->h = h;
-    graphicsScene = new QGraphicsScene(0, 0, w, h);
-    QGraphicsScene::connect(graphicsScene, &QGraphicsScene::focusItemChanged, this, &Room::processClickedItem);
+    graphicsScene = new Scene(w, h);
+    QGraphicsScene::connect(graphicsScene, &Scene::itemPressed, this, &Room::processClickedItem);
 };
 
 QVector<Robot *> &Room::getRobots() {
@@ -120,7 +120,7 @@ QVector<Block *> &Room::getBlock() {
     return this->blocks;
 }
 
-QGraphicsScene* Room::scene(){
+Scene* Room::scene(){
     return graphicsScene;
 }
 
@@ -172,7 +172,6 @@ void Room::removeBlock(Block *block) {
 }
 
 
-void Room::processClickedItem(QGraphicsItem* newItem, QGraphicsItem* prevItem, Qt::FocusReason focusReason){
-    qDebug() << "Item clcked";
+void Room::processClickedItem(QGraphicsItem* newItem){
     emit itemSelected(newItem);
 }

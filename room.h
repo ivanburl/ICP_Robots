@@ -5,13 +5,14 @@
 #include "robot.h"
 #include "roomdto.h"
 #include "DtoMap.h"
+#include "scene.h"
 #include <QGraphicsView>
 
 class Room : public GameEntity, DtoMap<RoomDto> {
     Q_OBJECT;
 private:
     int h, w;
-    QGraphicsScene* graphicsScene;
+    Scene* graphicsScene;
     QVector<Robot *> robots;
     QVector<Block *> blocks;
 
@@ -25,7 +26,7 @@ public:
 
     QVector<Block *> &getBlock();
 
-    QGraphicsScene* scene();
+    Scene* scene();
 public:
     bool addRobot(Robot *robot);
     bool addBlock(Block *block);
@@ -46,7 +47,7 @@ public:
     void pause() override;
     void play() override;
 private slots:
-    void processClickedItem(QGraphicsItem* newItem, QGraphicsItem* prevItem, Qt::FocusReason focusReason);
+    void processClickedItem(QGraphicsItem* item);
 private:
     bool validateState(QPolygon *qpolygon);
 };
