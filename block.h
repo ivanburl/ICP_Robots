@@ -24,6 +24,7 @@ public:
         this->setPos(x, y);
         this->setFlag(QGraphicsItem::ItemIsSelectable, true);
         this->setFlag(QGraphicsItem::ItemIsMovable, true);
+        this->setFlag(QGraphicsItem::ItemIsFocusable, true);
     }
 
 public:

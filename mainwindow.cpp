@@ -2,6 +2,7 @@
 #include "qdebug.h"
 #include "ui_mainwindow.h"
 #include "jsonfileaccessor.h"
+#include "propertyview.h"
 #include <QToolBar>
 #include <QVBoxLayout>
 #include <QDebug>
@@ -12,10 +13,13 @@ MainWindow::MainWindow(QWidget *parent)
       , ui(new Ui::MainWindow) {
     ui->setupUi(this);
 
+    this->ui->groupBox->hide();
+
     currentRoom = new Room(800, 600);
+    propertiesWidget = new PropertyView(this->ui->groupBox);
 
     auto *view = ui->graphicsView;
-    ui->graphicsView->setScene(currentRoom);
+    ui->graphicsView->setScene(currentRoom->scene());
 
 
     view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -26,6 +30,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->actionSave, &QAction::triggered, this, &MainWindow::handleSaveRoom);
     connect(ui->actionLoad, &QAction::triggered, this, &MainWindow::handleLoadRoom);
     connect(ui->actionReset, &QAction::triggered, this, &MainWindow::handleResetRoom);
+    connect(currentRoom, &Room::itemSelected, propertiesWidget, &PropertyView::processSelectedItem);
+    connect(currentRoom, &Room::itemSelected, this, &MainWindow::handlePropertiesViewToggle);
     currentRoom->start(60);
 }
 
@@ -66,7 +72,7 @@ void MainWindow::handleLoadRoom(){
 
     currentRoom = Room::fromDtoObject(*roomDto);
 
-    ui->graphicsView->setScene(currentRoom);
+    ui->graphicsView->setScene(currentRoom->scene());
     resizeEvent(nullptr);
 }
 
@@ -79,7 +85,12 @@ void MainWindow::resizeEvent(QResizeEvent *event) {
     QWidget::resizeEvent(event);
 
     qDebug() << "Resize event caught" << ui->graphicsView->width() << " " << ui->graphicsView->height();
-    ui->graphicsView->fitInView(currentRoom->sceneRect());
+    ui->graphicsView->fitInView(currentRoom->scene()->sceneRect());
+}
+
+void MainWindow::handlePropertiesViewToggle()
+{
+    ui->graphicsView->fitInView(currentRoom->scene()->sceneRect());
 }
 
 void MainWindow::on_actionAdd_robot_triggered() {

@@ -7,9 +7,11 @@
 #include "DtoMap.h"
 #include <QGraphicsView>
 
-class Room : public QGraphicsScene, public GameEntity, DtoMap<RoomDto> {
+class Room : public GameEntity, DtoMap<RoomDto> {
+    Q_OBJECT;
 private:
     int h, w;
+    QGraphicsScene* graphicsScene;
     QVector<Robot *> robots;
     QVector<Block *> blocks;
 
@@ -22,6 +24,8 @@ public:
     QVector<Robot *> &getRobots();
 
     QVector<Block *> &getBlock();
+
+    QGraphicsScene* scene();
 public:
     bool addRobot(Robot *robot);
     bool addBlock(Block *block);
@@ -37,10 +41,12 @@ public:
     void fixedUpdate(long long deltaMilliseonds) override;
     void update(long long deltaMilliseconds) override;
 signals:
-    void focusItemChanged(QGraphicsItem* newFocus, QGraphicsItem* oldFocus, Qt::FocusReason focusReason);
+    void itemSelected(QGraphicsItem* selectedItem);
 public:
     void pause() override;
     void play() override;
+private slots:
+    void processClickedItem(QGraphicsItem* newItem, QGraphicsItem* prevItem, Qt::FocusReason focusReason);
 private:
     bool validateState(QPolygon *qpolygon);
 };
