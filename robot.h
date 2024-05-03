@@ -11,7 +11,7 @@
 class Room;
 
 
-class Robot : public QGraphicsItemGroup, public GameEntity, DtoMap<RobotDto> {
+class Robot : public QObject, public QGraphicsItemGroup, public GameEntity, DtoMap<RobotDto> {
 public:
     static const QBrush DEFAULT_ROBOT_BRUSH;
     static const QBrush DEFAULT_ROBOT_ARC_BRUSH;

@@ -56,6 +56,10 @@ else()
             pausableentity.h pausableentity.cpp
             updateentity.h
             propertyview.h propertyview.cpp
+            blockcomposer.h blockcomposer.cpp
+            scene.h scene.cpp
+
+            signalsender.h signalsender.cpp
 
         )
     endif()

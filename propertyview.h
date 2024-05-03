@@ -13,10 +13,14 @@ public:
 private:
     void processPause(bool isPaused);
     void clearView();
+    void addTextToLayout(const QString &text);
+    void prepareView(QObject* robot);
 
     QGroupBox* groupBox;
+    QGraphicsItem* currentObject;
     bool isPaused;
-    void addTextToLayout(QLayout *layout, const QString &text);
+    QVector<QMetaObject::Connection> connections;
+    void disconnectObjectConnections(QObject *object);
 public slots:
     void processSelectedItem(QGraphicsItem* selectedItem);
 };
