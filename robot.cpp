@@ -91,10 +91,12 @@ double Robot::getRobotCenterY() const {
 }
 
 void Robot::setRobotCenterX(double x) {
+    //this->setPos(200, 200);
     this->setPos(x, getRobotCenterY());
 }
 
 void Robot::setRobotCenterY(double y) {
+    //this->setPos(200, 200);
     this->setPos(getRobotCenterX(), y);
 }
 
@@ -163,6 +165,8 @@ Robot::Robot(Room *room,
              double arcRadius, double arcDegree,
              double angleInDeegrees, double movementSpeed,
              double rotationSmaple, double rotationSpeedPerSecond) {
+    this->isControlled = false;
+    this->currentPressedKey = -1;
     this->rotationDegreeSample = rotationSmaple;
     this->movementSpeed = movementSpeed;
     this->rotationSpeedInDegree = rotationSpeedPerSecond;
@@ -188,7 +192,7 @@ Robot::Robot(Room *room,
     this->addToGroup(arcItem);
 
     this->rotateOnAngle(-angleInDeegrees);
-    this->setPos(x - radius, y - radius);
+    this->setPos(x, y);
 
     this->setFlag(QGraphicsItem::ItemIsFocusable, true);
     this->setFlag(QGraphicsItem::ItemIsSelectable, true);
@@ -213,7 +217,7 @@ bool Robot::moveOnDistance(double distance) {
         this->setTransform(transform.inverted(), true);
         return false;
     }
-
+    qDebug() << getRobotCenterX() << " " << getRobotCenterY();
     return true;
 }
 
