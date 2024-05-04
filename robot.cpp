@@ -91,10 +91,12 @@ double Robot::getRobotCenterY() const {
 }
 
 void Robot::setRobotCenterX(double x) {
+    //this->setPos(200, 200);
     this->setPos(x, getRobotCenterY());
 }
 
 void Robot::setRobotCenterY(double y) {
+    //this->setPos(200, 200);
     this->setPos(getRobotCenterX(), y);
 }
 
@@ -130,6 +132,11 @@ void Robot::setRobotRotationSample(double degree) {
     this->rotationDegreeSample = degree;
 }
 
+void Robot::setRotationAngle(double angle) {
+    double rotateAngle = angle - getRotationAngle();
+    rotateOnAngle(rotateAngle);
+}
+
 
 QGraphicsEllipseItem *Robot::getRobotFrameItem() const {
     return this->robotFrameItem;
@@ -158,6 +165,8 @@ Robot::Robot(Room *room,
              double arcRadius, double arcDegree,
              double angleInDeegrees, double movementSpeed,
              double rotationSmaple, double rotationSpeedPerSecond) {
+    this->isControlled = false;
+    this->currentPressedKey = -1;
     this->rotationDegreeSample = rotationSmaple;
     this->movementSpeed = movementSpeed;
     this->rotationSpeedInDegree = rotationSpeedPerSecond;
@@ -183,7 +192,7 @@ Robot::Robot(Room *room,
     this->addToGroup(arcItem);
 
     this->rotateOnAngle(-angleInDeegrees);
-    this->setPos(x - radius, y - radius);
+    this->setPos(x, y);
 
     this->setFlag(QGraphicsItem::ItemIsFocusable, true);
     this->setFlag(QGraphicsItem::ItemIsSelectable, true);
@@ -207,9 +216,8 @@ bool Robot::moveOnDistance(double distance) {
         signalSender->sendItemMovedSignal();
         return false;
     }
-
+  
     signalSender->sendItemMovedSignal();
-
     return true;
 }
 
@@ -283,7 +291,7 @@ RobotDto *Robot::GetDtoObject() {
                         rotationSpeedInDegree);
 }
 
-double Robot::getRotationAngle() {
+double Robot::getRotationAngle() const {
     double angleRadians = std::atan2(this->transform().m12(), this->transform().m11());
     double angleDegrees = angleRadians * (180 / M_PI);
     return angleDegrees;
@@ -382,7 +390,7 @@ void Robot::fixedUpdate(long long deltaMilliseonds) {
     if (isPaused()) return;
 
     if (isRotating()) {
-        double rotationAngle = std::min(deltaMilliseonds * rotationSpeedInDegree / 1e3, abs(leftToTurn));
+        double rotationAngle = std::min(abs(deltaMilliseonds * rotationSpeedInDegree / 1e3), abs(leftToTurn));
         rotationAngle = leftToTurn < 0 ? -rotationAngle : rotationAngle;
         rotateOnAngle(rotationAngle);
         leftToTurn = leftToTurn - rotationAngle;

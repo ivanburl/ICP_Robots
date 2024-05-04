@@ -82,7 +82,7 @@ public:
     double getArcExtent() const;
     double getRobotCenterX() const;
     double getRobotCenterY() const;
-
+    double getRotationAngle() const;
 public:
     void setRobotCenterX(double x);
 
@@ -100,8 +100,9 @@ public:
 
     void setRobotRotationSample(double degree);
 
+    void setRotationAngle(double angle);
+
 public:
-    double getRotationAngle();
     RobotDto* GetDtoObject() override;
     static Robot* fromDtoObject(RobotDto dtoObject, Room* room);
 public:
@@ -109,12 +110,14 @@ public:
 
     QGraphicsEllipseItem *getRobotArcItem() const;
 
+    [[deprecated("Use getRobotCenterX() instead")]]
     double getBaseX(){
-        return this->scenePos().x() + radius;
+        return getRobotCenterX();
     }
 
+    [[deprecated("Use getRobotCenterY() instead")]]
     double getBaseY(){
-        return this->scenePos().y() + radius;
+        return getRobotCenterY();
     }
 
     SignalSender* getSignalSender() const;
