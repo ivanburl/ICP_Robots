@@ -80,11 +80,9 @@ void PropertyView::prepareView(QObject *object)
                 QSpinBox *spinBox = new QSpinBox(groupBox);
                 spinBox->setMaximum(1000);
                 spinBox->setValue(metaProperty.read(object).toInt());
-                connections.append(QObject::connect(spinBox, qOverload<int>(&QSpinBox::valueChanged),
-                                                    object, [object, metaProperty](int value) {
-
-                    qDebug() << "Value changed to " << value << "from " << metaProperty.read(object).toInt();
-                    qDebug() << metaProperty.write(object, value) << ((object != nullptr) ? "locj" : "meh");
+                connections.append(QObject::connect(spinBox, &QSpinBox::editingFinished,
+                                                    object, [object, metaProperty, spinBox]() {
+                                                        metaProperty.write(object, spinBox->value());
                                                     }));
 
                 const auto* signalNameChar = ("2" + signalName).toUtf8().constData();
@@ -96,7 +94,7 @@ void PropertyView::prepareView(QObject *object)
                 QDoubleSpinBox *doubleSpinBox = new QDoubleSpinBox(groupBox);
                 doubleSpinBox->setMaximum(1000);
                 doubleSpinBox->setValue(metaProperty.read(object).toDouble());
-                connections.append(QObject::connect(doubleSpinBox, qOverload<>(&QDoubleSpinBox::editingFinished),
+                connections.append(QObject::connect(doubleSpinBox, &QDoubleSpinBox::editingFinished,
                                                     object, [object, metaProperty, doubleSpinBox]() {
                                                         metaProperty.write(object, doubleSpinBox->value());
                                                     }));
@@ -109,8 +107,8 @@ void PropertyView::prepareView(QObject *object)
                 QCheckBox *checkBox = new QCheckBox(groupBox);
                 checkBox->setChecked(metaProperty.read(object).toBool());
                 connections.append(QObject::connect(checkBox, &QCheckBox::toggled,
-                                                    object, [object, metaProperty](bool checked) {
-                                                        metaProperty.write(object, checked);
+                                                    object, [object, metaProperty, checkBox]() {
+                                                        metaProperty.write(object, checkBox->isChecked());
                                                     }));
                 const auto* signalNameChar = ("2" + signalName).toUtf8().constData();
                 connections.append(QObject::connect(object, signalNameChar,
@@ -119,9 +117,9 @@ void PropertyView::prepareView(QObject *object)
             } else if (metaProperty.type() == QVariant::String) {
                 QLineEdit *lineEdit = new QLineEdit(groupBox);
                 lineEdit->setText(metaProperty.read(object).toString());
-                connections.append(QObject::connect(lineEdit, &QLineEdit::textChanged,
-                                                    object, [object, metaProperty](const QString &text) {
-                                                        metaProperty.write(object, text);
+                connections.append(QObject::connect(lineEdit, &QLineEdit::editingFinished,
+                                                    object, [object, metaProperty, lineEdit]() {
+                                                        metaProperty.write(object, lineEdit->text());
                                                     }));
                 const auto* signalNameChar = ("2" + signalName).toUtf8().constData();
                 connections.append(QObject::connect(object, signalNameChar,

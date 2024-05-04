@@ -41,6 +41,7 @@ private:
 
 private slots:
     void itemMoved();
+    void updateExceptLocation();
 
 signals:
     void robotCenterXChanged(double x);
