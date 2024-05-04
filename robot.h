@@ -82,7 +82,7 @@ public:
     double getArcExtent() const;
     double getRobotCenterX() const;
     double getRobotCenterY() const;
-
+    double getRotationAngle() const;
 public:
     void setRobotCenterX(double x);
 
@@ -100,8 +100,9 @@ public:
 
     void setRobotRotationSample(double degree);
 
+    void setRotationAngle(double angle);
+
 public:
-    double getRotationAngle();
     RobotDto* GetDtoObject() override;
     static Robot* fromDtoObject(RobotDto dtoObject, Room* room);
 public:

@@ -130,6 +130,11 @@ void Robot::setRobotRotationSample(double degree) {
     this->rotationDegreeSample = degree;
 }
 
+void Robot::setRotationAngle(double angle) {
+    double rotateAngle = angle - getRotationAngle();
+    rotateOnAngle(rotateAngle);
+}
+
 
 QGraphicsEllipseItem *Robot::getRobotFrameItem() const {
     return this->robotFrameItem;
@@ -282,7 +287,7 @@ RobotDto *Robot::GetDtoObject() {
                         rotationSpeedInDegree);
 }
 
-double Robot::getRotationAngle() {
+double Robot::getRotationAngle() const {
     double angleRadians = std::atan2(this->transform().m12(), this->transform().m11());
     double angleDegrees = angleRadians * (180 / M_PI);
     return angleDegrees;
