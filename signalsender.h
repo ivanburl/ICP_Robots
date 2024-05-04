@@ -9,8 +9,10 @@ Q_OBJECT
 public:
     SignalSender();
     void sendItemMovedSignal();
+    void sendUpdateExceptLocation();
 signals:
     void itemMoved();
+    void updateExceptLocation();
 };
 
 #endif // SIGNALSENDER_H

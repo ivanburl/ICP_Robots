@@ -202,12 +202,13 @@ bool Robot::moveOnDistance(double distance) {
     QTransform transform = QTransform().translate(distance, 0);
     this->setTransform(transform, true);
 
-    signalSender->sendItemMovedSignal();
-
     if (isColliding() || isOutOfRoom()) {
         this->setTransform(transform.inverted(), true);
+        signalSender->sendItemMovedSignal();
         return false;
     }
+
+    signalSender->sendItemMovedSignal();
 
     return true;
 }
@@ -372,6 +373,8 @@ void Robot::update(long long deltaMilliseconds) {
         arcItem->setSpanAngle(arcDegree * 16);
 
         this->currentPressedKey = -1;
+
+        signalSender->sendUpdateExceptLocation();
     }
 }
 

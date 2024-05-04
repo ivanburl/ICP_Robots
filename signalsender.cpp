@@ -6,3 +6,8 @@ void SignalSender::sendItemMovedSignal()
 {
     emit itemMoved();
 }
+
+void SignalSender::sendUpdateExceptLocation()
+{
+    emit updateExceptLocation();
+}

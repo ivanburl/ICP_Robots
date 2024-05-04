@@ -5,6 +5,7 @@ RobotComposer::RobotComposer(Robot* robot, QObject *parent)
 {
     this->robot = robot;
     connect(this->robot->getSignalSender(), &SignalSender::itemMoved, this, &RobotComposer::itemMoved);
+    connect(this->robot->getSignalSender(), &SignalSender::updateExceptLocation, this, &RobotComposer::updateExceptLocation);
 }
 
 double RobotComposer::getRobotRadius() const{
@@ -60,4 +61,14 @@ void RobotComposer::setRobotRotationSample(double degree){
 void RobotComposer::itemMoved(){
     emit this->robotCenterXChanged(this->getRobotCenterX());
     emit this->robotCenterYChanged(this->getRobotCenterY());
+}
+
+void RobotComposer::updateExceptLocation()
+{
+    emit arcRadiusChanged(this->getArcRadius());
+    emit robotRadiusChanged(this->getRobotRadius());
+    emit arcExtentChanged(this->getArcExtent());
+    emit robotMovementSpeedChanged(this->getRobotMovementSpeed());
+    emit robotRotationSpeedChanged(this->getRobotRotationSpeed());
+    emit robotRotationSampleChanged(this->getRobotRotationSample());
 }
