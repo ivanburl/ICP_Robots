@@ -388,7 +388,7 @@ void Robot::fixedUpdate(long long deltaMilliseonds) {
     if (isPaused()) return;
 
     if (isRotating()) {
-        double rotationAngle = std::min(deltaMilliseonds * rotationSpeedInDegree / 1e3, abs(leftToTurn));
+        double rotationAngle = std::min(abs(deltaMilliseonds * rotationSpeedInDegree / 1e3), abs(leftToTurn));
         rotationAngle = leftToTurn < 0 ? -rotationAngle : rotationAngle;
         rotateOnAngle(rotationAngle);
         leftToTurn = leftToTurn - rotationAngle;
