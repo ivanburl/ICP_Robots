@@ -96,9 +96,9 @@ void PropertyView::prepareView(QObject *object)
                 QDoubleSpinBox *doubleSpinBox = new QDoubleSpinBox(groupBox);
                 doubleSpinBox->setMaximum(1000);
                 doubleSpinBox->setValue(metaProperty.read(object).toDouble());
-                connections.append(QObject::connect(doubleSpinBox, qOverload<double>(&QDoubleSpinBox::valueChanged),
-                                                    object, [object, metaProperty](double value) {
-                                                        metaProperty.write(object, value);
+                connections.append(QObject::connect(doubleSpinBox, qOverload<>(&QDoubleSpinBox::editingFinished),
+                                                    object, [object, metaProperty, doubleSpinBox]() {
+                                                        metaProperty.write(object, doubleSpinBox->value());
                                                     }));
 
                 const auto* signalNameChar = ("2" + signalName).toUtf8().constData();

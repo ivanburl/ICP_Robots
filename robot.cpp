@@ -202,10 +202,7 @@ bool Robot::moveOnDistance(double distance) {
     QTransform transform = QTransform().translate(distance, 0);
     this->setTransform(transform, true);
 
-    // TODO:
-    // if uncommented keeps sticking to the topright corner
-    // needs to be solved somehow
-    // signalSender->sendItemMovedSignal();
+    signalSender->sendItemMovedSignal();
 
     if (isColliding() || isOutOfRoom()) {
         this->setTransform(transform.inverted(), true);
