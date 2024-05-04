@@ -158,6 +158,7 @@ void Robot::rotateOnAngle(double angleInDegree) {
             .rotate(angleInDegree)
             .translate(-center.x(), -center.y());
     this->setTransform(transform, true);
+    signalSender->sendUpdateRotationAngle();
 }
 
 Robot::Robot(Room *room,

@@ -93,6 +93,7 @@ void PropertyView::prepareView(QObject *object)
             } else if (metaProperty.type() == QVariant::Double) {
                 QDoubleSpinBox *doubleSpinBox = new QDoubleSpinBox(groupBox);
                 doubleSpinBox->setMaximum(1000);
+                doubleSpinBox->setMinimum(-360);
                 doubleSpinBox->setValue(metaProperty.read(object).toDouble());
                 connections.append(QObject::connect(doubleSpinBox, &QDoubleSpinBox::editingFinished,
                                                     object, [object, metaProperty, doubleSpinBox]() {
@@ -160,19 +161,15 @@ void PropertyView::processSelectedItem(QGraphicsItem *selectedItem)
     if(auto* block = dynamic_cast<Block*>(selectedItem); block){
         qDebug() << "Some block selected";
 
-        // Set stretch factor for the groupBox
-        // groupBox->setStretchFactor(groupBox, 1);
         auto* composer = new BlockComposer(block);
         this->prepareView(composer);
         groupBox->show();
-        // addTextToLayout(layout,"Block");
     }
     else if(auto* robot = dynamic_cast<Robot*>(selectedItem); robot){
         qDebug() << "Some robot selected";
         auto* composer = new RobotComposer(robot);
         this->prepareView(composer);
         groupBox->show();
-        // addTextToLayout(layout, "Robot");
     }
     else{
         groupBox->hide();

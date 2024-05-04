@@ -2,12 +2,14 @@
 
 SignalSender::SignalSender() {}
 
-void SignalSender::sendItemMovedSignal()
-{
+void SignalSender::sendItemMovedSignal(){
     emit itemMoved();
 }
 
-void SignalSender::sendUpdateExceptLocation()
-{
+void SignalSender::sendUpdateExceptLocation(){
     emit updateExceptLocation();
+}
+
+void SignalSender::sendUpdateRotationAngle(){
+    emit updateRotationAngle();
 }

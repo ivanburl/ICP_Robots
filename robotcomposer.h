@@ -15,6 +15,7 @@ class RobotComposer : public QObject
     Q_PROPERTY(double RotationSample READ getRobotRotationSample WRITE setRobotRotationSample NOTIFY robotRotationSampleChanged)
     Q_PROPERTY(double ArcRadius READ getArcRadius WRITE setArcRadius NOTIFY arcRadiusChanged)
     Q_PROPERTY(double ArcExtent READ getArcExtent WRITE setArcExtent NOTIFY arcExtentChanged)
+    Q_PROPERTY(double RotationAngle READ getRobotRotation WRITE setRobotRotation NOTIFY robotRotationChanged)
 
 public:
     explicit RobotComposer(Robot *robot, QObject *parent = nullptr);
@@ -26,6 +27,7 @@ public:
     double getArcExtent() const;
     double getRobotCenterX() const;
     double getRobotCenterY() const;
+    double getRobotRotation() const;
 
     void setRobotCenterX(double x);
     void setRobotCenterY(double y);
@@ -35,6 +37,7 @@ public:
     void setRobotMovementSpeed(double speedPerSec);
     void setRobotRotationSpeed(double degreePerSec);
     void setRobotRotationSample(double degree);
+    void setRobotRotation(double degree);
 
 private:
     Robot* robot;
@@ -42,6 +45,7 @@ private:
 private slots:
     void itemMoved();
     void updateExceptLocation();
+    void updateRotationAngle();
 
 signals:
     void robotCenterXChanged(double x);
@@ -52,6 +56,7 @@ signals:
     void robotMovementSpeedChanged(double speedPerSec);
     void robotRotationSpeedChanged(double degreePerSec);
     void robotRotationSampleChanged(double degree);
+    void robotRotationChanged(double degree);
 };
 
 #endif // ROBOTCOMPOSER_H

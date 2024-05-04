@@ -10,9 +10,11 @@ public:
     SignalSender();
     void sendItemMovedSignal();
     void sendUpdateExceptLocation();
+    void sendUpdateRotationAngle();
 signals:
     void itemMoved();
     void updateExceptLocation();
+    void updateRotationAngle();
 };
 
 #endif // SIGNALSENDER_H
