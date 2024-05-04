@@ -381,9 +381,11 @@ void Robot::update(long long deltaMilliseconds) {
         arcItem->setStartAngle(-arcDegree * 8);
         arcItem->setSpanAngle(arcDegree * 16);
 
-        this->currentPressedKey = -1;
+        if(currentPressedKey != -1){
+            signalSender->sendUpdateExceptLocation();
+        }
 
-        signalSender->sendUpdateExceptLocation();
+        this->currentPressedKey = -1;
     }
 }
 
