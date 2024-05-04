@@ -7,6 +7,7 @@
 #include <QGraphicsItem>
 #include "robotdto.h"
 #include "DtoMap.h"
+#include "signalsender.h"
 
 class Room;
 
@@ -36,6 +37,7 @@ private:
 
 private:
     double leftToTurn;
+    SignalSender* signalSender;
 
 public:
     Robot(Room *room,
@@ -115,6 +117,7 @@ public:
         return this->scenePos().y() + radius;
     }
 
+    SignalSender* getSignalSender() const;
 };
 
 #endif // ROBOT_H

@@ -60,6 +60,7 @@ else()
             scene.h scene.cpp
 
             signalsender.h signalsender.cpp
+            robotcomposer.h robotcomposer.cpp
 
         )
     endif()

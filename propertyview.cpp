@@ -3,6 +3,7 @@
 #include "blockcomposer.h"
 #include "qobjectdefs.h"
 #include "robot.h"
+#include "robotcomposer.h"
 
 #include <QLayoutItem>
 #include <QLayout>
@@ -93,6 +94,7 @@ void PropertyView::prepareView(QObject *object)
                 widget = spinBox;
             } else if (metaProperty.type() == QVariant::Double) {
                 QDoubleSpinBox *doubleSpinBox = new QDoubleSpinBox(groupBox);
+                doubleSpinBox->setMaximum(1000);
                 doubleSpinBox->setValue(metaProperty.read(object).toDouble());
                 connections.append(QObject::connect(doubleSpinBox, qOverload<double>(&QDoubleSpinBox::valueChanged),
                                                     object, [object, metaProperty](double value) {
@@ -169,6 +171,8 @@ void PropertyView::processSelectedItem(QGraphicsItem *selectedItem)
     }
     else if(auto* robot = dynamic_cast<Robot*>(selectedItem); robot){
         qDebug() << "Some robot selected";
+        auto* composer = new RobotComposer(robot);
+        this->prepareView(composer);
         groupBox->show();
         // addTextToLayout(layout, "Robot");
     }

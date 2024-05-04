@@ -15,6 +15,7 @@ const QBrush Robot::DEFAULT_ROBOT_ROTATING_BRUSH = QBrush(Qt::magenta);
 
 void Robot::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
     auto savePoint = this->pos();
+    signalSender->sendItemMovedSignal();
     QGraphicsItemGroup::mouseMoveEvent(event);
     if (isOutOfRoom()) {
         this->setPos(savePoint);
@@ -138,6 +139,10 @@ QGraphicsEllipseItem *Robot::getRobotArcItem() const {
     return this->arcItem;
 }
 
+SignalSender *Robot::getSignalSender() const
+{
+    return signalSender;
+}
 
 void Robot::rotateOnAngle(double angleInDegree) {
     auto center = robotFrameItem->boundingRect().center();
@@ -161,6 +166,7 @@ Robot::Robot(Room *room,
     this->arcDegree = arcDegree;
     this->leftToTurn = 0;
     this->releaseControl();
+    this->signalSender = new SignalSender();
 
     this->room = room;
     robotFrameItem = new QGraphicsEllipseItem(-radius, -radius, radius * 2, radius * 2);
@@ -195,6 +201,11 @@ Robot::~Robot() {
 bool Robot::moveOnDistance(double distance) {
     QTransform transform = QTransform().translate(distance, 0);
     this->setTransform(transform, true);
+
+    // TODO:
+    // if uncommented keeps sticking to the topright corner
+    // needs to be solved somehow
+    // signalSender->sendItemMovedSignal();
 
     if (isColliding() || isOutOfRoom()) {
         this->setTransform(transform.inverted(), true);

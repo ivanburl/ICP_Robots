@@ -61,9 +61,6 @@ SignalSender *Block::getSignalSender()
 
 void Block::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
-    //emit xChanged(pos().x());
-    //emit yChanged(pos().y());
     signalSender->sendItemMovedSignal();
     QGraphicsItem::mouseMoveEvent(event);
-
 }
