@@ -110,12 +110,14 @@ public:
 
     QGraphicsEllipseItem *getRobotArcItem() const;
 
+    [[deprecated("Use getRobotCenterX() instead")]]
     double getBaseX(){
-        return this->scenePos().x() + radius;
+        return getRobotCenterX();
     }
 
+    [[deprecated("Use getRobotCenterY() instead")]]
     double getBaseY(){
-        return this->scenePos().y() + radius;
+        return getRobotCenterY();
     }
 
     SignalSender* getSignalSender() const;
