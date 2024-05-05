@@ -1,152 +1,152 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
-  <property name="enabled">
-   <bool>true</bool>
-  </property>
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>861</width>
-    <height>538</height>
-   </rect>
-  </property>
-  <property name="windowTitle">
-   <string>MainWindow</string>
-  </property>
-  <widget class="QWidget" name="centralwidget">
-   <property name="autoFillBackground">
-    <bool>false</bool>
-   </property>
-   <layout class="QVBoxLayout" name="verticalLayout">
-    <item>
-     <layout class="QHBoxLayout" name="horizontalLayout">
-      <item>
-       <widget class="ResizableGraphicsView" name="graphicsView">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>4</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="renderHints">
-         <set>QPainter::Antialiasing|QPainter::TextAntialiasing</set>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QGroupBox" name="groupBox">
+    <class>MainWindow</class>
+    <widget class="QMainWindow" name="MainWindow">
         <property name="enabled">
-         <bool>true</bool>
+            <bool>true</bool>
         </property>
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-          <horstretch>1</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
+        <property name="geometry">
+            <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>861</width>
+                <height>538</height>
+            </rect>
         </property>
-        <property name="minimumSize">
-         <size>
-          <width>200</width>
-          <height>0</height>
-         </size>
+        <property name="windowTitle">
+            <string>MainWindow</string>
         </property>
-        <property name="title">
-         <string/>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>861</width>
-     <height>25</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menuFile">
-    <property name="title">
-     <string>File</string>
-    </property>
-    <addaction name="actionLoad"/>
-    <addaction name="actionSave"/>
-    <addaction name="actionReset"/>
-   </widget>
-   <widget class="QMenu" name="menuHelp">
-    <property name="title">
-     <string>Help</string>
-    </property>
-   </widget>
-   <widget class="QMenu" name="menuControl">
-    <property name="title">
-     <string>Actions</string>
-    </property>
-    <addaction name="actionAdd_robot"/>
-    <addaction name="actionAdd_block"/>
-    <addaction name="actionTogglePause"/>
-   </widget>
-   <addaction name="menuFile"/>
-   <addaction name="menuHelp"/>
-   <addaction name="menuControl"/>
-  </widget>
-  <action name="actionLoad">
-   <property name="text">
-    <string>Load </string>
-   </property>
-  </action>
-  <action name="actionSave">
-   <property name="text">
-    <string>Save</string>
-   </property>
-  </action>
-  <action name="actionHelp">
-   <property name="text">
-    <string>Help</string>
-   </property>
-  </action>
-  <action name="actionasd">
-   <property name="text">
-    <string>asd</string>
-   </property>
-  </action>
-  <action name="actionAdd_robot">
-   <property name="checkable">
-    <bool>false</bool>
-   </property>
-   <property name="text">
-    <string>Add robot</string>
-   </property>
-  </action>
-  <action name="actionAdd_block">
-   <property name="text">
-    <string>Add block</string>
-   </property>
-  </action>
-  <action name="actionTogglePause">
-   <property name="text">
-    <string>Play</string>
-   </property>
-  </action>
-  <action name="actionReset">
-   <property name="text">
-    <string>Reset</string>
-   </property>
-  </action>
- </widget>
- <customwidgets>
-  <customwidget>
-   <class>ResizableGraphicsView</class>
-   <extends>QGraphicsView</extends>
-   <header>../../../src/resizablegraphicsview.h</header>
-  </customwidget>
- </customwidgets>
- <resources/>
- <connections/>
+        <widget class="QWidget" name="centralwidget">
+            <property name="autoFillBackground">
+                <bool>false</bool>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout">
+                <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout">
+                        <item>
+                            <widget class="ResizableGraphicsView" name="graphicsView">
+                                <property name="sizePolicy">
+                                    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                                        <horstretch>4</horstretch>
+                                        <verstretch>0</verstretch>
+                                    </sizepolicy>
+                                </property>
+                                <property name="renderHints">
+                                    <set>QPainter::Antialiasing|QPainter::TextAntialiasing</set>
+                                </property>
+                            </widget>
+                        </item>
+                        <item>
+                            <widget class="QGroupBox" name="groupBox">
+                                <property name="enabled">
+                                    <bool>true</bool>
+                                </property>
+                                <property name="sizePolicy">
+                                    <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                                        <horstretch>1</horstretch>
+                                        <verstretch>0</verstretch>
+                                    </sizepolicy>
+                                </property>
+                                <property name="minimumSize">
+                                    <size>
+                                        <width>200</width>
+                                        <height>0</height>
+                                    </size>
+                                </property>
+                                <property name="title">
+                                    <string/>
+                                </property>
+                            </widget>
+                        </item>
+                    </layout>
+                </item>
+            </layout>
+        </widget>
+        <widget class="QMenuBar" name="menubar">
+            <property name="geometry">
+                <rect>
+                    <x>0</x>
+                    <y>0</y>
+                    <width>861</width>
+                    <height>25</height>
+                </rect>
+            </property>
+            <widget class="QMenu" name="menuFile">
+                <property name="title">
+                    <string>File</string>
+                </property>
+                <addaction name="actionLoad"/>
+                <addaction name="actionSave"/>
+                <addaction name="actionReset"/>
+            </widget>
+            <widget class="QMenu" name="menuHelp">
+                <property name="title">
+                    <string>Help</string>
+                </property>
+            </widget>
+            <widget class="QMenu" name="menuControl">
+                <property name="title">
+                    <string>Actions</string>
+                </property>
+                <addaction name="actionAdd_robot"/>
+                <addaction name="actionAdd_block"/>
+                <addaction name="actionTogglePause"/>
+            </widget>
+            <addaction name="menuFile"/>
+            <addaction name="menuHelp"/>
+            <addaction name="menuControl"/>
+        </widget>
+        <action name="actionLoad">
+            <property name="text">
+                <string>Load</string>
+            </property>
+        </action>
+        <action name="actionSave">
+            <property name="text">
+                <string>Save</string>
+            </property>
+        </action>
+        <action name="actionHelp">
+            <property name="text">
+                <string>Help</string>
+            </property>
+        </action>
+        <action name="actionasd">
+            <property name="text">
+                <string>asd</string>
+            </property>
+        </action>
+        <action name="actionAdd_robot">
+            <property name="checkable">
+                <bool>false</bool>
+            </property>
+            <property name="text">
+                <string>Add robot</string>
+            </property>
+        </action>
+        <action name="actionAdd_block">
+            <property name="text">
+                <string>Add block</string>
+            </property>
+        </action>
+        <action name="actionTogglePause">
+            <property name="text">
+                <string>Play</string>
+            </property>
+        </action>
+        <action name="actionReset">
+            <property name="text">
+                <string>Reset</string>
+            </property>
+        </action>
+    </widget>
+    <customwidgets>
+        <customwidget>
+            <class>ResizableGraphicsView</class>
+            <extends>QGraphicsView</extends>
+            <header>../../../src/resizablegraphicsview.h</header>
+        </customwidget>
+    </customwidgets>
+    <resources/>
+    <connections/>
 </ui>

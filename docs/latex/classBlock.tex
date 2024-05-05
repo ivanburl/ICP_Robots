@@ -18,8 +18,7 @@ Collaboration diagram for Block\+:
 \mbox{\Hypertarget{classBlock_a5075cf7639081917edd716e55b9edf43}\label{classBlock_a5075cf7639081917edd716e55b9edf43}} 
 {\bfseries Block} (\mbox{\hyperlink{classRoom}{Room}} $\ast$room, double x, double y, double w, double h)
 \item 
-\mbox{\Hypertarget{classBlock_a936782d9f39de82b9c981e3aea86764b}\label{classBlock_a936782d9f39de82b9c981e3aea86764b}} 
-\mbox{\hyperlink{classBlockDto}{Block\+Dto}} $\ast$ {\bfseries Get\+Dto\+Object} () override
+\mbox{\hyperlink{classBlockDto}{Block\+Dto}} $\ast$ \mbox{\hyperlink{classBlock_a936782d9f39de82b9c981e3aea86764b}{Get\+Dto\+Object}} () override
 \item 
 void \mbox{\hyperlink{classBlock_a59eaa31f2775b348dcf43be7b72a92fd}{update}} (long long delta\+Milliseconds) override
 \item 
@@ -97,6 +96,19 @@ main game logic loop of the entity, runs with fixed fps
 
 
 Implements \mbox{\hyperlink{classGameEntity_a39053750305ecb34afe77a64648b842e}{Game\+Entity}}.
+
+\mbox{\Hypertarget{classBlock_a936782d9f39de82b9c981e3aea86764b}\label{classBlock_a936782d9f39de82b9c981e3aea86764b}} 
+\index{Block@{Block}!GetDtoObject@{GetDtoObject}}
+\index{GetDtoObject@{GetDtoObject}!Block@{Block}}
+\doxysubsubsection{\texorpdfstring{GetDtoObject()}{GetDtoObject()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBlockDto}{Block\+Dto}} $\ast$ Block\+::\+Get\+Dto\+Object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+\begin{DoxyReturn}{Returns}
+dto representation 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classDtoMap_aea841c5ab401bf7b0071b9717f0567f7}{Dto\+Map$<$ Block\+Dto $>$}}.
 
 \mbox{\Hypertarget{classBlock_a0cc9d25f22e379f954f0b51f8a573516}\label{classBlock_a0cc9d25f22e379f954f0b51f8a573516}} 
 \index{Block@{Block}!pause@{pause}}

@@ -99,7 +99,7 @@ $(function() {
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">double</span> getRobotCenterX() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">double</span> getRobotCenterY() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">double</span> getRobotRotation() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    QGraphicsItem* getOriginalGraphicsItem() <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    QGraphicsItem* <a class="code" href="classRobotComposer.html#aaa8a6d6ed7ea7ef4756af0e48638b8b0">getOriginalGraphicsItem</a>() <span class="keyword">const override</span>;</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">void</span> setRobotCenterX(<span class="keywordtype">double</span> x);</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">void</span> setRobotCenterY(<span class="keywordtype">double</span> y);</div>
@@ -115,25 +115,26 @@ $(function() {
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="classRobot.html">Robot</a>* robot;</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">private</span> slots:</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">void</span> itemMoved();</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">void</span> updateExceptLocation();</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">void</span> updateRotationAngle();</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;signals:</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">void</span> robotCenterXChanged(<span class="keywordtype">double</span> x);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">void</span> robotCenterYChanged(<span class="keywordtype">double</span> y);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">void</span> arcRadiusChanged(<span class="keywordtype">double</span> radius);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">void</span> robotRadiusChanged(<span class="keywordtype">double</span> robotRadius);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">void</span> arcExtentChanged(<span class="keywordtype">double</span> arcExtent);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">void</span> robotMovementSpeedChanged(<span class="keywordtype">double</span> speedPerSec);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">void</span> robotRotationSpeedChanged(<span class="keywordtype">double</span> degreePerSec);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordtype">void</span> robotRotationSampleChanged(<span class="keywordtype">double</span> degree);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">void</span> robotRotationChanged(<span class="keywordtype">double</span> degree);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;};</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// ROBOTCOMPOSER_H</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">void</span> itemMoved();</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">void</span> updateExceptLocation();</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">void</span> updateRotationAngle();</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;signals:</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">void</span> robotCenterXChanged(<span class="keywordtype">double</span> x);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">void</span> robotCenterYChanged(<span class="keywordtype">double</span> y);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">void</span> arcRadiusChanged(<span class="keywordtype">double</span> radius);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">void</span> robotRadiusChanged(<span class="keywordtype">double</span> robotRadius);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordtype">void</span> arcExtentChanged(<span class="keywordtype">double</span> arcExtent);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">void</span> robotMovementSpeedChanged(<span class="keywordtype">double</span> speedPerSec);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordtype">void</span> robotRotationSpeedChanged(<span class="keywordtype">double</span> degreePerSec);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">void</span> robotRotationSampleChanged(<span class="keywordtype">double</span> degree);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">void</span> robotRotationChanged(<span class="keywordtype">double</span> degree);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;};</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// ROBOTCOMPOSER_H</span></div>
 <div class="ttc" id="aclassGraphicsItemComposer_html"><div class="ttname"><a href="classGraphicsItemComposer.html">GraphicsItemComposer</a></div><div class="ttdef"><b>Definition:</b> graphicsitemcomposer.h:12</div></div>
 <div class="ttc" id="aclassRobotComposer_html"><div class="ttname"><a href="classRobotComposer.html">RobotComposer</a></div><div class="ttdef"><b>Definition:</b> robotcomposer.h:16</div></div>
+<div class="ttc" id="aclassRobotComposer_html_aaa8a6d6ed7ea7ef4756af0e48638b8b0"><div class="ttname"><a href="classRobotComposer.html#aaa8a6d6ed7ea7ef4756af0e48638b8b0">RobotComposer::getOriginalGraphicsItem</a></div><div class="ttdeci">QGraphicsItem * getOriginalGraphicsItem() const override</div><div class="ttdef"><b>Definition:</b> robotcomposer.cpp:45</div></div>
 <div class="ttc" id="aclassRobot_html"><div class="ttname"><a href="classRobot.html">Robot</a></div><div class="ttdef"><b>Definition:</b> robot.h:24</div></div>
 <div class="ttc" id="agraphicsitemcomposer_8h_html"><div class="ttname"><a href="graphicsitemcomposer_8h.html">graphicsitemcomposer.h</a></div><div class="ttdoc">Abstract class for classes that are bindable to property view</div></div>
 <div class="ttc" id="arobot_8h_html"><div class="ttname"><a href="robot_8h.html">robot.h</a></div><div class="ttdoc">Robot game entity class.</div></div>

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['block_95',['Block',['../classBlock.html',1,'']]],
-  ['blockcomposer_96',['BlockComposer',['../classBlockComposer.html',1,'']]],
-  ['blockdto_97',['BlockDto',['../classBlockDto.html',1,'']]]
+  ['block_109',['Block',['../classBlock.html',1,'']]],
+  ['blockcomposer_110',['BlockComposer',['../classBlockComposer.html',1,'']]],
+  ['blockdto_111',['BlockDto',['../classBlockDto.html',1,'']]]
 ];
