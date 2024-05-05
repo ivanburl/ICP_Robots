@@ -55,6 +55,13 @@ else()
             gameentity.h gameentity.cpp
             pausableentity.h pausableentity.cpp
             updateentity.h
+            propertyview.h propertyview.cpp
+            blockcomposer.h blockcomposer.cpp
+            scene.h scene.cpp
+
+            signalsender.h signalsender.cpp
+            robotcomposer.h robotcomposer.cpp
+
         )
     endif()
 endif()

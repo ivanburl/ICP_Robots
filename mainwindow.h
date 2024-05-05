@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include "room.h"
+#include "propertyview.h"
 
 #include <QMainWindow>
 
@@ -13,6 +14,7 @@ class MainWindow : public QMainWindow {
     Q_OBJECT
 private:
     Ui::MainWindow *ui;
+    PropertyView* propertiesWidget;
     Room *currentRoom;
 
 public:
@@ -28,7 +30,11 @@ public slots:
 protected:
     void resizeEvent(QResizeEvent *event) override;
 
+private:
+    void configurePropertyViewConnections();
+
 private slots:
+    void handlePropertiesViewToggle();
     void on_actionAdd_robot_triggered();
 
     void on_actionAdd_block_triggered();

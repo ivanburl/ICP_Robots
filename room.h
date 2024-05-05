@@ -5,11 +5,14 @@
 #include "robot.h"
 #include "roomdto.h"
 #include "DtoMap.h"
+#include "scene.h"
 #include <QGraphicsView>
 
-class Room : public QGraphicsScene, public GameEntity, DtoMap<RoomDto> {
+class Room : public GameEntity, DtoMap<RoomDto> {
+    Q_OBJECT;
 private:
     int h, w;
+    Scene* graphicsScene;
     QVector<Robot *> robots;
     QVector<Block *> blocks;
 
@@ -23,6 +26,8 @@ public:
     QVector<Robot *> &getRobots();
 
     QVector<Block *> &getBlock();
+
+    Scene* scene();
 public:
     void addRobot(Robot *robot);
     void addBlock(Block *block);
@@ -37,9 +42,13 @@ public:
 public:
     void fixedUpdate(long long deltaMilliseonds) override;
     void update(long long deltaMilliseconds) override;
+signals:
+    void itemSelected(QGraphicsItem* selectedItem);
 public:
     void pause() override;
     void play() override;
+private slots:
+    void processClickedItem(QGraphicsItem* item);
 public:
     bool isValidState();
 };

@@ -36,6 +36,13 @@ Room *Room::fromDtoObject(RoomDto dtoObject) {
     return room;
 }
 
+// void Room::focusItemChanged(QGraphicsItem* newFocus, QGraphicsItem* oldFocus, Qt::FocusReason focusReason){
+//     QGraphicsScene::focusItemChanged(newFocus, oldFocus, focusReason);
+//     if(!newFocus){
+//         // Focus is lost
+//         // Hide properties window
+//         return;
+//     }
 
 bool Room::isValidState() {
     for (auto r: this->robots) {
@@ -50,7 +57,7 @@ bool Room::isPointInRoom(double x, double y) {
     if (x < 0 || y < 0)
         return false;
 
-    if (x > width() || y > height())
+    if (x > graphicsScene->width() || y > graphicsScene->height())
         return false;
 
     return true;
@@ -96,9 +103,11 @@ void Room::play() {
     GameEntity::play();
 }
 
-Room::Room(int w, int h) : QGraphicsScene(0, 0, w, h), GameEntity() {
+Room::Room(int w, int h) : GameEntity() {
     this->w = w;
     this->h = h;
+    graphicsScene = new Scene(w, h);
+    QGraphicsScene::connect(graphicsScene, &Scene::itemPressed, this, &Room::processClickedItem);
 }
 
 Room::~Room() {
@@ -113,14 +122,26 @@ QVector<Block *> &Room::getBlock() {
     return this->blocks;
 }
 
-void Room::addRobot(Robot *robot) {
-    robots.append(robot);
-    this->addItem(robot);
+Scene* Room::scene(){
+    return graphicsScene;
 }
 
-void Room::addBlock(Block *block) {
-    blocks.append(block);
-    this->addItem(block);
+bool Room::addRobot(Robot *robot) {
+    bool toAdd = validateState(nullptr); //TODO
+    if (toAdd) {
+        robots.append(robot);
+        graphicsScene->addItem(robot);
+    }
+    return toAdd;
+}
+
+bool Room::addBlock(Block *block) {
+    bool toAdd = validateState(nullptr); //TODO
+    if (toAdd) {
+        blocks.append(block);
+        graphicsScene->addItem(block);
+    }
+    return toAdd;
 }
 
 void Room::reset() {
@@ -156,4 +177,9 @@ void Room::removeBlock(Block *block) {
             i--;
         }
     }
+}
+
+
+void Room::processClickedItem(QGraphicsItem* newItem){
+    emit itemSelected(newItem);
 }
