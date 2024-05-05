@@ -38,6 +38,9 @@ public slots:
     void handleResetRoom();
 
 private:
+    /**
+     * Configures Property Views connections
+     */
     void configurePropertyViewConnections();
 
 private slots:

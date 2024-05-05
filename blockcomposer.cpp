@@ -31,7 +31,6 @@ QGraphicsItem *BlockComposer::getOriginalGraphicsItem() const{
 }
 
 void BlockComposer::setX(int value){
-    qDebug() << "Im here";
     block->setPos(value, block->pos().y());
 }
 void BlockComposer::setY(int value){

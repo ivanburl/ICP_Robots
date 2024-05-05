@@ -11,6 +11,9 @@
 template <typename T>
 class DtoMap{
 public:
+    /**
+     * @return dto representation
+     */
     virtual T* GetDtoObject() = 0;
 };
 

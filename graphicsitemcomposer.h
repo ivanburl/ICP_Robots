@@ -12,6 +12,9 @@
 class GraphicsItemComposer : public QObject{
     Q_OBJECT;
 public:
+    /**
+     * @return source QGraphicsItem object
+     */
     virtual QGraphicsItem* getOriginalGraphicsItem() const = 0;
 };
 

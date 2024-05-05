@@ -14,8 +14,17 @@ class Scene : public QGraphicsScene
 {
     Q_OBJECT
 public:
+    /**
+     * Scene constructor
+     * @param w - width of the scene
+     * @param h - height of the scene
+     */
     Scene(int w, int h);
 signals:
+    /**
+     * Signal that is emitted when clicked on the scene
+     * @param item - QGraphicsItem object clicked on
+     */
     void itemPressed(QGraphicsItem* item);
 protected:
     void mousePressEvent(QGraphicsSceneMouseEvent *mouseEvent) override;

@@ -43,7 +43,13 @@ signals:
     void heightChanged(int value);
 
 private slots:
+    /**
+     * Listens for signal when source block graphics item is moved
+     */
     void itemMoved();
+    /**
+     * Listens for signal when all source robot graphics item's properties are updated except location
+     */
     void updateExceptLocation();
 };
 
