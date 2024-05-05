@@ -2,10 +2,11 @@
 #define BLOCKCOMPOSER_H
 
 #include "block.h"
+#include "graphicsitemcomposer.h"
 
 #include <QObject>
 
-class BlockComposer : public QObject
+class BlockComposer : public GraphicsItemComposer
 {
     Q_OBJECT
     Q_PROPERTY(int x READ x WRITE setX NOTIFY xChanged)
@@ -13,7 +14,7 @@ class BlockComposer : public QObject
     Q_PROPERTY(int width READ width WRITE setWidth NOTIFY widthChanged)
     Q_PROPERTY(int height READ height WRITE setHeight NOTIFY heightChanged)
 public:
-    explicit BlockComposer(Block* block, QObject *parent = nullptr);
+    explicit BlockComposer(Block* block);
 private:
     Block* block;
 public:
@@ -21,6 +22,7 @@ public:
     int y();
     int width();
     int height();
+    QGraphicsItem* getOriginalGraphicsItem() const override;
 
     void setX(int value);
     void setY(int value);

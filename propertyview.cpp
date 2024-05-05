@@ -15,6 +15,7 @@
 #include <QSpinBox>
 #include <QCheckBox>
 #include <QFormLayout>
+#include <QPushButton>
 
 PropertyView::PropertyView(QGroupBox* groupBox) {
     this->groupBox = groupBox;
@@ -23,11 +24,7 @@ PropertyView::PropertyView(QGroupBox* groupBox) {
 }
 
 void PropertyView::clearView(){
-    for (const auto &connection : connections) {
-        QObject::disconnect(connection);
-    }
-
-    connections.clear();
+    disconnectAll();
 
     QLayout *layout = groupBox->layout();
     if (!layout)
@@ -46,6 +43,14 @@ void PropertyView::clearView(){
     }
 }
 
+void PropertyView::disconnectAll() {
+    for (const auto &connection : connections) {
+        QObject::disconnect(connection);
+    }
+
+    connections.clear();
+}
+
 void PropertyView::addTextToLayout(const QString &text) {
     QLayout* layout = groupBox->layout();
     QLabel *label = new QLabel(text);
@@ -55,7 +60,7 @@ void PropertyView::addTextToLayout(const QString &text) {
 }
 
 
-void PropertyView::prepareView(QObject *object)
+void PropertyView::prepareView(GraphicsItemComposer *object)
 {
     auto* layout = groupBox->layout();
 
@@ -134,6 +139,14 @@ void PropertyView::prepareView(QObject *object)
         }
     }
 
+    auto* deleteBtn = new QPushButton("Delete");
+    groupBox->layout()->addWidget(deleteBtn);
+
+    connections.append(connect(deleteBtn, &QPushButton::clicked, this, [object, this](){
+        this->groupBox->hide();
+        this->clearView();
+        emit itemDeleted(object->getOriginalGraphicsItem());
+    }));
 }
 
 void PropertyView::setPaused(bool isPaused)
@@ -155,7 +168,6 @@ void PropertyView::processSelectedItem(QGraphicsItem *selectedItem)
         return;
     }
     currentObject = selectedItem;
-    qDebug() << "Some item selected" << selectedItem;
     clearView();
 
     if(auto* block = dynamic_cast<Block*>(selectedItem); block){

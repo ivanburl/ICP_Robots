@@ -70,6 +70,7 @@ void MainWindow::handleLoadRoom(){
 
     disconnect(currentRoom, &Room::itemSelected, propertiesWidget, &PropertyView::processSelectedItem);
     disconnect(currentRoom, &Room::itemSelected, this, &MainWindow::handlePropertiesViewToggle);
+    disconnect(this->propertiesWidget, &PropertyView::itemDeleted, currentRoom, &Room::processItemToDelete);
 
     auto* roomDto = RoomDto::fromJsonObject(*jsonObject);
 
@@ -97,6 +98,7 @@ void MainWindow::configurePropertyViewConnections()
 {
     connect(currentRoom, &Room::itemSelected, propertiesWidget, &PropertyView::processSelectedItem);
     connect(currentRoom, &Room::itemSelected, this, &MainWindow::handlePropertiesViewToggle);
+    connect(this->propertiesWidget, &PropertyView::itemDeleted, currentRoom, &Room::processItemToDelete);
 }
 
 void MainWindow::handlePropertiesViewToggle()

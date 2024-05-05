@@ -127,14 +127,13 @@ Scene* Room::scene(){
 }
 
 void Room::addRobot(Robot *robot) {
-        robots.append(robot);
-        graphicsScene->addItem(robot);
+    robots.append(robot);
+    graphicsScene->addItem(robot);
 }
 
 void Room::addBlock(Block *block) {
-        blocks.append(block);
-        graphicsScene->addItem(block);
-
+    blocks.append(block);
+    graphicsScene->addItem(block);
 }
 
 void Room::reset() {
@@ -175,4 +174,14 @@ void Room::removeBlock(Block *block) {
 
 void Room::processClickedItem(QGraphicsItem* newItem){
     emit itemSelected(newItem);
+}
+
+void Room::processItemToDelete(QGraphicsItem *item)
+{
+    if(auto* robot = dynamic_cast<Robot*>(item)){
+        this->removeRobot(robot);
+    }
+    else if(auto* block = dynamic_cast<Block*>(item)){
+        this->removeBlock(block);
+    }
 }

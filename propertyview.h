@@ -1,6 +1,7 @@
 #ifndef PROPERTYVIEW_H
 #define PROPERTYVIEW_H
 
+#include "graphicsitemcomposer.h"
 #include <QGroupBox>
 #include <QGraphicsItem>
 
@@ -13,8 +14,9 @@ public:
 private:
     void processPause(bool isPaused);
     void clearView();
+    void disconnectAll();
     void addTextToLayout(const QString &text);
-    void prepareView(QObject* robot);
+    void prepareView(GraphicsItemComposer* robot);
 
     QGroupBox* groupBox;
     QGraphicsItem* currentObject;
@@ -23,6 +25,8 @@ private:
     void disconnectObjectConnections(QObject *object);
 public slots:
     void processSelectedItem(QGraphicsItem* selectedItem);
+signals:
+    void itemDeleted(QGraphicsItem* itemToDelete);
 };
 
 #endif // PROPERTYVIEW_H

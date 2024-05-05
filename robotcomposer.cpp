@@ -1,7 +1,6 @@
 #include "robotcomposer.h"
 
-RobotComposer::RobotComposer(Robot* robot, QObject *parent)
-    : QObject{parent}
+RobotComposer::RobotComposer(Robot* robot)
 {
     this->robot = robot;
     connect(this->robot->getSignalSender(), &SignalSender::itemMoved, this, &RobotComposer::itemMoved);
@@ -35,6 +34,9 @@ double RobotComposer::getRobotCenterY() const{
 }
 double RobotComposer::getRobotRotation() const{
     return robot->getRotationAngle();
+}
+QGraphicsItem *RobotComposer::getOriginalGraphicsItem() const{
+    return robot;
 }
 
 void RobotComposer::setRobotCenterX(double x){

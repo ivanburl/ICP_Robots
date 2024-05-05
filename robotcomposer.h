@@ -1,10 +1,11 @@
 #ifndef ROBOTCOMPOSER_H
 #define ROBOTCOMPOSER_H
 
+#include "graphicsitemcomposer.h"
 #include "robot.h"
 #include <QObject>
 
-class RobotComposer : public QObject
+class RobotComposer : public GraphicsItemComposer
 {
     Q_OBJECT
     Q_PROPERTY(double X READ getRobotCenterX WRITE setRobotCenterX NOTIFY robotCenterXChanged)
@@ -18,7 +19,7 @@ class RobotComposer : public QObject
     Q_PROPERTY(double RotationAngle READ getRobotRotation WRITE setRobotRotation NOTIFY robotRotationChanged)
 
 public:
-    explicit RobotComposer(Robot *robot, QObject *parent = nullptr);
+    explicit RobotComposer(Robot *robot);
     double getRobotRadius() const;
     double getRobotMovementSpeed() const;
     double getRobotRotationSpeed() const;
@@ -28,6 +29,7 @@ public:
     double getRobotCenterX() const;
     double getRobotCenterY() const;
     double getRobotRotation() const;
+    QGraphicsItem* getOriginalGraphicsItem() const override;
 
     void setRobotCenterX(double x);
     void setRobotCenterY(double y);

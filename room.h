@@ -49,6 +49,8 @@ public:
     void play() override;
 private slots:
     void processClickedItem(QGraphicsItem* item);
+public slots:
+    void processItemToDelete(QGraphicsItem* item);
 public:
     bool isValidState();
 };

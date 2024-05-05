@@ -64,6 +64,7 @@ else()
             signalsender.h signalsender.cpp
             robotcomposer.h robotcomposer.cpp
             resizablegraphicsview.h resizablegraphicsview.cpp
+            graphicsitemcomposer.h
 
         )
     endif()

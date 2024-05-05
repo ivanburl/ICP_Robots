@@ -1,7 +1,6 @@
 #include "blockcomposer.h"
 
-BlockComposer::BlockComposer(Block* block, QObject *parent)
-    : QObject{parent}
+BlockComposer::BlockComposer(Block* block)
 {
     this->block = block;
     connect(block->getSignalSender(), &SignalSender::itemMoved, this, &BlockComposer::itemMoved);
@@ -19,6 +18,9 @@ int BlockComposer::width(){
 }
 int BlockComposer::height(){
     return block->rect().height();
+}
+QGraphicsItem *BlockComposer::getOriginalGraphicsItem() const{
+    return block;
 }
 
 void BlockComposer::setX(int value){
