@@ -52,6 +52,9 @@ void Block::update(long long deltaMilliseconds) {
         }
 
         this->setRect(0,0,width,height);
+        if(currentPressedKey != -1){
+            signalSender->sendUpdateExceptLocation();
+        }
         this->currentPressedKey = -1;
     }
 }
