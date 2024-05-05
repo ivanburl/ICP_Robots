@@ -126,31 +126,24 @@ Scene* Room::scene(){
     return graphicsScene;
 }
 
-bool Room::addRobot(Robot *robot) {
-    bool toAdd = validateState(nullptr); //TODO
-    if (toAdd) {
+void Room::addRobot(Robot *robot) {
         robots.append(robot);
         graphicsScene->addItem(robot);
-    }
-    return toAdd;
 }
 
-bool Room::addBlock(Block *block) {
-    bool toAdd = validateState(nullptr); //TODO
-    if (toAdd) {
+void Room::addBlock(Block *block) {
         blocks.append(block);
         graphicsScene->addItem(block);
-    }
-    return toAdd;
+
 }
 
 void Room::reset() {
     for (auto block: blocks) {
-        this->removeItem(block);
+        this->scene()->removeItem(block);
         delete block;
     }
     for (auto robot: robots) {
-        this->removeItem(robot);
+        this->scene()->removeItem(robot);
         delete robot;
     }
     blocks.clear();
@@ -160,7 +153,7 @@ void Room::reset() {
 void Room::removeRobot(Robot *robot) {
     for (int i = 0; i < robots.size(); i++) {
         if (robots[i] == robot) {
-            this->removeItem(robots[i]);
+            this->scene()->removeItem(robots[i]);
             delete robots[i];
             robots.removeAt(i);
             i--;
@@ -171,7 +164,7 @@ void Room::removeRobot(Robot *robot) {
 void Room::removeBlock(Block *block) {
     for (int i = 0; i < blocks.size(); i++) {
         if (blocks[i] == block) {
-            this->removeItem(blocks[i]);
+            this->scene()->removeItem(blocks[i]);
             delete blocks[i];
             blocks.removeAt(i);
             i--;

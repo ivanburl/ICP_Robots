@@ -23,11 +23,6 @@ private:
 public:
     Block(Room *room, double x, double y, double w, double h);
 
-        this->setPos(x, y);
-        this->setFlag(QGraphicsItem::ItemIsSelectable, true);
-        this->setFlag(QGraphicsItem::ItemIsMovable, true);
-    }
-
 public:
     BlockDto *GetDtoObject() override;
 

@@ -16,6 +16,7 @@ Block::Block(Room *room, double x, double y, double w, double h) : QGraphicsRect
     this->setFlag(QGraphicsItem::ItemIsSelectable, true);
     this->setFlag(QGraphicsItem::ItemIsFocusable, true);
     this->setFlag(QGraphicsItem::ItemIsMovable, true);
+    this->signalSender = new SignalSender;
 }
 
 BlockDto *Block::GetDtoObject() {

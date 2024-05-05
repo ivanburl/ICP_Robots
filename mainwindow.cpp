@@ -113,10 +113,10 @@ void MainWindow::on_actionAdd_robot_triggered() {
         return;
     }
 
-    double size = (currentRoom->width() + currentRoom->height()) / 2;
+    double size = (currentRoom->scene()->width() + currentRoom->scene()->height()) / 2;
     auto *robot = new Robot(
         currentRoom,
-        currentRoom->width()/2, currentRoom->height()/2,  size*0.07, size*0.1, 90, 0,
+        currentRoom->scene()->width()/2, currentRoom->scene()->height()/2,  size*0.07, size*0.1, 90, 0,
         size/10, 12, 180
     );
     currentRoom->addRobot(robot);
@@ -132,10 +132,10 @@ void MainWindow::on_actionAdd_block_triggered() {
         msgbox.exec();
         return;
     }
-    double size = (currentRoom->width() + currentRoom->height()) / 2;
+    double size = (currentRoom->scene()->width() + currentRoom->scene()->height()) / 2;
     auto *block = new Block(
         currentRoom,
-        currentRoom->width()/2, currentRoom->height()/2, size*0.05, size*0.05);
+        currentRoom->scene()->width()/2, currentRoom->scene()->height()/2, size*0.05, size*0.05);
     currentRoom->addBlock(block);
     resizeEvent(nullptr);
 }
