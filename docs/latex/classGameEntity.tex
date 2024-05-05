@@ -1,0 +1,74 @@
+\hypertarget{classGameEntity}{}\doxysection{Game\+Entity Class Reference}
+\label{classGameEntity}\index{GameEntity@{GameEntity}}
+
+
+{\ttfamily \#include $<$gameentity.\+h$>$}
+
+
+
+Inheritance diagram for Game\+Entity\+:
+% FIG 0
+
+
+Collaboration diagram for Game\+Entity\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classGameEntity_a4e0de814514a064e2fb5d0e27d67565a}\label{classGameEntity_a4e0de814514a064e2fb5d0e27d67565a}} 
+void {\bfseries start} (int fps)
+\item 
+virtual void \mbox{\hyperlink{classGameEntity_a39053750305ecb34afe77a64648b842e}{fixed\+Update}} (long long delta\+Milliseonds)=0
+\item 
+virtual void \mbox{\hyperlink{classGameEntity_af8d4b994201bd23b8828ad4f49a8a7b4}{update}} (long long delta\+Milliseconds)=0
+\item 
+void \mbox{\hyperlink{classGameEntity_a9a75277c1021f520e64212e89927b411}{stop}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Entity with ability to peridiocally update and pause 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classGameEntity_a39053750305ecb34afe77a64648b842e}\label{classGameEntity_a39053750305ecb34afe77a64648b842e}} 
+\index{GameEntity@{GameEntity}!fixedUpdate@{fixedUpdate}}
+\index{fixedUpdate@{fixedUpdate}!GameEntity@{GameEntity}}
+\doxysubsubsection{\texorpdfstring{fixedUpdate()}{fixedUpdate()}}
+{\footnotesize\ttfamily virtual void Game\+Entity\+::fixed\+Update (\begin{DoxyParamCaption}\item[{long long}]{delta\+Milliseonds }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+main game logic loop of the entity, runs with fixed fps 
+\begin{DoxyParams}{Parameters}
+{\em delta\+Milliseonds} & milliseconds passed after last frame \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classRoom_a9c279255601506e426811eb9a14b683c}{Room}}, \mbox{\hyperlink{classRobot_ad4642fc3e65ac12093394ad610e37591}{Robot}}, and \mbox{\hyperlink{classBlock_a247a8097bc939a52008191daf7c73e5e}{Block}}.
+
+\mbox{\Hypertarget{classGameEntity_a9a75277c1021f520e64212e89927b411}\label{classGameEntity_a9a75277c1021f520e64212e89927b411}} 
+\index{GameEntity@{GameEntity}!stop@{stop}}
+\index{stop@{stop}!GameEntity@{GameEntity}}
+\doxysubsubsection{\texorpdfstring{stop()}{stop()}}
+{\footnotesize\ttfamily void Game\+Entity\+::stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+stop all updates of the entity \mbox{\Hypertarget{classGameEntity_af8d4b994201bd23b8828ad4f49a8a7b4}\label{classGameEntity_af8d4b994201bd23b8828ad4f49a8a7b4}} 
+\index{GameEntity@{GameEntity}!update@{update}}
+\index{update@{update}!GameEntity@{GameEntity}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily virtual void Game\+Entity\+::update (\begin{DoxyParamCaption}\item[{long long}]{delta\+Milliseconds }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Runs with maximum fps (targeting 1000 fps), great for graphical updates and listening to keyborad signals 
+\begin{DoxyParams}{Parameters}
+{\em delta\+Milliseconds} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classRoom_a69ec4fbec7f7976ae940fe3532d36a0b}{Room}}, \mbox{\hyperlink{classRobot_a010da0076a145bea1014a65dc831186d}{Robot}}, and \mbox{\hyperlink{classBlock_a59eaa31f2775b348dcf43be7b72a92fd}{Block}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{gameentity_8h}{gameentity.\+h}}\item 
+\mbox{\hyperlink{gameentity_8cpp}{gameentity.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,141 @@
+\hypertarget{classBlock}{}\doxysection{Block Class Reference}
+\label{classBlock}\index{Block@{Block}}
+
+
+{\ttfamily \#include $<$block.\+h$>$}
+
+
+
+Inheritance diagram for Block\+:
+% FIG 0
+
+
+Collaboration diagram for Block\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classBlock_a5075cf7639081917edd716e55b9edf43}\label{classBlock_a5075cf7639081917edd716e55b9edf43}} 
+{\bfseries Block} (\mbox{\hyperlink{classRoom}{Room}} $\ast$room, double x, double y, double w, double h)
+\item 
+\mbox{\Hypertarget{classBlock_a936782d9f39de82b9c981e3aea86764b}\label{classBlock_a936782d9f39de82b9c981e3aea86764b}} 
+\mbox{\hyperlink{classBlockDto}{Block\+Dto}} $\ast$ {\bfseries Get\+Dto\+Object} () override
+\item 
+void \mbox{\hyperlink{classBlock_a59eaa31f2775b348dcf43be7b72a92fd}{update}} (long long delta\+Milliseconds) override
+\item 
+void \mbox{\hyperlink{classBlock_a247a8097bc939a52008191daf7c73e5e}{fixed\+Update}} (long long delta\+Milliseonds) override
+\item 
+void \mbox{\hyperlink{classBlock_a0cc9d25f22e379f954f0b51f8a573516}{pause}} () override
+\item 
+void \mbox{\hyperlink{classBlock_a30d888fa1551bcb9bb6ccf05dcdd10b3}{play}} () override
+\item 
+\mbox{\Hypertarget{classBlock_a13c8bd4542f26dbf3838cc63ed408b29}\label{classBlock_a13c8bd4542f26dbf3838cc63ed408b29}} 
+void {\bfseries key\+Press\+Event} (QKey\+Event $\ast$event) override
+\item 
+\mbox{\Hypertarget{classBlock_a8be63c64d4754790120c2b5b20ac51af}\label{classBlock_a8be63c64d4754790120c2b5b20ac51af}} 
+void {\bfseries key\+Release\+Event} (QKey\+Event $\ast$event) override
+\item 
+\mbox{\Hypertarget{classBlock_aa354dbd1e285faa513b06605d6162652}\label{classBlock_aa354dbd1e285faa513b06605d6162652}} 
+int {\bfseries x} ()
+\item 
+\mbox{\Hypertarget{classBlock_ae14c7b2fe0d3ec5ba2bf280a517e82d2}\label{classBlock_ae14c7b2fe0d3ec5ba2bf280a517e82d2}} 
+int {\bfseries y} ()
+\item 
+\mbox{\Hypertarget{classBlock_a72971705841cc724a0711ec60ab2dba4}\label{classBlock_a72971705841cc724a0711ec60ab2dba4}} 
+int {\bfseries width} ()
+\item 
+\mbox{\Hypertarget{classBlock_aebcb8cc0d2edd7525f4963633e408f6a}\label{classBlock_aebcb8cc0d2edd7525f4963633e408f6a}} 
+int {\bfseries height} ()
+\item 
+\mbox{\Hypertarget{classBlock_a6fc60e64ce5c2e00312c16aaa83642ce}\label{classBlock_a6fc60e64ce5c2e00312c16aaa83642ce}} 
+void {\bfseries setX} (int value)
+\item 
+\mbox{\Hypertarget{classBlock_a679a393e44e444b322decdfe60345ef0}\label{classBlock_a679a393e44e444b322decdfe60345ef0}} 
+void {\bfseries setY} (int value)
+\item 
+\mbox{\Hypertarget{classBlock_a0a9041ebbde3792ccf6e6a3ad88b6c31}\label{classBlock_a0a9041ebbde3792ccf6e6a3ad88b6c31}} 
+void {\bfseries set\+Width} (int value)
+\item 
+\mbox{\Hypertarget{classBlock_ad55d129405326fb7fd48b61e3d83ab68}\label{classBlock_ad55d129405326fb7fd48b61e3d83ab68}} 
+void {\bfseries set\+Height} (int value)
+\item 
+\mbox{\Hypertarget{classBlock_a970fa3e6d0181e2ddd0c1003d4d16c13}\label{classBlock_a970fa3e6d0181e2ddd0c1003d4d16c13}} 
+\mbox{\hyperlink{classSignalSender}{Signal\+Sender}} $\ast$ {\bfseries get\+Signal\+Sender} ()
+\item 
+\mbox{\Hypertarget{classBlock_a6b3efe8a22978becb1eaaf31b2d92357}\label{classBlock_a6b3efe8a22978becb1eaaf31b2d92357}} 
+void {\bfseries mouse\+Move\+Event} (QGraphics\+Scene\+Mouse\+Event $\ast$event) override
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classBlock_aa8e730c2e307427ec35fe2cb3e5bce1c}\label{classBlock_aa8e730c2e307427ec35fe2cb3e5bce1c}} 
+static \mbox{\hyperlink{classBlock}{Block}} $\ast$ {\bfseries from\+Dto\+Object} (\mbox{\hyperlink{classBlockDto}{Block\+Dto}} dto\+Object, \mbox{\hyperlink{classRoom}{Room}} $\ast$room)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classBlock_ae0300741bb0cc22dee17b1dd9e800a87}\label{classBlock_ae0300741bb0cc22dee17b1dd9e800a87}} 
+static QBrush {\bfseries DEFAULT\+\_\+\+BLOCK\+\_\+\+BRUSH} = QBrush(Qt\+::light\+Gray)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Entity which represent block (static collider) 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBlock_a247a8097bc939a52008191daf7c73e5e}\label{classBlock_a247a8097bc939a52008191daf7c73e5e}} 
+\index{Block@{Block}!fixedUpdate@{fixedUpdate}}
+\index{fixedUpdate@{fixedUpdate}!Block@{Block}}
+\doxysubsubsection{\texorpdfstring{fixedUpdate()}{fixedUpdate()}}
+{\footnotesize\ttfamily void Block\+::fixed\+Update (\begin{DoxyParamCaption}\item[{long long}]{delta\+Milliseonds }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+main game logic loop of the entity, runs with fixed fps 
+\begin{DoxyParams}{Parameters}
+{\em delta\+Milliseonds} & milliseconds passed after last frame \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classGameEntity_a39053750305ecb34afe77a64648b842e}{Game\+Entity}}.
+
+\mbox{\Hypertarget{classBlock_a0cc9d25f22e379f954f0b51f8a573516}\label{classBlock_a0cc9d25f22e379f954f0b51f8a573516}} 
+\index{Block@{Block}!pause@{pause}}
+\index{pause@{pause}!Block@{Block}}
+\doxysubsubsection{\texorpdfstring{pause()}{pause()}}
+{\footnotesize\ttfamily void Block\+::pause (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+pause entity work 
+
+Reimplemented from \mbox{\hyperlink{classPausableEntity_a68344cf02dcf8b1d4ceca580397aac1b}{Pausable\+Entity}}.
+
+\mbox{\Hypertarget{classBlock_a30d888fa1551bcb9bb6ccf05dcdd10b3}\label{classBlock_a30d888fa1551bcb9bb6ccf05dcdd10b3}} 
+\index{Block@{Block}!play@{play}}
+\index{play@{play}!Block@{Block}}
+\doxysubsubsection{\texorpdfstring{play()}{play()}}
+{\footnotesize\ttfamily void Block\+::play (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+resume entity work 
+
+Reimplemented from \mbox{\hyperlink{classPausableEntity_ab273e45b1791e8978a65cef92d43e9c6}{Pausable\+Entity}}.
+
+\mbox{\Hypertarget{classBlock_a59eaa31f2775b348dcf43be7b72a92fd}\label{classBlock_a59eaa31f2775b348dcf43be7b72a92fd}} 
+\index{Block@{Block}!update@{update}}
+\index{update@{update}!Block@{Block}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Block\+::update (\begin{DoxyParamCaption}\item[{long long}]{delta\+Milliseconds }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Runs with maximum fps (targeting 1000 fps), great for graphical updates and listening to keyborad signals 
+\begin{DoxyParams}{Parameters}
+{\em delta\+Milliseconds} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classGameEntity_af8d4b994201bd23b8828ad4f49a8a7b4}{Game\+Entity}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{block_8h}{block.\+h}}\item 
+\mbox{\hyperlink{block_8cpp}{block.\+cpp}}\end{DoxyCompactItemize}
