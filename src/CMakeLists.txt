@@ -14,15 +14,15 @@ find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
 set(PROJECT_SOURCES
-        main.cpp
-        room.h room.cpp
-        robot.h robot.cpp
-        block.h block.cpp
-        gameentity.cpp gameentity.h
-        updateentity.cpp updateentity.h
-        pausableentity.cpp pausableentity.h
-        mainwindow.cpp mainwindow.h
-        resizablegraphicsview.cpp resizablegraphicsview.h
+        src/main.cpp
+        src/room.h src/room.cpp
+        src/robot.h src/robot.cpp
+        src/block.h src/block.cpp
+        src/gameentity.cpp src/gameentity.h
+        src/updateentity.cpp src/updateentity.h
+        src/pausableentity.cpp src/pausableentity.h
+        src/mainwindow.cpp src/mainwindow.h
+        src/resizablegraphicsview.cpp src/resizablegraphicsview.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -44,27 +44,27 @@ else()
     else()
         add_executable(robots
             ${PROJECT_SOURCES}
-            mainwindow.h mainwindow.cpp mainwindow.ui
-            room.h room.cpp
-            robot.h robot.cpp
-            block.h block.cpp
-            DtoMap.h
-            robotdto.h robotdto.cpp
-            blockdto.h blockdto.cpp
-            Serializable.h
-            roomdto.h roomdto.cpp
-            jsonfileaccessor.h jsonfileaccessor.cpp
-            gameentity.h gameentity.cpp
-            pausableentity.h pausableentity.cpp
-            updateentity.h
-            propertyview.h propertyview.cpp
-            blockcomposer.h blockcomposer.cpp
-            scene.h scene.cpp
+                src/mainwindow.h src/mainwindow.cpp src/mainwindow.ui
+                src/room.h src/room.cpp
+                src/robot.h src/robot.cpp
+                src/block.h src/block.cpp
+                src/DtoMap.h
+                src/robotdto.h src/robotdto.cpp
+                src/blockdto.h src/blockdto.cpp
+                src/Serializable.h
+                src/roomdto.h src/roomdto.cpp
+                src/jsonfileaccessor.h src/jsonfileaccessor.cpp
+                src/gameentity.h src/gameentity.cpp
+                src/pausableentity.h src/pausableentity.cpp
+                src/updateentity.h
+                src/propertyview.h src/propertyview.cpp
+                src/blockcomposer.h src/blockcomposer.cpp
+                src/scene.h src/scene.cpp
 
-            signalsender.h signalsender.cpp
-            robotcomposer.h robotcomposer.cpp
-            resizablegraphicsview.h resizablegraphicsview.cpp
-            graphicsitemcomposer.h
+                src/signalsender.h src/signalsender.cpp
+                src/robotcomposer.h src/robotcomposer.cpp
+                src/resizablegraphicsview.h src/resizablegraphicsview.cpp
+                src/graphicsitemcomposer.h
 
         )
     endif()
