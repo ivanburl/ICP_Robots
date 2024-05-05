@@ -1,3 +1,10 @@
+/*! VUT FIT ICP
+ * @file gameentity.cpp
+ * @brief gameentity.h implementation  
+ * @author Pavlo Butenko - xbuten00
+ * @author Ivan Burlutskyi - xburlu00
+ */
+
 #include "gameentity.h"
 
 

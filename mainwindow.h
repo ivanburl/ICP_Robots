@@ -1,3 +1,10 @@
+/*! VUT FIT ICP
+ * @file mainwindow.h
+ * @brief Main window class
+ * @author Pavlo Butenko - xbuten00
+ * @author Ivan Burlutskyi - xburlu00
+ */
+
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 

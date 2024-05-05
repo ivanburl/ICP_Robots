@@ -1,3 +1,10 @@
+/*! VUT FIT ICP
+ * @file scene.h
+ * @brief QGraphicsScene wrapper that emits signal with item pressed on on click 
+ * @author Pavlo Butenko - xbuten00
+ * @author Ivan Burlutskyi - xburlu00
+ */
+
 #ifndef SCENE_H
 #define SCENE_H
 

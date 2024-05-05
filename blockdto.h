@@ -1,3 +1,10 @@
+/*! VUT FIT ICP
+ * @file blockdto.h
+ * @brief Block game entity dto class  
+ * @author Pavlo Butenko - xbuten00
+ * @author Ivan Burlutskyi - xburlu00
+ */
+
 #ifndef BLOCKDTO_H
 #define BLOCKDTO_H
 

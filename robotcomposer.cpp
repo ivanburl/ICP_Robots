@@ -1,3 +1,10 @@
+/*! VUT FIT ICP
+ * @file robotcomposer.cpp
+ * @brief robotcomposer.h implementation
+ * @author Pavlo Butenko - xbuten00
+ * @author Ivan Burlutskyi - xburlu00
+ */
+
 #include "robotcomposer.h"
 
 RobotComposer::RobotComposer(Robot* robot)

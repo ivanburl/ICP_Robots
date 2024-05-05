@@ -1,3 +1,10 @@
+/*! VUT FIT ICP
+ * @file mainwindow.cpp
+ * @brief mainwindow.h implementation
+ * @author Pavlo Butenko - xbuten00
+ * @author Ivan Burlutskyi - xburlu00
+ */
+
 #include "mainwindow.h"
 #include "qdebug.h"
 #include "ui_mainwindow.h"

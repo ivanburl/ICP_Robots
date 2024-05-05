@@ -1,3 +1,10 @@
+/*! VUT FIT ICP
+ * @file pausableentity.h
+ * @brief idk
+ * @author Pavlo Butenko - xbuten00
+ * @author Ivan Burlutskyi - xburlu00
+ */
+
 #ifndef PAUSABLEENTITY_H
 #define PAUSABLEENTITY_H
 

@@ -1,3 +1,10 @@
+/*! VUT FIT ICP
+ * @file scene.cpp
+ * @brief scene.h implementation  
+ * @author Pavlo Butenko - xbuten00
+ * @author Ivan Burlutskyi - xburlu00
+ */
+
 #include "scene.h"
 #include "qgraphicsitem.h"
 #include <QGraphicsSceneMouseEvent>

@@ -1,3 +1,10 @@
+/*! VUT FIT ICP
+ * @file robotdto.cpp
+ * @brief robotdto.h implementation 
+ * @author Pavlo Butenko - xbuten00
+ * @author Ivan Burlutskyi - xburlu00
+ */
+
 #include "robotdto.h"
 
 const QString RobotDto::xName = "x";

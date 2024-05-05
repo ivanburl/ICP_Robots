@@ -1,3 +1,10 @@
+/*! VUT FIT ICP
+ * @file block.cpp
+ * @brief block.h implementation
+ * @author Pavlo Butenko - xbuten00
+ * @author Ivan Burlutskyi - xburlu00
+ */
+
 #include "block.h"
 #include <qbrush.h>
 #include <QDebug>

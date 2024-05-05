@@ -1,3 +1,10 @@
+/*! VUT FIT ICP
+ * @file gameentity.h
+ * @brief idk  
+ * @author Pavlo Butenko - xbuten00
+ * @author Ivan Burlutskyi - xburlu00
+ */
+
 #ifndef GAMEENTITY_H
 #define GAMEENTITY_H
 

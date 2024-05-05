@@ -1,3 +1,10 @@
+/*! VUT FIT ICP
+ * @file propertyview.h
+ * @brief Property view management class
+ * @author Pavlo Butenko - xbuten00
+ * @author Ivan Burlutskyi - xburlu00
+ */
+
 #ifndef PROPERTYVIEW_H
 #define PROPERTYVIEW_H
 

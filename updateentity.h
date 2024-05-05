@@ -1,3 +1,10 @@
+/*! VUT FIT ICP
+ * @file updateentity.h
+ * @brief idk 
+ * @author Pavlo Butenko - xbuten00
+ * @author Ivan Burlutskyi - xburlu00
+ */
+
 #ifndef UPDATEENTITY_H
 #define UPDATEENTITY_H
 
