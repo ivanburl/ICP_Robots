@@ -30,8 +30,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->actionSave, &QAction::triggered, this, &MainWindow::handleSaveRoom);
     connect(ui->actionLoad, &QAction::triggered, this, &MainWindow::handleLoadRoom);
     connect(ui->actionReset, &QAction::triggered, this, &MainWindow::handleResetRoom);
-    connect(currentRoom, &Room::itemSelected, propertiesWidget, &PropertyView::processSelectedItem);
-    connect(currentRoom, &Room::itemSelected, this, &MainWindow::handlePropertiesViewToggle);
+    configurePropertyViewConnections();
     currentRoom->start(60);
 }
 
@@ -68,11 +67,16 @@ void MainWindow::handleLoadRoom(){
     if(!jsonObject)
         return;
 
+    disconnect(currentRoom, &Room::itemSelected, propertiesWidget, &PropertyView::processSelectedItem);
+    disconnect(currentRoom, &Room::itemSelected, this, &MainWindow::handlePropertiesViewToggle);
+
     auto* roomDto = RoomDto::fromJsonObject(*jsonObject);
 
     currentRoom = Room::fromDtoObject(*roomDto);
 
     ui->graphicsView->setScene(currentRoom->scene());
+    currentRoom->start(60);
+    configurePropertyViewConnections();
     resizeEvent(nullptr);
 }
 
@@ -86,6 +90,12 @@ void MainWindow::resizeEvent(QResizeEvent *event) {
 
     qDebug() << "Resize event caught" << ui->graphicsView->width() << " " << ui->graphicsView->height();
     ui->graphicsView->fitInView(currentRoom->scene()->sceneRect());
+}
+
+void MainWindow::configurePropertyViewConnections()
+{
+    connect(currentRoom, &Room::itemSelected, propertiesWidget, &PropertyView::processSelectedItem);
+    connect(currentRoom, &Room::itemSelected, this, &MainWindow::handlePropertiesViewToggle);
 }
 
 void MainWindow::handlePropertiesViewToggle()

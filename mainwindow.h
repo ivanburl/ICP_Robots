@@ -30,6 +30,9 @@ public slots:
 protected:
     void resizeEvent(QResizeEvent *event) override;
 
+private:
+    void configurePropertyViewConnections();
+
 private slots:
     void handlePropertiesViewToggle();
     void on_actionAdd_robot_triggered();
