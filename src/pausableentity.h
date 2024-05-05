@@ -35,7 +35,7 @@ public:
     virtual void pause();
 
     /**
-     * Whther entity is pause
+     * Whether entity is paused
      * @return true if pause, otherwise false
      */
     bool isPaused() const;

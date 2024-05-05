@@ -12,6 +12,10 @@
 
 class Serializable{
 public:
+    /**
+     * Converts object to QJsonObject
+     * @result resulting QJsonObject
+     */
     virtual QJsonObject toJsonObject() const = 0;
 };
 

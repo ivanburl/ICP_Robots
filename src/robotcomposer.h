@@ -52,8 +52,17 @@ private:
     Robot* robot;
 
 private slots:
+    /**
+     * Listens for signal when source robot graphics item is moved
+     */
     void itemMoved();
+    /**
+     * Listens for signal when all source robot graphics item's properties are updated except location
+     */
     void updateExceptLocation();
+    /**
+     * Listens for signal when source robot graphics item is rotated
+     */
     void updateRotationAngle();
 
 signals:

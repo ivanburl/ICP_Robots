@@ -15,7 +15,18 @@ class JsonFileAccessor
 {
 public:
     JsonFileAccessor();
+    /**
+     * Reads QJsonObject from file
+     * @param filePath - file path
+     * @return resulting QJsonObject
+     */
     QJsonObject* ReadFromFile(QString filePath);
+    /**
+     * Writes QJsonObject to file
+     * @param filePath - file path
+     * @param object - object to be written to file
+     * @return if the operation succeded
+     */
     bool WriteToFile(QString filePath, QJsonObject object);
 };
 
