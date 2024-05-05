@@ -1,3 +1,10 @@
+/*! VUT FIT ICP
+ * @file blockcomposer.h
+ * @brief Block game entity binding class for property view  
+ * @author Pavlo Butenko - xbuten00
+ * @author Ivan Burlutskyi - xburlu00
+ */
+
 #ifndef BLOCKCOMPOSER_H
 #define BLOCKCOMPOSER_H
 

@@ -1,3 +1,10 @@
+/*! VUT FIT ICP
+ * @file blockcomposer.cpp
+ * @brief blockcomposer.h implementation
+ * @author Pavlo Butenko - xbuten00
+ * @author Ivan Burlutskyi - xburlu00
+ */
+
 #include "blockcomposer.h"
 
 BlockComposer::BlockComposer(Block* block)

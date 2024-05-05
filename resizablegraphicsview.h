@@ -1,3 +1,10 @@
+/*! VUT FIT ICP
+ * @file resizablegraphicsview.h
+ * @brief idk
+ * @author Pavlo Butenko - xbuten00
+ * @author Ivan Burlutskyi - xburlu00
+ */
+
 #ifndef RESIZABLEGRAPHICSVIEW_H
 #define RESIZABLEGRAPHICSVIEW_H
 

@@ -1,3 +1,10 @@
+/*! VUT FIT ICP
+ * @file roomdto.h
+ * @brief Room dto class  
+ * @author Pavlo Butenko - xbuten00
+ * @author Ivan Burlutskyi - xburlu00
+ */
+
 #ifndef ROOMDTO_H
 #define ROOMDTO_H
 

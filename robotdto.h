@@ -1,3 +1,10 @@
+/*! VUT FIT ICP
+ * @file robotdto.h
+ * @brief Robot game entity dto class  
+ * @author Pavlo Butenko - xbuten00
+ * @author Ivan Burlutskyi - xburlu00
+ */
+
 #ifndef ROBOTDTO_H
 #define ROBOTDTO_H
 

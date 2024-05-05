@@ -1,3 +1,10 @@
+/*! VUT FIT ICP
+ * @file propertyview.cpp
+ * @brief propertyview.h implementation
+ * @author Pavlo Butenko - xbuten00
+ * @author Ivan Burlutskyi - xburlu00
+ */
+
 #include "propertyview.h"
 #include "block.h"
 #include "blockcomposer.h"

@@ -1,3 +1,10 @@
+/*! VUT FIT ICP
+ * @file block.h
+ * @brief Block game entity header file
+ * @author Pavlo Butenko - xbuten00
+ * @author Ivan Burlutskyi - xburlu00
+ */
+
 #ifndef BLOCK_H
 #define BLOCK_H
 

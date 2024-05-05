@@ -1,3 +1,10 @@
+/*! VUT FIT ICP
+ * @file room.cpp
+ * @brief room.h implementation  
+ * @author Pavlo Butenko - xbuten00
+ * @author Ivan Burlutskyi - xburlu00
+ */
+
 #include "room.h"
 #include <QJsonDocument>
 #include <QDebug>

@@ -1,3 +1,10 @@
+/*! VUT FIT ICP
+ * @file main.cpp
+ * @brief Project main file  
+ * @author Pavlo Butenko - xbuten00
+ * @author Ivan Burlutskyi - xburlu00
+ */
+
 #include "mainwindow.h"
 #include "robot.h"
 #include "room.h"

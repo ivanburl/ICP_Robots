@@ -1,3 +1,10 @@
+/*! VUT FIT ICP
+ * @file roomdto.cpp
+ * @brief roomdto.h implementation  
+ * @author Pavlo Butenko - xbuten00
+ * @author Ivan Burlutskyi - xburlu00
+ */
+
 #include "roomdto.h"
 #include <QJsonArray>
 

@@ -1,3 +1,10 @@
+/*! VUT FIT ICP
+ * @file jsonfileaccessor.cpp
+ * @brief jsonfileaccessor.h implementation  
+ * @author Pavlo Butenko - xbuten00
+ * @author Ivan Burlutskyi - xburlu00
+ */
+
 #include "jsonfileaccessor.h"
 #include <QFile>
 #include <QJsonDocument>

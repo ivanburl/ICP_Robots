@@ -1,3 +1,10 @@
+/*! VUT FIT ICP
+ * @file updateentity.cpp
+ * @brief updateentity.h implementation 
+ * @author Pavlo Butenko - xbuten00
+ * @author Ivan Burlutskyi - xburlu00
+ */
+
 #include "updateentity.h"
 
 UpdateEntity::UpdateEntity(std::function<void(long long)> update) {

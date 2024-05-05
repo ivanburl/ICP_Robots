@@ -1,3 +1,10 @@
+/*! VUT FIT ICP
+ * @file robot.cpp
+ * @brief robot.h implementation
+ * @author Pavlo Butenko - xbuten00
+ * @author Ivan Burlutskyi - xburlu00
+ */
+
 #include "robot.h"
 #include "qdebug.h"
 #include "room.h"

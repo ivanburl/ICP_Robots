@@ -1,3 +1,10 @@
+/*! VUT FIT ICP
+ * @file robotcomposer.h
+ * @brief Robot game entity binding class for property view  
+ * @author Pavlo Butenko - xbuten00
+ * @author Ivan Burlutskyi - xburlu00
+ */
+
 #ifndef ROBOTCOMPOSER_H
 #define ROBOTCOMPOSER_H
 

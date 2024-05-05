@@ -1,3 +1,10 @@
+/*! VUT FIT ICP
+ * @file room.h
+ * @brief Class that contains game entites  
+ * @author Pavlo Butenko - xbuten00
+ * @author Ivan Burlutskyi - xburlu00
+ */
+
 #ifndef ROOM_H
 #define ROOM_H
 
