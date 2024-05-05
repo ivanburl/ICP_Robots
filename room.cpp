@@ -117,7 +117,7 @@ QVector<Robot *> &Room::getRobots() {
     return this->robots;
 }
 
-QVector<Block *> &Room::getBlock() {
+QVector<Block *> &Room::getBlocks() {
     return this->blocks;
 }
 

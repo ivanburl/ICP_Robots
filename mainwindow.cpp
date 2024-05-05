@@ -94,13 +94,6 @@ void MainWindow::handleResetRoom(){
     resizeEvent(nullptr);
 }
 
-void MainWindow::resizeEvent(QResizeEvent *event) {
-    QWidget::resizeEvent(event);
-
-    // qDebug() << "Resize event caught" << ui->graphicsView->width() << " " << ui->graphicsView->height();
-    // ui->graphicsView->fitInView(ui->graphicsView->scene()->sceneRect());
-}
-
 void MainWindow::configurePropertyViewConnections()
 {
     connect(currentRoom, &Room::itemSelected, propertiesWidget, &PropertyView::processSelectedItem);

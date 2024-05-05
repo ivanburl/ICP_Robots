@@ -22,6 +22,11 @@ public :
     }
 public:
     ResizableGraphicsView();
+
+    /**
+     * Scale scene items to fit them into graphic view
+     * @param event
+     */
     void resizeEvent(QResizeEvent *event) override;
 };
 

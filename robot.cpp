@@ -105,12 +105,10 @@ double Robot::getRobotCenterY() const {
 }
 
 void Robot::setRobotCenterX(double x) {
-    //this->setPos(200, 200);
     this->setPos(x, getRobotCenterY());
 }
 
 void Robot::setRobotCenterY(double y) {
-    //this->setPos(200, 200);
     this->setPos(getRobotCenterX(), y);
 }
 
@@ -238,7 +236,7 @@ bool Robot::hasDetected() const {
     auto thisPath = arcItem->mapToScene(arcItem->shape());
 
     QVector<QPainterPath> pathes;
-    for (const auto b: qAsConst(room->getBlock())) {
+    for (const auto b: qAsConst(room->getBlocks())) {
         pathes.append(b->mapToScene(b->shape()));
     }
     for (const auto r: qAsConst(room->getRobots())) {
@@ -272,7 +270,7 @@ bool Robot::isColliding() const {
     auto thisPath = robotFrameItem->mapToScene(robotFrameItem->shape());
 
     QVector<QPainterPath> pathes;
-    for (const auto b: qAsConst(room->getBlock())) {
+    for (const auto b: qAsConst(room->getBlocks())) {
         pathes.append(b->mapToScene(b->shape()));
     }
     for (const auto r: qAsConst(room->getRobots())) {
@@ -351,9 +349,11 @@ void Robot::update(long long deltaMilliseconds) {
                 leftToTurn = -abs(rotationDegreeSample);
                 break;
             case Qt::Key_Up:
+                if (hasDetected()) break;
                 moveOnDistance(deltaMilliseconds * movementSpeed / 1e3);
                 break;
             case Qt::Key_Down:
+                if (hasDetected()) break;
                 moveOnDistance(deltaMilliseconds * -movementSpeed / 1e3);
                 break;
         }
@@ -418,12 +418,7 @@ void Robot::fixedUpdate(long long deltaMilliseonds) {
 
     if (isControlled) return;
     if (hasDetected() || !moveOnDistance(deltaMilliseonds * movementSpeed / 1e3)) {
-        //HHAHA Big brain time =) TODO !!!!!!!!!!!!!!!!!
-        leftToTurn = roflDirection/360%2 == 0 ? rotationDegreeSample : -rotationDegreeSample;
-        roflDirection+= rotationDegreeSample; //it is just for mem
-
-        // leftToTurn = rotationDegreeSample;
-
+        leftToTurn = rotationDegreeSample;
         update(deltaMilliseonds);
         return;
     }
