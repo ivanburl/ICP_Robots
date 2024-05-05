@@ -10,6 +10,9 @@
 
 class Room;
 
+/**
+ * Entity which represent block (static collider)
+ */
 class Block : public QGraphicsRectItem, public GameEntity, DtoMap<BlockDto> {
 
 public:

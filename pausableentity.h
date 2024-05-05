@@ -1,6 +1,9 @@
 #ifndef PAUSABLEENTITY_H
 #define PAUSABLEENTITY_H
 
+/**
+ * Entity with ability to pause logic
+ */
 class PausableEntity
 {
 private:
@@ -8,9 +11,26 @@ private:
 public:
     PausableEntity() : isPause(true) {
     };
+
+    /**
+     * toggle pause
+     */
     void togglePause();
+
+    /**
+     * resume entity work
+     */
     virtual void play();
+
+    /**
+     * pause entity work
+     */
     virtual void pause();
+
+    /**
+     * Whther entity is pause
+     * @return true if pause, otherwise false
+     */
     bool isPaused() const;
 };
 

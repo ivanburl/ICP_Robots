@@ -5,7 +5,9 @@
 #include <qelapsedtimer.h>
 #include <qtimer.h>
 
-
+/**
+ * Entity with ability to periodically update
+ */
 class UpdateEntity : public QObject {
     Q_OBJECT
 
@@ -17,8 +19,15 @@ private:
 public:
     UpdateEntity(std::function<void(long long)> update);
 
+    /**
+     * Start the game logic loop of the entity whith specific fps
+     * @param fps - desired fps for main game logic loop
+     */
     void start(int fps);
 
+    /**
+     * Stop the updates of the entity
+     */
     void stop();
 
 private slots:

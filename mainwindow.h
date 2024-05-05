@@ -10,6 +10,9 @@ namespace Ui {
     class MainWindow;
 }
 
+/**
+ * Main window of out app
+ */
 class MainWindow : public QMainWindow {
     Q_OBJECT
 private:
@@ -26,9 +29,6 @@ public slots:
     void handleSaveRoom();
     void handleLoadRoom();
     void handleResetRoom();
-
-protected:
-    void resizeEvent(QResizeEvent *event) override;
 
 private:
     void configurePropertyViewConnections();
