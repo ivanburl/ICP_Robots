@@ -91,4 +91,4 @@ Examples could be loaded from example directory
 6) PURPLE - robot is rotating
 
 # Class diagram
-
+![image info](./icp_diagram.png)
