@@ -89,8 +89,8 @@ void MainWindow::handleResetRoom(){
 void MainWindow::resizeEvent(QResizeEvent *event) {
     QWidget::resizeEvent(event);
 
-    qDebug() << "Resize event caught" << ui->graphicsView->width() << " " << ui->graphicsView->height();
-    ui->graphicsView->fitInView(currentRoom->scene()->sceneRect());
+    // qDebug() << "Resize event caught" << ui->graphicsView->width() << " " << ui->graphicsView->height();
+    // ui->graphicsView->fitInView(ui->graphicsView->scene()->sceneRect());
 }
 
 void MainWindow::configurePropertyViewConnections()

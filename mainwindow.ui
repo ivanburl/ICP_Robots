@@ -24,12 +24,15 @@
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
-       <widget class="QGraphicsView" name="graphicsView">
+       <widget class="ResizableGraphicsView" name="graphicsView">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
           <horstretch>4</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
+        </property>
+        <property name="renderHints">
+         <set>QPainter::Antialiasing|QPainter::TextAntialiasing</set>
         </property>
        </widget>
       </item>
@@ -137,6 +140,13 @@
    </property>
   </action>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ResizableGraphicsView</class>
+   <extends>QGraphicsView</extends>
+   <header>../../../../resizablegraphicsview.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
