@@ -1,6 +1,6 @@
 /*! VUT FIT ICP
  * @file gameentity.h
- * @brief idk  
+ * @brief Entity with ability to peridiocally update and pause
  * @author Pavlo Butenko - xbuten00
  * @author Ivan Burlutskyi - xburlu00
  */

@@ -1,6 +1,6 @@
 /*! VUT FIT ICP
  * @file updateentity.h
- * @brief idk 
+ * @brief entity with ability to periodically update
  * @author Pavlo Butenko - xbuten00
  * @author Ivan Burlutskyi - xburlu00
  */

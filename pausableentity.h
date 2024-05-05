@@ -1,6 +1,6 @@
 /*! VUT FIT ICP
  * @file pausableentity.h
- * @brief idk
+ * @brief Entity with ability to pause logic
  * @author Pavlo Butenko - xbuten00
  * @author Ivan Burlutskyi - xburlu00
  */

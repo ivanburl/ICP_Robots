@@ -1,6 +1,6 @@
 /*! VUT FIT ICP
  * @file resizablegraphicsview.h
- * @brief idk
+ * @brief Graphic view impl to fit scene of any size
  * @author Pavlo Butenko - xbuten00
  * @author Ivan Burlutskyi - xburlu00
  */
