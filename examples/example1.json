@@ -1,0 +1,48 @@
+{
+    "blocks": [
+        {
+            "h": 88,
+            "w": 79,
+            "x": 329,
+            "y": 112
+        },
+        {
+            "h": 88,
+            "w": 90,
+            "x": 217,
+            "y": 355
+        },
+        {
+            "h": 59,
+            "w": 79,
+            "x": 567,
+            "y": 171
+        }
+    ],
+    "h": 600,
+    "robots": [
+        {
+            "arcDegree": 90,
+            "arcRadius": 70,
+            "currentAngleInDegrees": -31.000000000000007,
+            "movementSpeed": 70,
+            "radius": 45.97102711064975,
+            "rotationSample": 12,
+            "rotationSpeedInDegree": 180,
+            "x": 116.17146270883984,
+            "y": 86.29445813799711
+        },
+        {
+            "arcDegree": 130,
+            "arcRadius": 48.883610726562495,
+            "currentAngleInDegrees": 139.99999999999997,
+            "movementSpeed": 70,
+            "radius": 26.477644295469215,
+            "rotationSample": 12,
+            "rotationSpeedInDegree": 180,
+            "x": 672.2044728434506,
+            "y": 499.5867768595042
+        }
+    ],
+    "w": 800
+}

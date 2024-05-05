@@ -1,0 +1,76 @@
+{
+    "blocks": [
+        {
+            "h": 100,
+            "w": 100,
+            "x": 126,
+            "y": 137
+        },
+        {
+            "h": 200,
+            "w": 200,
+            "x": 540,
+            "y": 322
+        },
+        {
+            "h": 70,
+            "w": 70,
+            "x": 329,
+            "y": 270
+        },
+        {
+            "h": 150,
+            "w": 150,
+            "x": 527,
+            "y": 34
+        }
+    ],
+    "h": 600,
+    "robots": [
+        {
+            "arcDegree": 90,
+            "arcRadius": 102.90541804666486,
+            "currentAngleInDegrees": -115.00000000000004,
+            "movementSpeed": 130,
+            "radius": 48.633417984375015,
+            "rotationSample": 42,
+            "rotationSpeedInDegree": 180,
+            "x": 92.0127795527157,
+            "y": 476.0330578512398
+        },
+        {
+            "arcDegree": 90,
+            "arcRadius": 70,
+            "currentAngleInDegrees": -44.999999999999986,
+            "movementSpeed": 10,
+            "radius": 36.019502640625,
+            "rotationSample": 50,
+            "rotationSpeedInDegree": 180,
+            "x": 67.7316293929712,
+            "y": 65.70247933884298
+        },
+        {
+            "arcDegree": 90,
+            "arcRadius": 70,
+            "currentAngleInDegrees": 0,
+            "movementSpeed": 70,
+            "radius": 49.00000000000001,
+            "rotationSample": 12,
+            "rotationSpeedInDegree": 180,
+            "x": 417.891373801917,
+            "y": 521.900826446281
+        },
+        {
+            "arcDegree": 90,
+            "arcRadius": 70,
+            "currentAngleInDegrees": 9.999999999999998,
+            "movementSpeed": 101,
+            "radius": 49.00000000000001,
+            "rotationSample": 20,
+            "rotationSpeedInDegree": 50,
+            "x": 589.1373801916932,
+            "y": 254.13223140495865
+        }
+    ],
+    "w": 800
+}
