@@ -35,6 +35,7 @@ signals:
 
 private slots:
     void itemMoved();
+    void updateExceptLocation();
 };
 
 #endif // BLOCKCOMPOSER_H

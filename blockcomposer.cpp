@@ -5,6 +5,7 @@ BlockComposer::BlockComposer(Block* block, QObject *parent)
 {
     this->block = block;
     connect(block->getSignalSender(), &SignalSender::itemMoved, this, &BlockComposer::itemMoved);
+    connect(block->getSignalSender(), &SignalSender::updateExceptLocation, this, &BlockComposer::updateExceptLocation);
 }
 
 int BlockComposer::x(){
@@ -43,4 +44,10 @@ void BlockComposer::itemMoved()
 {
     emit xChanged(x());
     emit yChanged(y());
+}
+
+void BlockComposer::updateExceptLocation()
+{
+    emit widthChanged(width());
+    emit heightChanged(height());
 }
