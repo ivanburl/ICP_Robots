@@ -36,14 +36,6 @@ Room *Room::fromDtoObject(RoomDto dtoObject) {
     return room;
 }
 
-// void Room::focusItemChanged(QGraphicsItem* newFocus, QGraphicsItem* oldFocus, Qt::FocusReason focusReason){
-//     QGraphicsScene::focusItemChanged(newFocus, oldFocus, focusReason);
-//     if(!newFocus){
-//         // Focus is lost
-//         // Hide properties window
-//         return;
-//     }
-
 bool Room::isValidState() {
     for (auto r: this->robots) {
         if (r->isColliding() || r->isOutOfRoom())

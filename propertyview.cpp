@@ -19,7 +19,7 @@
 
 PropertyView::PropertyView(QGroupBox* groupBox) {
     this->groupBox = groupBox;
-    QFormLayout *layout = new QFormLayout; // Create a QVBoxLayout
+    QFormLayout *layout = new QFormLayout;
     groupBox->setLayout(layout);
 }
 
@@ -64,19 +64,15 @@ void PropertyView::prepareView(GraphicsItemComposer *object)
 {
     auto* layout = groupBox->layout();
 
-    // Get the meta-object of the object's class
     const QMetaObject *metaObject = object->metaObject();
 
     for (int i = metaObject->propertyOffset(); i < metaObject->propertyCount(); ++i) {
         const QMetaProperty metaProperty = metaObject->property(i);
 
-        // Create appropriate widget for the property type
         QWidget *widget = nullptr;
-        // qDebug() << metaProperty;
         if (metaProperty.isReadable() && metaProperty.isWritable()) {
             QMetaMethod notifySignalMethod = metaProperty.notifySignal();
 
-            // Get the method signature as QByteArray
             QByteArray notifySignalSignature = notifySignalMethod.methodSignature();
 
             const QString signalName(notifySignalSignature);
@@ -179,6 +175,7 @@ void PropertyView::processSelectedItem(QGraphicsItem *selectedItem)
     }
     else if(auto* robot = dynamic_cast<Robot*>(selectedItem); robot){
         qDebug() << "Some robot selected";
+
         auto* composer = new RobotComposer(robot);
         this->prepareView(composer);
         groupBox->show();

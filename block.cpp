@@ -20,8 +20,6 @@ Block::Block(Room *room, double x, double y, double w, double h) : QGraphicsRect
 }
 
 BlockDto *Block::GetDtoObject() {
-    qDebug() << "Im here";
-
     auto position = this->scenePos();
 
     return new BlockDto(position.x(), position.y(), this->rect().width(), this->rect().height());
