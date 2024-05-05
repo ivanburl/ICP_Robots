@@ -144,7 +144,7 @@
   <customwidget>
    <class>ResizableGraphicsView</class>
    <extends>QGraphicsView</extends>
-   <header>../../../../resizablegraphicsview.h</header>
+   <header>../../../src/resizablegraphicsview.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

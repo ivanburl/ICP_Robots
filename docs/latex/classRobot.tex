@@ -1,0 +1,351 @@
+\hypertarget{classRobot}{}\doxysection{Robot Class Reference}
+\label{classRobot}\index{Robot@{Robot}}
+
+
+{\ttfamily \#include $<$robot.\+h$>$}
+
+
+
+Inheritance diagram for Robot\+:
+% FIG 0
+
+
+Collaboration diagram for Robot\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classRobot_ade3a4b5a117f992ea6d69f27d8f7c36a}\label{classRobot_ade3a4b5a117f992ea6d69f27d8f7c36a}} 
+{\bfseries Robot} (\mbox{\hyperlink{classRoom}{Room}} $\ast$room, double x, double y, double radius, double arc\+Radius, double arc\+Degree, double angle\+In\+Deegrees, double movement\+Speed, double rotation\+Smaple, double rotation\+Speed\+Per\+Second)
+\item 
+bool \mbox{\hyperlink{classRobot_a6ae0ee956c68d11c170c335ff9d75a28}{move\+On\+Distance}} (double distance)
+\item 
+void \mbox{\hyperlink{classRobot_aabb8096f3eaadd0616838a4dcd65562e}{rotate\+On\+Angle}} (double degree)
+\item 
+bool \mbox{\hyperlink{classRobot_a6ca31fce358fa3c9e852c121d80160d8}{has\+Detected}} () const
+\item 
+bool \mbox{\hyperlink{classRobot_aca6166ebaab85bb0c416cb3717e0a178}{is\+Out\+Of\+Room}} () const
+\item 
+bool \mbox{\hyperlink{classRobot_a4dabf27af1e2a2e5220e7bf0cd980e9e}{is\+Colliding}} () const
+\item 
+bool \mbox{\hyperlink{classRobot_aa0ab11e560f3eb8570ba8bffdef00840}{is\+Rotating}} () const
+\item 
+void \mbox{\hyperlink{classRobot_a010da0076a145bea1014a65dc831186d}{update}} (long long delta\+Milliseconds) override
+\item 
+void \mbox{\hyperlink{classRobot_ad4642fc3e65ac12093394ad610e37591}{fixed\+Update}} (long long delta\+Milliseonds) override
+\item 
+void \mbox{\hyperlink{classRobot_a8742f73fd09c11893c40770a0f13cc77}{mouse\+Move\+Event}} (QGraphics\+Scene\+Mouse\+Event $\ast$event) override
+\item 
+void \mbox{\hyperlink{classRobot_a70381cbbb8825c1aad3b41ea53264a96}{mouse\+Double\+Click\+Event}} (QGraphics\+Scene\+Mouse\+Event $\ast$event) override
+\item 
+void \mbox{\hyperlink{classRobot_aa172af4e1ef64460ef01d823a7d050ba}{key\+Press\+Event}} (QKey\+Event $\ast$event) override
+\item 
+\mbox{\Hypertarget{classRobot_a2bd2f624c314dd110bfce2b7c3cbaa60}\label{classRobot_a2bd2f624c314dd110bfce2b7c3cbaa60}} 
+void {\bfseries key\+Release\+Event} (QKey\+Event $\ast$event) override
+\item 
+void \mbox{\hyperlink{classRobot_ad65e594911247aae225b3081374476c6}{take\+Control}} ()
+\item 
+void \mbox{\hyperlink{classRobot_a677fb6a0451a61f3f47e72abd626ce14}{toggle\+Control}} ()
+\item 
+\mbox{\Hypertarget{classRobot_ab64b7e303c3dde453bd35d7981a7c40e}\label{classRobot_ab64b7e303c3dde453bd35d7981a7c40e}} 
+void {\bfseries release\+Control} ()
+\item 
+\mbox{\Hypertarget{classRobot_a443bbdb10700cb376ed0dfab0c2ba27e}\label{classRobot_a443bbdb10700cb376ed0dfab0c2ba27e}} 
+double {\bfseries get\+Robot\+Radius} () const
+\item 
+\mbox{\Hypertarget{classRobot_a196b6b33e39512dc6acb9af2b132f084}\label{classRobot_a196b6b33e39512dc6acb9af2b132f084}} 
+double {\bfseries get\+Robot\+Movement\+Speed} () const
+\item 
+\mbox{\Hypertarget{classRobot_ad04a141549e4f6b597d2bbe8383fe72a}\label{classRobot_ad04a141549e4f6b597d2bbe8383fe72a}} 
+double {\bfseries get\+Robot\+Rotation\+Speed} () const
+\item 
+\mbox{\Hypertarget{classRobot_a775116a7eb1cc5762948a7ca27fe0742}\label{classRobot_a775116a7eb1cc5762948a7ca27fe0742}} 
+double {\bfseries get\+Robot\+Rotation\+Sample} () const
+\item 
+\mbox{\Hypertarget{classRobot_ab6b3fed20aef3137d4c234efe89fcd64}\label{classRobot_ab6b3fed20aef3137d4c234efe89fcd64}} 
+double {\bfseries get\+Arc\+Radius} () const
+\item 
+\mbox{\Hypertarget{classRobot_a46e058c1839ce95f9f5adddd327c0bc0}\label{classRobot_a46e058c1839ce95f9f5adddd327c0bc0}} 
+double {\bfseries get\+Arc\+Extent} () const
+\item 
+\mbox{\Hypertarget{classRobot_a119f98946a73db493ac232155abe6188}\label{classRobot_a119f98946a73db493ac232155abe6188}} 
+double {\bfseries get\+Robot\+CenterX} () const
+\item 
+\mbox{\Hypertarget{classRobot_a42d946e294e0ae6bba205bbe4008aa3c}\label{classRobot_a42d946e294e0ae6bba205bbe4008aa3c}} 
+double {\bfseries get\+Robot\+CenterY} () const
+\item 
+\mbox{\Hypertarget{classRobot_a673c3f5be91ccbc30dc19f67e60099de}\label{classRobot_a673c3f5be91ccbc30dc19f67e60099de}} 
+double {\bfseries get\+Rotation\+Angle} () const
+\item 
+\mbox{\Hypertarget{classRobot_a0d8d11e6d9cdc30e2c6dca50da61744b}\label{classRobot_a0d8d11e6d9cdc30e2c6dca50da61744b}} 
+void {\bfseries set\+Robot\+CenterX} (double x)
+\item 
+\mbox{\Hypertarget{classRobot_a922f629e813caa969a3b26f41acfb818}\label{classRobot_a922f629e813caa969a3b26f41acfb818}} 
+void {\bfseries set\+Robot\+CenterY} (double y)
+\item 
+\mbox{\Hypertarget{classRobot_ac57de000d4c95499acb6a2a753fe58c4}\label{classRobot_ac57de000d4c95499acb6a2a753fe58c4}} 
+void {\bfseries set\+Arc\+Radius} (double radius)
+\item 
+\mbox{\Hypertarget{classRobot_a0767f2656cb93aafbfe1ec5fd8b29bb2}\label{classRobot_a0767f2656cb93aafbfe1ec5fd8b29bb2}} 
+void {\bfseries set\+Robot\+Radius} (double robot\+Radius)
+\item 
+\mbox{\Hypertarget{classRobot_ad11f6d955e6daa756d46f0e35d2cae7c}\label{classRobot_ad11f6d955e6daa756d46f0e35d2cae7c}} 
+void {\bfseries set\+Arc\+Extent} (double arc\+Extent)
+\item 
+\mbox{\Hypertarget{classRobot_a258b56678fc82986be51297210a00643}\label{classRobot_a258b56678fc82986be51297210a00643}} 
+void {\bfseries set\+Robot\+Movement\+Speed} (double speed\+Per\+Sec)
+\item 
+\mbox{\Hypertarget{classRobot_adfa81259a79890d39e93a752bd4450fa}\label{classRobot_adfa81259a79890d39e93a752bd4450fa}} 
+void {\bfseries set\+Robot\+Rotation\+Speed} (double degree\+Per\+Sec)
+\item 
+\mbox{\Hypertarget{classRobot_a271199158cf99a9081a24ac072738b3c}\label{classRobot_a271199158cf99a9081a24ac072738b3c}} 
+void {\bfseries set\+Robot\+Rotation\+Sample} (double degree)
+\item 
+\mbox{\Hypertarget{classRobot_a3c6f887337243dd696d9b96288982a5c}\label{classRobot_a3c6f887337243dd696d9b96288982a5c}} 
+void {\bfseries set\+Rotation\+Angle} (double angle)
+\item 
+\mbox{\Hypertarget{classRobot_a31d4dd8af38d192659fe5dd505007d58}\label{classRobot_a31d4dd8af38d192659fe5dd505007d58}} 
+\mbox{\hyperlink{classRobotDto}{Robot\+Dto}} $\ast$ {\bfseries Get\+Dto\+Object} () override
+\item 
+void \mbox{\hyperlink{classRobot_aebd50147ae3d5fd3a1d7acf941c973c8}{pause}} () override
+\item 
+void \mbox{\hyperlink{classRobot_a1633a07a5b020fa665440a6abeb8fa4d}{play}} () override
+\item 
+QGraphics\+Ellipse\+Item $\ast$ \mbox{\hyperlink{classRobot_a2efe76723a76eb021ddff53f861137e3}{get\+Robot\+Frame\+Item}} () const
+\item 
+QGraphics\+Ellipse\+Item $\ast$ \mbox{\hyperlink{classRobot_a0f9a82b930a567b37859a4f694d90b76}{get\+Robot\+Arc\+Item}} () const
+\item 
+\mbox{\Hypertarget{classRobot_abe5c194fb621009bb307d6c54babe5c9}\label{classRobot_abe5c194fb621009bb307d6c54babe5c9}} 
+double {\bfseries get\+BaseX} ()
+\item 
+\mbox{\Hypertarget{classRobot_a5ec8e9eea7eaefbd390f5cdd642f6658}\label{classRobot_a5ec8e9eea7eaefbd390f5cdd642f6658}} 
+double {\bfseries get\+BaseY} ()
+\item 
+\mbox{\Hypertarget{classRobot_a33181562a0450942f34a722ccd8f9f47}\label{classRobot_a33181562a0450942f34a722ccd8f9f47}} 
+\mbox{\hyperlink{classSignalSender}{Signal\+Sender}} $\ast$ {\bfseries get\+Signal\+Sender} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classRobot}{Robot}} $\ast$ \mbox{\hyperlink{classRobot_a592040136ed01200df09432243117e52}{from\+Dto\+Object}} (\mbox{\hyperlink{classRobotDto}{Robot\+Dto}} dto\+Object, \mbox{\hyperlink{classRoom}{Room}} $\ast$room)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classRobot_ab20cda7c89ef77c1b595ba1b0f428d0a}\label{classRobot_ab20cda7c89ef77c1b595ba1b0f428d0a}} 
+static const QBrush {\bfseries DEFAULT\+\_\+\+ROBOT\+\_\+\+BRUSH} = QBrush(Qt\+::blue)
+\item 
+\mbox{\Hypertarget{classRobot_af82518b4dc577490c318853ac11a2e0c}\label{classRobot_af82518b4dc577490c318853ac11a2e0c}} 
+static const QBrush {\bfseries DEFAULT\+\_\+\+ROBOT\+\_\+\+ARC\+\_\+\+BRUSH} = QBrush(Qt\+::yellow)
+\item 
+\mbox{\Hypertarget{classRobot_a5ce72d5ba7973834d3c86917496c4059}\label{classRobot_a5ce72d5ba7973834d3c86917496c4059}} 
+static const QBrush {\bfseries DEFAULT\+\_\+\+ROBOT\+\_\+\+INTERSECTION\+\_\+\+BRUSH} = QBrush(Qt\+::red)
+\item 
+\mbox{\Hypertarget{classRobot_a37efc5a98b00e7d4e051799833b0babd}\label{classRobot_a37efc5a98b00e7d4e051799833b0babd}} 
+static const QBrush {\bfseries DEFAULT\+\_\+\+ROBOT\+\_\+\+CONTROLLED\+\_\+\+BRUSH} = QBrush(Qt\+::green)
+\item 
+\mbox{\Hypertarget{classRobot_a1687e4f3441d5bb515c74332674d61bf}\label{classRobot_a1687e4f3441d5bb515c74332674d61bf}} 
+static const QBrush {\bfseries DEFAULT\+\_\+\+ROBOT\+\_\+\+ROTATING\+\_\+\+BRUSH} = QBrush(Qt\+::magenta)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Entity which represent the robot (mmoving object with ability to detect and collide) 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRobot_ad4642fc3e65ac12093394ad610e37591}\label{classRobot_ad4642fc3e65ac12093394ad610e37591}} 
+\index{Robot@{Robot}!fixedUpdate@{fixedUpdate}}
+\index{fixedUpdate@{fixedUpdate}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{fixedUpdate()}{fixedUpdate()}}
+{\footnotesize\ttfamily void Robot\+::fixed\+Update (\begin{DoxyParamCaption}\item[{long long}]{delta\+Milliseonds }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+main game logic loop of the entity, runs with fixed fps 
+\begin{DoxyParams}{Parameters}
+{\em delta\+Milliseonds} & milliseconds passed after last frame \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classGameEntity_a39053750305ecb34afe77a64648b842e}{Game\+Entity}}.
+
+\mbox{\Hypertarget{classRobot_a592040136ed01200df09432243117e52}\label{classRobot_a592040136ed01200df09432243117e52}} 
+\index{Robot@{Robot}!fromDtoObject@{fromDtoObject}}
+\index{fromDtoObject@{fromDtoObject}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{fromDtoObject()}{fromDtoObject()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRobot}{Robot}} $\ast$ Robot\+::from\+Dto\+Object (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRobotDto}{Robot\+Dto}}}]{dto\+Object,  }\item[{\mbox{\hyperlink{classRoom}{Room}} $\ast$}]{room }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Static constructor for robot 
+\begin{DoxyParams}{Parameters}
+{\em dto\+Object} & \\
+\hline
+{\em room} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRobot_a0f9a82b930a567b37859a4f694d90b76}\label{classRobot_a0f9a82b930a567b37859a4f694d90b76}} 
+\index{Robot@{Robot}!getRobotArcItem@{getRobotArcItem}}
+\index{getRobotArcItem@{getRobotArcItem}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{getRobotArcItem()}{getRobotArcItem()}}
+{\footnotesize\ttfamily QGraphics\+Ellipse\+Item $\ast$ Robot\+::get\+Robot\+Arc\+Item (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Return robot arc (pie arc) \begin{DoxyReturn}{Returns}
+robot arc 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRobot_a2efe76723a76eb021ddff53f861137e3}\label{classRobot_a2efe76723a76eb021ddff53f861137e3}} 
+\index{Robot@{Robot}!getRobotFrameItem@{getRobotFrameItem}}
+\index{getRobotFrameItem@{getRobotFrameItem}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{getRobotFrameItem()}{getRobotFrameItem()}}
+{\footnotesize\ttfamily QGraphics\+Ellipse\+Item $\ast$ Robot\+::get\+Robot\+Frame\+Item (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Return robot frame (circle) \begin{DoxyReturn}{Returns}
+robot frame 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRobot_a6ca31fce358fa3c9e852c121d80160d8}\label{classRobot_a6ca31fce358fa3c9e852c121d80160d8}} 
+\index{Robot@{Robot}!hasDetected@{hasDetected}}
+\index{hasDetected@{hasDetected}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{hasDetected()}{hasDetected()}}
+{\footnotesize\ttfamily bool Robot\+::has\+Detected (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\hyperlink{classRobot}{Robot}} detection \begin{DoxyReturn}{Returns}
+true if robot has detected any colider, otherwise false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRobot_a4dabf27af1e2a2e5220e7bf0cd980e9e}\label{classRobot_a4dabf27af1e2a2e5220e7bf0cd980e9e}} 
+\index{Robot@{Robot}!isColliding@{isColliding}}
+\index{isColliding@{isColliding}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{isColliding()}{isColliding()}}
+{\footnotesize\ttfamily bool Robot\+::is\+Colliding (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\hyperlink{classRobot}{Robot}} is colliding with collider \begin{DoxyReturn}{Returns}
+true if colliding, otherwise false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRobot_aca6166ebaab85bb0c416cb3717e0a178}\label{classRobot_aca6166ebaab85bb0c416cb3717e0a178}} 
+\index{Robot@{Robot}!isOutOfRoom@{isOutOfRoom}}
+\index{isOutOfRoom@{isOutOfRoom}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{isOutOfRoom()}{isOutOfRoom()}}
+{\footnotesize\ttfamily bool Robot\+::is\+Out\+Of\+Room (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Check if robot is out of the room \begin{DoxyReturn}{Returns}
+true if robot is out of the room, otherwise false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRobot_aa0ab11e560f3eb8570ba8bffdef00840}\label{classRobot_aa0ab11e560f3eb8570ba8bffdef00840}} 
+\index{Robot@{Robot}!isRotating@{isRotating}}
+\index{isRotating@{isRotating}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{isRotating()}{isRotating()}}
+{\footnotesize\ttfamily bool Robot\+::is\+Rotating (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\hyperlink{classRobot}{Robot}} is rotatting \begin{DoxyReturn}{Returns}
+true if rotating, otherwise false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRobot_aa172af4e1ef64460ef01d823a7d050ba}\label{classRobot_aa172af4e1ef64460ef01d823a7d050ba}} 
+\index{Robot@{Robot}!keyPressEvent@{keyPressEvent}}
+\index{keyPressEvent@{keyPressEvent}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{keyPressEvent()}{keyPressEvent()}}
+{\footnotesize\ttfamily void Robot\+::key\+Press\+Event (\begin{DoxyParamCaption}\item[{QKey\+Event $\ast$}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+Control of the robot and changing of robot parameteres 
+\begin{DoxyParams}{Parameters}
+{\em event} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRobot_a70381cbbb8825c1aad3b41ea53264a96}\label{classRobot_a70381cbbb8825c1aad3b41ea53264a96}} 
+\index{Robot@{Robot}!mouseDoubleClickEvent@{mouseDoubleClickEvent}}
+\index{mouseDoubleClickEvent@{mouseDoubleClickEvent}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{mouseDoubleClickEvent()}{mouseDoubleClickEvent()}}
+{\footnotesize\ttfamily void Robot\+::mouse\+Double\+Click\+Event (\begin{DoxyParamCaption}\item[{QGraphics\+Scene\+Mouse\+Event $\ast$}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+Reqeuest focus on robot, give more info about current robot 
+\begin{DoxyParams}{Parameters}
+{\em event} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRobot_a8742f73fd09c11893c40770a0f13cc77}\label{classRobot_a8742f73fd09c11893c40770a0f13cc77}} 
+\index{Robot@{Robot}!mouseMoveEvent@{mouseMoveEvent}}
+\index{mouseMoveEvent@{mouseMoveEvent}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{mouseMoveEvent()}{mouseMoveEvent()}}
+{\footnotesize\ttfamily void Robot\+::mouse\+Move\+Event (\begin{DoxyParamCaption}\item[{QGraphics\+Scene\+Mouse\+Event $\ast$}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+Detection on movement 
+\begin{DoxyParams}{Parameters}
+{\em event} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRobot_a6ae0ee956c68d11c170c335ff9d75a28}\label{classRobot_a6ae0ee956c68d11c170c335ff9d75a28}} 
+\index{Robot@{Robot}!moveOnDistance@{moveOnDistance}}
+\index{moveOnDistance@{moveOnDistance}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{moveOnDistance()}{moveOnDistance()}}
+{\footnotesize\ttfamily bool Robot\+::move\+On\+Distance (\begin{DoxyParamCaption}\item[{double}]{distance }\end{DoxyParamCaption})}
+
+Move robot on specific distance in his current dierection 
+\begin{DoxyParams}{Parameters}
+{\em distance} & -\/ distance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if move was done successfuly, otherwise false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRobot_aebd50147ae3d5fd3a1d7acf941c973c8}\label{classRobot_aebd50147ae3d5fd3a1d7acf941c973c8}} 
+\index{Robot@{Robot}!pause@{pause}}
+\index{pause@{pause}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{pause()}{pause()}}
+{\footnotesize\ttfamily void Robot\+::pause (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+pause entity work 
+
+Reimplemented from \mbox{\hyperlink{classPausableEntity_a68344cf02dcf8b1d4ceca580397aac1b}{Pausable\+Entity}}.
+
+\mbox{\Hypertarget{classRobot_a1633a07a5b020fa665440a6abeb8fa4d}\label{classRobot_a1633a07a5b020fa665440a6abeb8fa4d}} 
+\index{Robot@{Robot}!play@{play}}
+\index{play@{play}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{play()}{play()}}
+{\footnotesize\ttfamily void Robot\+::play (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+resume entity work 
+
+Reimplemented from \mbox{\hyperlink{classPausableEntity_ab273e45b1791e8978a65cef92d43e9c6}{Pausable\+Entity}}.
+
+\mbox{\Hypertarget{classRobot_aabb8096f3eaadd0616838a4dcd65562e}\label{classRobot_aabb8096f3eaadd0616838a4dcd65562e}} 
+\index{Robot@{Robot}!rotateOnAngle@{rotateOnAngle}}
+\index{rotateOnAngle@{rotateOnAngle}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{rotateOnAngle()}{rotateOnAngle()}}
+{\footnotesize\ttfamily void Robot\+::rotate\+On\+Angle (\begin{DoxyParamCaption}\item[{double}]{degree }\end{DoxyParamCaption})}
+
+Rotate robot on specific angle 
+\begin{DoxyParams}{Parameters}
+{\em degree} & -\/ angle in degree \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRobot_ad65e594911247aae225b3081374476c6}\label{classRobot_ad65e594911247aae225b3081374476c6}} 
+\index{Robot@{Robot}!takeControl@{takeControl}}
+\index{takeControl@{takeControl}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{takeControl()}{takeControl()}}
+{\footnotesize\ttfamily void Robot\+::take\+Control (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+take control over the robot to the user \mbox{\Hypertarget{classRobot_a677fb6a0451a61f3f47e72abd626ce14}\label{classRobot_a677fb6a0451a61f3f47e72abd626ce14}} 
+\index{Robot@{Robot}!toggleControl@{toggleControl}}
+\index{toggleControl@{toggleControl}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{toggleControl()}{toggleControl()}}
+{\footnotesize\ttfamily void Robot\+::toggle\+Control (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+toggle control mode of the robot \mbox{\Hypertarget{classRobot_a010da0076a145bea1014a65dc831186d}\label{classRobot_a010da0076a145bea1014a65dc831186d}} 
+\index{Robot@{Robot}!update@{update}}
+\index{update@{update}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Robot\+::update (\begin{DoxyParamCaption}\item[{long long}]{delta\+Milliseconds }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Runs with maximum fps (targeting 1000 fps), great for graphical updates and listening to keyborad signals 
+\begin{DoxyParams}{Parameters}
+{\em delta\+Milliseconds} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classGameEntity_af8d4b994201bd23b8828ad4f49a8a7b4}{Game\+Entity}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{robot_8h}{robot.\+h}}\item 
+\mbox{\hyperlink{robot_8cpp}{robot.\+cpp}}\end{DoxyCompactItemize}

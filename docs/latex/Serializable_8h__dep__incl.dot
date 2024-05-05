@@ -1,0 +1,55 @@
+digraph "Serializable.h"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="Serializable.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Abstract class for classes that can be serialized as json object."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="blockdto.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$blockdto_8h.html",tooltip="Block game entity dto class"];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="block.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$block_8h.html",tooltip="Block game entity header file."];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="block.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$block_8cpp.html",tooltip="block.h implementation"];
+  Node3 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="blockcomposer.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$blockcomposer_8h.html",tooltip="Block game entity binding class for property view"];
+  Node5 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="blockcomposer.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$blockcomposer_8cpp.html",tooltip="blockcomposer.h implementation"];
+  Node5 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node7 [label="propertyview.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$propertyview_8cpp.html",tooltip="propertyview.h implementation"];
+  Node3 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node3 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node8 [label="room.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$room_8h.html",tooltip="Class that contains game entites"];
+  Node8 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node9 [label="mainwindow.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$mainwindow_8h.html",tooltip="Main window class."];
+  Node9 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node10 [label="main.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$main_8cpp.html",tooltip="Project main file"];
+  Node9 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node11 [label="mainwindow.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$mainwindow_8cpp.html",tooltip="mainwindow.h implementation"];
+  Node8 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node12 [label="robot.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$robot_8cpp.html",tooltip="robot.h implementation"];
+  Node8 -> Node13 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node13 [label="room.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$room_8cpp.html",tooltip="room.h implementation"];
+  Node2 -> Node14 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node14 [label="blockdto.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$blockdto_8cpp.html",tooltip="block.h implementation"];
+  Node2 -> Node15 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node15 [label="roomdto.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$roomdto_8h.html",tooltip="Room dto class"];
+  Node15 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node15 -> Node16 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node16 [label="roomdto.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$roomdto_8cpp.html",tooltip="roomdto.h implementation"];
+  Node1 -> Node17 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node17 [label="robotdto.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$robotdto_8h.html",tooltip="Robot game entity dto class"];
+  Node17 -> Node18 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node18 [label="robot.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$robot_8h.html",tooltip="Robot game entity class."];
+  Node18 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node18 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node18 -> Node19 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node19 [label="robotcomposer.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$robotcomposer_8h.html",tooltip="Robot game entity binding class for property view"];
+  Node19 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node19 -> Node20 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node20 [label="robotcomposer.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$robotcomposer_8cpp.html",tooltip="robotcomposer.h implementation"];
+  Node18 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node17 -> Node21 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node21 [label="robotdto.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$robotdto_8cpp.html",tooltip="robotdto.h implementation"];
+  Node17 -> Node15 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node1 -> Node15 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+}
